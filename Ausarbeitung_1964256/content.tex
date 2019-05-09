@@ -4,21 +4,20 @@
 %% ==============================
 
 \chapter{Abstract}
-In unser heutigen hoch technologisierten Welt steigt stetig und rasant die Leistungsfähigkeit moderner Hardware.
-So auch die aktueller Grafikhardware. Einhergehend ist damit allerdings auch steigende Komplexität, die mit 
-neuen Konzepten und Ideen in die Technologie einfließt. Um heutzutage Grafik auf einem Computer darzustellen 
-sind viele verschiedene Schritte nötig, die hintereinander bzw. gleichzeitig ablaufen. 
-Diese Arbeit beschäftigt sich genau um diese Schritte, also deren genaue Spezifizierung, welcher Schritt folgt auf diesen Schritt,
-welche Schritte können parallel abgearbeitet werden. Dabei soll nicht nur konkret auf die Arbeitsweise der einzelnen Stufe eingegangen
-werden, sondern auch im Speziellen auf die Zusammenarbeit und Kommunikation. 
+
+In unser heutigen hoch technologisierten Welt steigt stetig und rasant die Leistungsfähigkeit moderner Grafikhardware.
+Um heutzutage Grafik auf einem modernen Computer darzustellen sind mittlerweile eine Vielzahl von Zwischenschritten nötig.
+Diese Arbeit beschäftigt sich um die einzelnen Stufen dieser Kette, deren jeweilige Aufgabe, ihren Datentransfer untereinander,
+ihre Reihenfolge sowie ihren Arbeitskontext. Beim Arbeitskontext werden unter anderem die unterschiedlichen Koordinatensysteme untersucht. 
+Dabei soll nicht nur konkret auf die Arbeitsweise der einzelnen Stufe eingegangen werden, sondern auch im Speziellen auf die Zusammenarbeit und Kommunikation. 
 Exemplarische Fragestellungen die behandelt werden sind Folgende: Können in dieser Art der Abarbeitung Flaschenhälse entstehen und 
 wie werden Sie umgangen bzw. bekämpft. Welchen Einfluss hat der Programmierer auf die Pipeline bzw. welche Schritte kann er selber
 implementieren und welche Schritte werden rein von der Hardware übernommen und können nicht von ihm modifiziert werden. 
-Nach dem Lesen dieser Arbeit wird Ihnen der Aufbau einer modernen Rendering-Pipeline verständlich sein und Sie werden in der 
-Lage sein den Begriff Rasterisierung genau zu umschreiben, zu erklären und damit umzugehen. 
-Zusätzlich wird bei dieser Abhandlung, dem stetigen technologischen Fortschritt geschuldet, ein Ausblick auf zukünftige Entwicklungen
+Diese Arbeit macht den Aufbau einer modernen Rendering-Pipeline verständlich und vermittelt den Begriff Rasterisierung
+Zusätzlich wird es bei dieser Abhandlung, dank des stetigen technologischen Fortschritts, ein Ausblick auf zukünftige Entwicklungen
 und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen wird.
 %% ==============================
+
 \chapter{Einleitung}
 \label{ch:Introduction}
 
@@ -31,12 +30,6 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
     \section{Geometrie}\dots
 
         \subsection{Vertex Shader}\dots
-
-            \subsubsection{Modell-Kamera Transformation}\dots
-
-            \subsubsection{Beleuchtung}\dots
-
-            \subsubsection{Projektion}\dots
 
         \subsection{Primitive Assembly}\dots 
 
@@ -68,7 +61,9 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 
     \section{GPU Memory}\dots
 
-\chapter{Unterschied moderne und alte Rendering-Pipeline}
+    \section{Compute Shader}\dots
+
+\chapter{Unterschied moderne und klassische Rendering-Pipeline}
 
     \section{Freie Programmierung oder reines Konfigurieren}\dots
 
