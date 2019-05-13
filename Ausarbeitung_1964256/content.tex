@@ -27,22 +27,34 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 
     \section{Anwendung}\dots
 
+    In der Anwendung werden die zu zeichnenden Objekte 
+
     \section{Geometrie}\dots
 
         \subsection{Vertex Shader}\dots
+
+        Hier arbeiten wir komplett in Objektkoordinaten.
 
         \subsection{Primitive Assembly}\dots 
 
         \subsection{Tessellation}\dots 
 
+        Hinzufügen neuer Vertices.
+
         \subsection{Geometry Shader}\dots 
             
         \subsection{Clipping}\dots
+
+        Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden(englisch = "clipping").
+        Algorithmus von Sutherland-Hodgman.
+        Wir gehen vom Clip-Space zum Window-Space
 
         \subsection{Viewport Transform}\dots
 
     \section{Rasterization}\dots
 
+    In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
+    
     \section{Fragment Shader}\dots
 
     \section{Per Fragment Operations}\dots
@@ -72,7 +84,12 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 %% ===========================
 \chapter{Ausblick}
 
-\section{Raytracing Unterstützung}
+\section{Raytracing Unterstützung}\dots
+
+Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
+Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
+erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
+
 \label{ch:Content1:sec:Section1}
 %% ===========================
 
