@@ -1,0 +1,71 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'VertexShader.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{481.88976378bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.35294118)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.77818626,1.1339286){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.00889357\unitlength}\raggedright \end{minipage}}}%
+    \put(0.70259101,1.1517157){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0622549\unitlength}\raggedright \end{minipage}}}%
+    \put(0.8305932,0.90607052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.00497208\unitlength}\raggedright \end{minipage}}}%
+    \put(0.88711524,0.76795134){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.30017471\unitlength}\raggedright \end{minipage}}}%
+    \put(0.70680796,0.8780917){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.00497213\unitlength}\raggedleft \end{minipage}}}%
+    \put(1.21540915,0.77351392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0074549\unitlength}\raggedright \end{minipage}}}%
+    \put(1.17248162,0.77351392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.04292763\unitlength}\raggedright \end{minipage}}}%
+    \put(1.010535,0.79347874){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.36818555\unitlength}\raggedright \end{minipage}}}%
+    \put(0.88711524,0.76795134){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.94845004\unitlength}\raggedright \end{minipage}}}%
+    \put(0.8305932,0.90607052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.18491398\unitlength}\centering \end{minipage}}}%
+    \put(0.42931067,0.28918414){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.292193\unitlength}\raggedright Vertex \\ Shader \end{minipage}}}%
+    \put(0.00989532,0.24563655){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.35318696\unitlength}\raggedright Vertex in\\ Objektkoordinaten\end{minipage}}}%
+    \put(0.76662914,0.22430109){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24917376\unitlength}\raggedright Clip Space \\ Outputvertex\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{VertexShader.pdf}}%
+  \end{picture}%
+\endgroup%
