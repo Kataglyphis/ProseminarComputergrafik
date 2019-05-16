@@ -41,6 +41,14 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
     \section{Anwendung}
 
+    
+    Zu rendernde Objekte werden zunächst von der Anwendung zur Grafikkarte geschickt. Dabei liegen die Daten über ein
+    Objekt beispielhaft im OBJ-Dateiformat vor. Die Informationen über einen Vertex, das sind die Position,
+    Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders, wichtig.
+    Des Weiteren sind Flächeninformationen, die für das Primitive-Assembly von Bedeutung sind, und ein Material definiert.
+    In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
+    Positionen verändern, 
+    
     \begin{figure}[htb]
         \centering
         \begin{minipage}[t]{0.45\linewidth}
@@ -55,8 +63,6 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
             \caption{Vertex Daten im OBJ-Dateiformat}
         \end{minipage}
     \end{figure}
-
-    In der Anwendung werden die zu zeichnenden Objekte 
 
     \section{Geometrie}
 
