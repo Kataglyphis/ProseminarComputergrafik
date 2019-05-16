@@ -39,15 +39,15 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
 \chapter{Moderne Rendering-Pipeline}
 
-    \section{Anwendung}\dots
+    \section{Anwendung}
 
     In der Anwendung werden die zu zeichnenden Objekte 
 
-    \section{Geometrie}\dots
+    \section{Geometrie}
 
-        \subsection{Vertex Shader}\dots
+        \subsection{Vertex Shader}
 
-            \begin{figure}
+            \begin{figure}[h]
                 \centering
                 \def\svgwidth{\columnwidth}
                 \import{Bilder/}{VertexShader.pdf_tex}
@@ -57,62 +57,70 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
         Hier arbeiten wir komplett in Objektkoordinaten.
 
-        \subsection{Primitive Assembly}\dots 
+        \subsection{Primitive Assembly}
 
-        \subsection{Tessellation}\dots 
+        \subsection{Tessellation}
+
+            \begin{figure}[h]
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{Tessellation.pdf_tex}
+                \label{Vertex Shader}
+                \caption{Funktionsweise Vertex Shader}
+            \end{figure}
 
         Hinzufügen neuer Vertices.
 
-        \subsection{Geometry Shader}\dots 
+        \subsection{Geometry Shader}
             
-        \subsection{Clipping}\dots
+        \subsection{Clipping}
 
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden(englisch = "clipping").
         Algorithmus von Sutherland-Hodgman.
         Wir gehen vom Clip-Space zum Window-Space
 
-        \subsection{Viewport Transform}\dots
+        \subsection{Viewport Transform}
 
-    \section{Rasterization}\dots
+    \section{Rasterization}
 
     In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
     
-    \section{Fragment Shader}\dots
+    \section{Fragment Shader}
 
-    \section{Per Fragment Operations}\dots
+    \section{Per Fragment Operations}
 
-        \subsection{Multisample Fragment Ops}\dots
+        \subsection{Multisample Fragment Ops}
     
-        \subsection{Stencil Test}\dots
+        \subsection{Stencil Test}
 
-        \subsection{Occlusion Query}\dots
+        \subsection{Occlusion Query}
     
-        \subsection{Blending}\dots
+        \subsection{Blending}
 
-        \subsection{Logical Operations}\dots
+        \subsection{Logical Operations}
 
-    \section{Framebuffer und Buffer Objekte}\dots
+    \section{Framebuffer und Buffer Objekte}
 
-    \section{GPU Memory}\dots
+    \section{GPU Memory}
 
-    \section{Compute Shader}\dots
+    \section{Compute Shader}
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
 
-    \section{Freie Programmierung oder reines Konfigurieren}\dots
+    \section{Freie Programmierung oder reines Konfigurieren}
 
-    \section{Vertex Arrays, Index Buffers, ..}\dots
+    \section{Vertex Arrays, Index Buffers, ..}
 
 %% ===========================
 \chapter{Ausblick}
 
-\section{Raytracing Unterstützung}\dots
+\section{Raytracing Unterstützung}
 
 Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
 Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
 erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
 
-\section{Task-/Mesh Shaders}\dots
+\section{Task-/Mesh Shaders}
 
 Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr
 flexibleren wiedererkennen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
