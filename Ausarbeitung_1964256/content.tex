@@ -142,13 +142,28 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         \caption{Funktionsweise Compute Shader}
     \end{figure}
 
-    Mit der rasant steigenden Leistung heutiger Grafikhardware stieg 
-    auch der Wunsch beim Anwender nach mehr Rechenleistung.
-    Parallesisierbare Arbeit wird in Threadgroups eingeteilt
+    Mit der rasant steigenden Leistung heutiger Grafikhardware stieg auch der Wunsch beim Anwender nach mehr Rechenleistung.
+    Parallesisierbare Arbeit wird in Threadgroups eingeteilt. Threads innerhalb einer Gruppe laufen gleichzeitig, wohingegen
+    die Threadgruppen untereinander dies nicht müssen.
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
 
     \section{Freie Programmierung oder reines Konfigurieren}
+        
+        \begin{figure}[htb]
+            \centering
+            \begin{minipage}[t]{0.45\linewidth}
+                \centering
+                \includegraphics[width=.75\linewidth]{Bilder/MaterialDefs.PNG}
+                \caption{Definition beispielhaftes Material}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Bilder/ObjectData.png}
+                \caption{Vertex Daten im OBJ-Dateiformat}
+            \end{minipage}
+        \end{figure}
 
     \section{Vertex Arrays, Index Buffers, ..}
 
