@@ -20,7 +20,7 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 
 \chapter{Einleitung}
 
-Wollen wir mit einer Anwendung eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
+Wollen wir mit einer Anwendung~\ref{sec:Anwendung} eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
 so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
 Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
 assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". Die geschieht meist in der Anwendung bevor die Geometrie
@@ -28,13 +28,13 @@ zur Geometry Stage schickt. \par
 Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten,
 wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen und vereinfachen die darauffolgende Projektion.
 Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem im Einheitswürfel. \par
-Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping ist nun
+Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping~\ref{subsec:Clipping} ist nun
 das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
-Der Entwickler hat keinen Einfluss auf das Clipping (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
+Der Entwickler hat keinen Einfluss auf das Clipping~\ref{subsec:Clipping} (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
 ist der Cohen-Sutherland-Algorithmus.\par
-Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Screen Mapping. Die x-und y-Komponente
-unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig anzumerken,
-dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung speichern.\par
+Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Viewport Transform~\ref{subsec:Viewport Transform}.
+Die x-und y-Komponente unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig 
+anzumerken, dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung~\ref{sec:Rasterisierung} speichern.\par
 Nun sind wir an dem Punkt angelangt, an dem wir unsere transformierten, projizierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
 (Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben. So haben 
 wir nun das finale Bild produziert.
@@ -56,7 +56,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 \chapter{Moderne Rendering-Pipeline}
 
     \section{Anwendung}
-    \label{Anwendung}
+    \label{sec:Anwendung}
     Zu rendernde Objekte werden zunächst von der Anwendung zur Grafikkarte geschickt. Dabei liegen die Daten über ein
     Objekt beispielhaft im OBJ-Dateiformat vor. Die Informationen über einen Vertex, das sind die Position,
     Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders, wichtig.
@@ -81,10 +81,10 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
     \end{figure}
 
     \section{Geometrie Stufe}
-    \label{Geometry Stage}
+    \label{sec:Geometry Stage}
 
         \subsection{Vertex Shader}
-        \label{Vertex Shader}
+        \label{subsec:Vertex Shader}
             \begin{figure}[H]
                 \centering
                 \def\svgwidth{\columnwidth}
@@ -96,10 +96,10 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         Hier arbeiten wir komplett in Objektkoordinaten.
 
         \subsection{Primitive Assembly}
-        \label{Primitive Assembly}
+        \label{subsec:Primitive Assembly}
 
         \subsection{Tessellation}
-        \label{Tessellation}
+        \label{subsec:Tessellation}
 
             \begin{figure}[H]
                 \centering
@@ -112,7 +112,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         Hinzufügen neuer Vertices.
 
         \subsection{Geometry Shader}
-        \label{Geometry Shader}
+        \label{subsec:Geometry Shader}
 
             \begin{figure}[H]
                 \centering
@@ -123,16 +123,16 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
             \end{figure}
 
         \subsection{Clipping}
-        \label{Clipping}
+        \label{subsec:Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden(englisch = "clipping").
         Algorithmus von Sutherland-Hodgman.
         Wir gehen vom Clip-Space zum Window-Space
 
         \subsection{Viewport Transform}
-        \label{Viewport Transform}
+        \label{subsec:Viewport Transform}
 
     \section{Rasterisierung}
-    \label{Rasterisierung}
+    \label{sec:Rasterisierung}
         \begin{figure}[H]
             \centering
             \def\svgwidth{\columnwidth}
@@ -144,10 +144,10 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
     In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
     
     \section{Fragment Shader}
-    \label{Fragment Shader}
+    \label{sec:Fragment Shader}
 
     \section{Per Fragment Operations}
-    \label{Per Fragment Operations}
+    \label{sec:Per Fragment Operations}
 
         \subsection{Multisample Fragment Ops}
     
@@ -160,13 +160,13 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         \subsection{Logical Operations}
 
     \section{Framebuffer und Buffer Objekte}
-    \label{Framebuffer}
+    \label{sec:Framebuffer}
 
     \section{GPU Memory}
-    \label{GPU Memory}
+    \label{sec:GPU Memory}
 
     \section{Compute Shader}
-    \label{Compute Shader}
+    \label{sec:Compute Shader}
 
     \begin{figure}[H]
         \centering
@@ -209,14 +209,14 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 \chapter{Ausblick}
 
 \section{Raytracing Unterstützung}
-\label{Real-Time Raytracing}
+\label{sec:Real-Time Raytracing}
 
 Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
 Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
 erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
 
 \section{Task-/Mesh Shaders}
-\label{Meshshader}
+\label{sec:Meshshader}
 Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr
 flexibleren wiedererkennen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
 Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist 
@@ -229,7 +229,6 @@ ausschließen. \par
 Dabei wird ein komplexes Mesh in einzelne "Meshlets" zerlegt, welche wiederrum von Mesh Shadern behandelt werden.
 
 \includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
-\label{ch:Content1:sec:Section1}
 %% ========================================================================================================================================
 
 
