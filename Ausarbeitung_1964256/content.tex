@@ -27,7 +27,7 @@ Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir
 assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". \par
 Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten,
 wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen und vereinfachen die darauffolgende Projektion.
-Egal welche Art von Projektion wir angewandt haben, so liegt unsere Szene im Einheitswürfel.
+Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem im Einheitswürfel. \par
 Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping ist nun
 das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
 Der Entwickler hat keinen Einfluss auf das Clipping (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
@@ -35,7 +35,8 @@ ist der Cohen-Sutherland-Algorithmus.\par
 Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Screen Mapping. Die x-und y-Komponente
 unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig anzumerken,
 dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung speichern.\par
-
+Nun sind wir an dem Punkt angelangt, an dem wir unsere transormierten, porjezierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
+(Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben.
 
 Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
 dort Transformationen. So sind wir zuerst im Model-SpaceSind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
@@ -63,7 +64,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
     In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
     Positionen verändern, 
     
-    \begin{figure}[htb]
+    \begin{figure}[!htbp]
         \centering
         \begin{minipage}[t]{0.45\linewidth}
             \centering
@@ -82,7 +83,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
         \subsection{Vertex Shader}
 
-            \begin{figure}[h]
+            \begin{figure}[!htbp]
                 \centering
                 \def\svgwidth{\columnwidth}
                 \import{Bilder/}{VertexShader.pdf_tex}
@@ -96,7 +97,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
         \subsection{Tessellation}
 
-            \begin{figure}[h]
+            \begin{figure}[!htbp]
                 \centering
                 \def\svgwidth{\columnwidth}
                 \import{Bilder/}{Tessellation.pdf_tex}
@@ -108,7 +109,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
         \subsection{Geometry Shader}
             
-            \begin{figure}[h]
+            \begin{figure}[!htbp]
                 \centering
                 \def\svgwidth{\columnwidth}
                 \import{Bilder/}{GeometryShader.pdf_tex}
@@ -125,6 +126,14 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         \subsection{Viewport Transform}
 
     \section{Rasterization}
+
+        \begin{figure}[!htbp]
+            \centering
+            \def\svgwidth{\columnwidth}
+            \import{Bilder/}{Rasterisierung.pdf_tex}
+            \label{Geometry Shader}
+            \caption{Funktionsweise Geometry Shader}
+        \end{figure}
 
     In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
     
@@ -148,7 +157,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
     \section{Compute Shader}
     
-    \begin{figure}[h]
+    \begin{figure}[!htbp]
         \centering
         \def\svgwidth{\columnwidth}
         \import{Bilder/}{ComputeShader.pdf_tex}
@@ -164,7 +173,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
     \section{Freie Programmierung oder reines Konfigurieren}
         
-        \begin{figure}[htb]
+        \begin{figure}[!htbp]
             \centering
             \begin{minipage}[t]{0.45\linewidth}
                 \centering
