@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{481.88976378bp}%
+    \setlength{\unitlength}{677.48031496bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,22 +50,27 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.35294118)%
+  \begin{picture}(1,0.14225941)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.77818626,1.1339286){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.00889357\unitlength}\raggedright \end{minipage}}}%
-    \put(0.70259101,1.1517157){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0622549\unitlength}\raggedright \end{minipage}}}%
-    \put(0.8305932,0.90607052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.00497208\unitlength}\raggedright \end{minipage}}}%
-    \put(0.88711524,0.76795134){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.30017471\unitlength}\raggedright \end{minipage}}}%
-    \put(0.70680796,0.8780917){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.00497213\unitlength}\raggedleft \end{minipage}}}%
-    \put(1.21540915,0.77351392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0074549\unitlength}\raggedright \end{minipage}}}%
-    \put(1.17248162,0.77351392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.04292763\unitlength}\raggedright \end{minipage}}}%
-    \put(1.010535,0.79347874){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.36818555\unitlength}\raggedright \end{minipage}}}%
-    \put(0.88711524,0.76795134){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.94845004\unitlength}\raggedright \end{minipage}}}%
-    \put(0.8305932,0.90607052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.18491398\unitlength}\centering \end{minipage}}}%
-    \put(0.42931067,0.28918414){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.292193\unitlength}\raggedright Vertex \\ Shader \end{minipage}}}%
-    \put(0.00989532,0.24563655){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.35318696\unitlength}\raggedright Vertex in\\ Objektkoordinaten\end{minipage}}}%
-    \put(0.76662914,0.22430109){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24917376\unitlength}\raggedright Clip Space \\ Outputvertex\end{minipage}}}%
+    \put(0.55352161,0.80656009){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.00632597\unitlength}\raggedright \end{minipage}}}%
+    \put(0.49975093,0.819212){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.04428173\unitlength}\raggedright \end{minipage}}}%
+    \put(0.59079851,0.64448531){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.7148337\unitlength}\raggedright \end{minipage}}}%
+    \put(0.63100247,0.54624154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21351339\unitlength}\raggedright \end{minipage}}}%
+    \put(0.50275043,0.62458405){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.71483373\unitlength}\raggedleft \end{minipage}}}%
+    \put(0.86451697,0.55019819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.00530265\unitlength}\raggedright \end{minipage}}}%
+    \put(0.83398274,0.55019819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0305343\unitlength}\raggedright \end{minipage}}}%
+    \put(0.71879058,0.5643991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2618893\unitlength}\raggedright \end{minipage}}}%
+    \put(0.63100247,0.54624154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.67462973\unitlength}\raggedright \end{minipage}}}%
+    \put(0.59079851,0.64448531){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.84282584\unitlength}\centering \end{minipage}}}%
+    \put(0.31655025,0.20234098){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.10774975\unitlength}\raggedright \end{minipage}}}%
+    \put(0.03647149,0.09867336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.30210268\unitlength}\raggedright Vertex in\\ Objektkoordinaten\end{minipage}}}%
+    \put(0.70225273,0.10563121){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.23971872\unitlength}\raggedright Clip Space \\ Outputvertex\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{VertexShader.pdf}}%
+    \put(0.37182895,0.20129086){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.05926898\unitlength}\raggedright \end{minipage}}}%
+    \put(0.34946329,0.08610775){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06150553\unitlength}\raggedright \end{minipage}}}%
+    \put(0.1218928,0.20352742){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14649501\unitlength}\raggedright \end{minipage}}}%
+    \put(0.44598028,0.12335626){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17080094\unitlength}\raggedright Vertex \\ Shader\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{VertexShader.pdf}}%
   \end{picture}%
 \endgroup%
