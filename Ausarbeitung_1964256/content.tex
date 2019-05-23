@@ -204,10 +204,35 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
 \section{Raytracing Unterstützung}
 \label{sec:Real-Time Raytracing}
-In heutigen modernen Grafikprogrammierschnittstellen(Vulkan, DirectX) befindet sich ray-tracing
-Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
-Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
-erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
+In heutigen modernen Grafikprogrammierschnittstellen(Vulkan, DirectX) befindet sich Raytracing-Funktionalität.
+Raytracing Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
+Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen.
+Wir können diese neuen Shader wie Compute Shader~\ref{sec:Compute Shader} programmieren.
+
+\begin{center}
+    \begin{table}[H]
+        \begin{tabular}{ | l | p{10cm} |}
+        \hline
+        Shader        &  Beschreibung \\ \hline
+        Any Hit       &  Kann ausgeführt werden wenn wir einen Schnitt mit unserem Strahl gefunden haben. Soll bei transparenten Objekten dazu führen,
+                        früher abbrechen zu können.\\ \hline
+        Callable      &  Kann von einem anderen Shader aufgerufen werden.\\ \hline
+        Closest Hit   &   Wird ausgeführt wenn ein Standardstrahl von einem Ray Generation Shader verschossen wurde, und ein "nähster Schnittpunkt"
+                        gefunden wurde. Hier kann der Programmierer die Methode \textit{shade()} implementieren. Dabei sollte auf Schatten getestet, 
+                        weitere Reflektions- und Transmission miteinberechnet werden\\ \hline
+        Intersection  &   Wird aufgerufen, falls wir eine Bounding Box unser Beschleunigungsstruktur treffen.\\ \hline
+        Miss          &   Wird aufgerufen, falls keine Szenengeometrie getroffen wurde.\\ \hline
+        Ray Generation&   Mit \textit{TraceRay()} können wir Strahlen verschießen. Normalerweiße versendet man einen Strahl pro Pixel.
+                        Wir können jedwedigen Typ von Strahl damit verschießen(Schatten, Primär, Transmit)\\ \hline
+        \hline
+        \end{tabular}
+        \caption{Shadereinheiten nach DirectX12.}
+    \end{table}
+\end{center}
+
+Hierbei führt ein verschossener Strahl eine Datenstruktur mit sich, die eine variable Menge an Informationen
+speichern kann. Als wichtigste zu nennen ist die Distanz bei einem Hit.\par
+Aktuelle Bemühungen gehen nun daran Raytracing und Rasterisierung zu kombinieren. 
 
 \section{Task-/Mesh Shaders}
 \label{sec:Meshshader}
