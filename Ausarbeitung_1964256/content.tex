@@ -1,7 +1,7 @@
 %% content.tex
 %%
 
-%% ==============================
+%% ================================================================================================================================================================
 
 \chapter{Abstract}
 
@@ -16,18 +16,34 @@ implementieren und welche Schritte werden rein von der Hardware übernommen und 
 Diese Arbeit macht den Aufbau einer modernen Rendering-Pipeline verständlich und vermittelt den Begriff Rasterisierung
 Zusätzlich wird es bei dieser Abhandlung, dank des stetigen technologischen Fortschritts, ein Ausblick auf zukünftige Entwicklungen
 und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen wird.
-%% ==============================
+%% ================================================================================================================================================================
 
 \chapter{Einleitung}
-\label{ch:Introduction}
 
-Wollen wir mit einer Anwendung ein Objekt, z.B. eine Teekanne, auf einem Computer darstellen, so liegt das Objekt zuerst in Form
-von vielen Eckpunkten(Dreiecken) in der Anwendung vor. Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
-dort Transformationen. Sind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
+Wollen wir mit einer Anwendung~\ref{sec:Anwendung} eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
+so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
+Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
+assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". Die geschieht meist in der Anwendung bevor die Geometrie
+zur Geometry Stage~\ref{sec:Geometry Stage} schickt. \par
+Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten, wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen
+und vereinfachen die darauffolgende Projektion.
+Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem im Einheitswürfel. \par
+Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping~\ref{subsec:Clipping} ist nun
+das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
+Der Entwickler hat keinen Einfluss auf das Clipping~\ref{subsec:Clipping} (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
+ist der Cohen-Sutherland-Algorithmus.\par
+Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Viewport Transform~\ref{subsec:Viewport Transform}.
+Die x-und y-Komponente unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig 
+anzumerken, dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung~\ref{sec:Rasterisierung} speichern.\par
+Nun sind wir an dem Punkt angelangt, an dem wir unsere transformierten, projizierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
+(Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben. So haben 
+wir nun das finale Bild produziert.
+
+Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
+dort Transformationen. So sind wir zuerst im Model-SpaceSind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
 Der anschließende Tessalation-Shader nimmt die Primitive entgegen und kann Sie weiterhin unterteilen.
 Die Primitive werden von dem Tessellation- zum Geometry Shader durchgereicht, welcher diese vervielfachen, entfernen oder 
-beliebig verändern kann. Darauf folgt das Clipping, worauf der Entwickler keinen Einfluss hat und nicht relevante Szenengeometrie
-entfernt. Nun kommt die Rasterisierung zum Einsatz, welche unsere 3D-Objekte auf den 2D-Schirm bringt und uns
+beliebig verändern kann. Nun kommt die Rasterisierung zum Einsatz, welche unsere 3D-Objekte auf den 2D-Schirm bringt und uns
 Fragmente(Bildschirmpixel) liefert. Auf diesen Fragmenten lassen sich eine Vielzahl von Fragmentoperationen ausführen
 Die heutige moderne Rendering-Pipeline zeichnet sich durch seine gesteigerte Flexibilität gegenüber der Älteren, welche viele 
 feste Funktionen beinhaltete, aus. Und dieser Trend scheint nicht abzureißen. Auch die heutigen rasanten technologischen Fortschritte, 
@@ -35,19 +51,42 @@ z.B. bei der Hardware, erlauben den Einsatz von Technologien, welche früher nic
 und geben dem Entwickler immer mehr Freiheiten mit deren Benutzung. So feiert derzeit das Raytracing innerhalb der Echtzeitcomputergrafik
 einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisierung.
 
-%% ==============
+%% ========================================================================================================================================================
 
 \chapter{Moderne Rendering-Pipeline}
 
     \section{Anwendung}
+    \label{sec:Anwendung}
+    Zu rendernde Objekte werden zunächst von der Anwendung zur Grafikkarte geschickt. Dabei liegen die Daten über ein
+    Objekt beispielhaft im OBJ-Dateiformat vor. Die Informationen über einen Vertex, das sind die Position,
+    Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders~\ref{subsec:Vertex Shader}, wichtig.
+    Desweiteren werden Kamera- und Lichtposition in die Geometriestufe~\ref{sec:Geometry Stage} übergeben.
+    In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
+    Positionen verändern. Allgemein werden hier Benutzereingaben gesammelt und verarbeitet.
+    Als programmierbare Stufe dieser Pipeline kann der Anwender konkrete Verbesserungen in diese Stufe einbringen um z.B. mit einem BVH
+    die Anzahl der Primitive für die Geometriestufe zu verrringern.
+    
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}[t]{0.45\linewidth}
+            \centering
+            \includegraphics[width=.75\linewidth]{Bilder/MaterialDefs.PNG}
+            \caption{Definition beispielhaftes Material}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Bilder/ObjectData.png}
+            \caption{Vertex Daten im OBJ-Dateiformat}
+        \end{minipage}
+    \end{figure}
 
-    In der Anwendung werden die zu zeichnenden Objekte 
-
-    \section{Geometrie}
+    \section{Geometrie Stufe}
+    \label{sec:Geometry Stage}
 
         \subsection{Vertex Shader}
-
-            \begin{figure}[h]
+        \label{subsec:Vertex Shader}
+            \begin{figure}[H]
                 \centering
                 \def\svgwidth{\columnwidth}
                 \import{Bilder/}{VertexShader.pdf_tex}
@@ -58,28 +97,58 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         Hier arbeiten wir komplett in Objektkoordinaten.
 
         \subsection{Primitive Assembly}
+        \label{subsec:Primitive Assembly}
 
         \subsection{Tessellation}
+        \label{subsec:Tessellation}
+
+            \begin{figure}[H]
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{Tessellation.pdf_tex}
+                \label{Tessellation Shader}
+                \caption{Funktionsweise Tessellation Shader}
+            \end{figure}
 
         Hinzufügen neuer Vertices.
 
         \subsection{Geometry Shader}
-            
-        \subsection{Clipping}
+        \label{subsec:Geometry Shader}
 
+            \begin{figure}[H]
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{GeometryShader.pdf_tex}
+                \label{Geometry Shader}
+                \caption{Funktionsweise Geometry Shader}
+            \end{figure}
+
+        \subsection{Clipping}
+        \label{subsec:Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden(englisch = "clipping").
         Algorithmus von Sutherland-Hodgman.
         Wir gehen vom Clip-Space zum Window-Space
 
         \subsection{Viewport Transform}
+        \label{subsec:Viewport Transform}
 
-    \section{Rasterization}
+    \section{Rasterisierung}
+    \label{sec:Rasterisierung}
+        \begin{figure}[H]
+            \centering
+            \def\svgwidth{\columnwidth}
+            \import{Bilder/}{Rasterisierung.pdf_tex}
+            \label{Rasterisierung}
+            \caption{Ablauf Rasterisierung}
+        \end{figure}
 
     In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
     
     \section{Fragment Shader}
+    \label{sec:Fragment Shader}
 
     \section{Per Fragment Operations}
+    \label{sec:Per Fragment Operations}
 
         \subsection{Multisample Fragment Ops}
     
@@ -92,28 +161,63 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         \subsection{Logical Operations}
 
     \section{Framebuffer und Buffer Objekte}
+    \label{sec:Framebuffer}
 
     \section{GPU Memory}
+    \label{sec:GPU Memory}
 
     \section{Compute Shader}
+    \label{sec:Compute Shader}
+
+    \begin{figure}[H]
+        \centering
+        \def\svgwidth{\columnwidth}
+        \import{Bilder/}{ComputeShader.pdf_tex}
+        \label{Compute Shader}
+        \caption{Funktionsweise Compute Shader}
+    \end{figure}
+
+    Mit der rasant steigenden Leistung heutiger Grafikhardware stieg auch der Wunsch beim Anwender nach mehr Rechenleistung.
+    Parallesisierbare Arbeit wird in Threadgroups eingeteilt. Threads innerhalb einer Gruppe laufen gleichzeitig, wohingegen
+    die Threadgruppen untereinander dies nicht müssen.
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
 
     \section{Freie Programmierung oder reines Konfigurieren}
+        
+        \begin{figure}[H]
+            \centering
+            \begin{minipage}[t]{0.45\linewidth}
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{AltesOpenGL.pdf_tex}
+                \label{Altes OpenGL}
+                \caption{OpneGL $\leq$ 2.0}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.45\linewidth}
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{ModernesOpenGL.pdf_tex}
+                \label{Modernes OpenGL}
+                \caption{Modernes OpenGL}
+            \end{minipage}
+        \end{figure}
 
     \section{Vertex Arrays, Index Buffers, ..}
 
-%% ===========================
+%% ===============================================================================================================================
 \chapter{Ausblick}
 
 \section{Raytracing Unterstützung}
+\label{sec:Real-Time Raytracing}
 
 Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
 Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
 erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
 
 \section{Task-/Mesh Shaders}
-
+\label{sec:Meshshader}
 Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr
 flexibleren wiedererkennen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
 Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist 
@@ -126,8 +230,7 @@ ausschließen. \par
 Dabei wird ein komplexes Mesh in einzelne "Meshlets" zerlegt, welche wiederrum von Mesh Shadern behandelt werden.
 
 \includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
-\label{ch:Content1:sec:Section1}
-%% ===========================
+%% ========================================================================================================================================
 
 
 %% content.tex
