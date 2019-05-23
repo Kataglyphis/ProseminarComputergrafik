@@ -24,11 +24,15 @@ Wollen wir mit einer Anwendung~\ref{sec:Anwendung} eine Szene von Objekten, z.B.
 so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
 Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
 assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". Die geschieht meist in der Anwendung bevor die Geometrie
-zur Geometry Stage~\ref{sec:Geometry Stage} schickt. \par
+zur Geometriestufe~\ref{sec:Geometry Stage} geschickt wird. \par
+Als Anwender können wir nun zu Beginn der Geometriestufe mit einem eigenen Vertex Shader die Beleuchtungsberechnung etc. der Eckpunkte bestimmen. Dabei
+helfen die von der Anwendung mitgegebenen Attribute. Auch in welchen Koordinatensystem dies geschieht bleibt dem Programmierer überlassen. In der anschließenden 
+Stufe werden diese Eckpunkte zu Primitiven zusammengesetzt und können weiter unterteilt werden~\ref{subsec:Tessellation}.Die Primitive werden von dem Tessellation- 
+zum Geometry Shader durchgereicht, welcher diese vervielfachen, entfernen oder beliebig verändern kann..\par
 Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten, wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen
-und vereinfachen die darauffolgende Projektion.
-Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem im Einheitswürfel. \par
-Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping~\ref{subsec:Clipping} ist nun
+und vereinfachen die darauffolgende Projektion. Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem 
+Einheitswürfel. \par
+Nun kann die Teekanne derart platziert sein, dass Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping~\ref{subsec:Clipping} ist nun
 das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
 Der Entwickler hat keinen Einfluss auf das Clipping~\ref{subsec:Clipping} (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
 ist der Cohen-Sutherland-Algorithmus.\par
@@ -36,21 +40,10 @@ Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen
 Die x-und y-Komponente unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig 
 anzumerken, dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung~\ref{sec:Rasterisierung} speichern.\par
 Nun sind wir an dem Punkt angelangt, an dem wir unsere transformierten, projizierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
-(Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben. So haben 
-wir nun das finale Bild produziert.
-
-Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
-dort Transformationen. So sind wir zuerst im Model-SpaceSind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
-Der anschließende Tessalation-Shader nimmt die Primitive entgegen und kann Sie weiterhin unterteilen.
-Die Primitive werden von dem Tessellation- zum Geometry Shader durchgereicht, welcher diese vervielfachen, entfernen oder 
-beliebig verändern kann. Nun kommt die Rasterisierung zum Einsatz, welche unsere 3D-Objekte auf den 2D-Schirm bringt und uns
-Fragmente(Bildschirmpixel) liefert. Auf diesen Fragmenten lassen sich eine Vielzahl von Fragmentoperationen ausführen
-Die heutige moderne Rendering-Pipeline zeichnet sich durch seine gesteigerte Flexibilität gegenüber der Älteren, welche viele 
-feste Funktionen beinhaltete, aus. Und dieser Trend scheint nicht abzureißen. Auch die heutigen rasanten technologischen Fortschritte, 
-z.B. bei der Hardware, erlauben den Einsatz von Technologien, welche früher nicht eingesetzt werden konnten, 
-und geben dem Entwickler immer mehr Freiheiten mit deren Benutzung. So feiert derzeit das Raytracing innerhalb der Echtzeitcomputergrafik
-einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisierung.
-
+(Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben. Vor dem endgültigen Darstellen 
+der Bildschirmpixel lassen sich auf den zuvor erzeuten Fragmenten eine Vielzahl von Operationen~\ref{sec:Per Fragment Operations} ausführen.So haben 
+wir nun das finale Bild produziert.\par
+Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheiten bilden eine Ergänzung der bisherigen Rasterisierung~\ref{sec:Real-Time Raytracing}.
 %% ========================================================================================================================================================
 
 \chapter{Moderne Rendering-Pipeline}
@@ -211,7 +204,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
 \section{Raytracing Unterstützung}
 \label{sec:Real-Time Raytracing}
-
+In heutigen modernen Grafikprogrammierschnittstellen(Vulkan, DirectX) befindet sich ray-tracing
 Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
 Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
 erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
