@@ -21,13 +21,27 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 \chapter{Einleitung}
 \label{ch:Introduction}
 
-Wollen wir mit einer Anwendung ein Objekt, z.B. eine Teekanne, auf einem Computer darstellen, so liegt das Objekt zuerst in Form
-von vielen Eckpunkten(Dreiecken) in der Anwendung vor. Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
-dort Transformationen. Sind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
+Wollen wir mit einer Anwendung eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
+so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
+Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
+assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". \par
+Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten,
+wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen und vereinfachen die darauffolgende Projektion.
+Egal welche Art von Projektion wir angewandt haben, so liegt unsere Szene im Einheitswürfel.
+Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping ist nun
+das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
+Der Entwickler hat keinen Einfluss auf das Clipping (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
+ist der Cohen-Sutherland-Algorithmus.\par
+Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Screen Mapping. Die x-und y-Komponente
+unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig anzumerken,
+dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung speichern.\par
+
+
+Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
+dort Transformationen. So sind wir zuerst im Model-SpaceSind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
 Der anschließende Tessalation-Shader nimmt die Primitive entgegen und kann Sie weiterhin unterteilen.
 Die Primitive werden von dem Tessellation- zum Geometry Shader durchgereicht, welcher diese vervielfachen, entfernen oder 
-beliebig verändern kann. Darauf folgt das Clipping, worauf der Entwickler keinen Einfluss hat und nicht relevante Szenengeometrie
-entfernt. Nun kommt die Rasterisierung zum Einsatz, welche unsere 3D-Objekte auf den 2D-Schirm bringt und uns
+beliebig verändern kann. Nun kommt die Rasterisierung zum Einsatz, welche unsere 3D-Objekte auf den 2D-Schirm bringt und uns
 Fragmente(Bildschirmpixel) liefert. Auf diesen Fragmenten lassen sich eine Vielzahl von Fragmentoperationen ausführen
 Die heutige moderne Rendering-Pipeline zeichnet sich durch seine gesteigerte Flexibilität gegenüber der Älteren, welche viele 
 feste Funktionen beinhaltete, aus. Und dieser Trend scheint nicht abzureißen. Auch die heutigen rasanten technologischen Fortschritte, 
