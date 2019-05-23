@@ -19,7 +19,6 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 %% ================================================================================================================================================================
 
 \chapter{Einleitung}
-\label{ch:Introduction}
 
 Wollen wir mit einer Anwendung eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
 so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
@@ -57,6 +56,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 \chapter{Moderne Rendering-Pipeline}
 
     \section{Anwendung}
+    \label{Anwendung}
     Zu rendernde Objekte werden zunächst von der Anwendung zur Grafikkarte geschickt. Dabei liegen die Daten über ein
     Objekt beispielhaft im OBJ-Dateiformat vor. Die Informationen über einen Vertex, das sind die Position,
     Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders, wichtig.
@@ -80,10 +80,11 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         \end{minipage}
     \end{figure}
 
-    \section{Geometrie}
+    \section{Geometrie Stufe}
+    \label{Geometry Stage}
 
         \subsection{Vertex Shader}
-
+        \label{Vertex Shader}
             \begin{figure}[H]
                 \centering
                 \def\svgwidth{\columnwidth}
@@ -95,8 +96,10 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         Hier arbeiten wir komplett in Objektkoordinaten.
 
         \subsection{Primitive Assembly}
+        \label{Primitive Assembly}
 
         \subsection{Tessellation}
+        \label{Tessellation}
 
             \begin{figure}[H]
                 \centering
@@ -109,7 +112,8 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         Hinzufügen neuer Vertices.
 
         \subsection{Geometry Shader}
-            
+        \label{Geometry Shader}
+
             \begin{figure}[H]
                 \centering
                 \def\svgwidth{\columnwidth}
@@ -119,15 +123,16 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
             \end{figure}
 
         \subsection{Clipping}
-
+        \label{Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden(englisch = "clipping").
         Algorithmus von Sutherland-Hodgman.
         Wir gehen vom Clip-Space zum Window-Space
 
         \subsection{Viewport Transform}
+        \label{Viewport Transform}
 
-    \section{Rasterization}
-
+    \section{Rasterisierung}
+    \label{Rasterisierung}
         \begin{figure}[H]
             \centering
             \def\svgwidth{\columnwidth}
@@ -139,8 +144,10 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
     In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
     
     \section{Fragment Shader}
+    \label{Fragment Shader}
 
     \section{Per Fragment Operations}
+    \label{Per Fragment Operations}
 
         \subsection{Multisample Fragment Ops}
     
@@ -153,11 +160,14 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
         \subsection{Logical Operations}
 
     \section{Framebuffer und Buffer Objekte}
+    \label{Framebuffer}
 
     \section{GPU Memory}
+    \label{GPU Memory}
 
     \section{Compute Shader}
-    
+    \label{Compute Shader}
+
     \begin{figure}[H]
         \centering
         \def\svgwidth{\columnwidth}
@@ -199,13 +209,14 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 \chapter{Ausblick}
 
 \section{Raytracing Unterstützung}
+\label{Real-Time Raytracing}
 
 Moderne Ansätze gehen von der objektbasierten (siehe Rasterisierung) zu der Image-ordered Bilderstellung über.
 Hiermit werden nicht nur Primär- sondern auch Sekundärstrahlen(etc.) betrachtet und somit unter Anderem Schatten und Spiegelungen
 erreicht ohne dafür spezielle Techniken verwenden zu müssen (siehe Rasterisierung). 
 
 \section{Task-/Mesh Shaders}
-
+\label{Meshshader}
 Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr
 flexibleren wiedererkennen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
 Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist 
