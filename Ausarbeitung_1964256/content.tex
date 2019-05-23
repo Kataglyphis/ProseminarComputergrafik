@@ -1,7 +1,7 @@
 %% content.tex
 %%
 
-%% ==============================
+%% ================================================================================================================================================================
 
 \chapter{Abstract}
 
@@ -16,15 +16,16 @@ implementieren und welche Schritte werden rein von der Hardware übernommen und 
 Diese Arbeit macht den Aufbau einer modernen Rendering-Pipeline verständlich und vermittelt den Begriff Rasterisierung
 Zusätzlich wird es bei dieser Abhandlung, dank des stetigen technologischen Fortschritts, ein Ausblick auf zukünftige Entwicklungen
 und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen wird.
-%% ==============================
+%% ================================================================================================================================================================
 
 \chapter{Einleitung}
 \label{ch:Introduction}
 
 Wollen wir mit einer Anwendung eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
-so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
+so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
 Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
-assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". \par
+assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". Die geschieht meist in der Anwendung bevor die Geometrie
+zur Geometry Stage schickt. \par
 Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten,
 wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen und vereinfachen die darauffolgende Projektion.
 Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem im Einheitswürfel. \par
@@ -35,8 +36,9 @@ ist der Cohen-Sutherland-Algorithmus.\par
 Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Screen Mapping. Die x-und y-Komponente
 unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig anzumerken,
 dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung speichern.\par
-Nun sind wir an dem Punkt angelangt, an dem wir unsere transormierten, porjezierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
-(Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben.
+Nun sind wir an dem Punkt angelangt, an dem wir unsere transformierten, projizierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
+(Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben. So haben 
+wir nun das finale Bild produziert.
 
 Die Eckpunkte gehen zuerst durch den Vertex-Shader und durchlaufen
 dort Transformationen. So sind wir zuerst im Model-SpaceSind diese aus der Vertex Shader - Einheit werden Sie zu Primitiven(meist Dreiecken) zusammengefasst.
@@ -50,16 +52,15 @@ z.B. bei der Hardware, erlauben den Einsatz von Technologien, welche früher nic
 und geben dem Entwickler immer mehr Freiheiten mit deren Benutzung. So feiert derzeit das Raytracing innerhalb der Echtzeitcomputergrafik
 einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisierung.
 
-%% ==============
+%% ========================================================================================================================================================
 
 \chapter{Moderne Rendering-Pipeline}
 
     \section{Anwendung}
-
-    
     Zu rendernde Objekte werden zunächst von der Anwendung zur Grafikkarte geschickt. Dabei liegen die Daten über ein
     Objekt beispielhaft im OBJ-Dateiformat vor. Die Informationen über einen Vertex, das sind die Position,
     Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders, wichtig.
+    Desweiteren werden Kamera- und Lichtposition für weitere Berechnungen in der Geometrystage übergeben.
     Des Weiteren sind Flächeninformationen, die für das Primitive-Assembly von Bedeutung sind, und ein Material definiert.
     In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
     Positionen verändern, 
@@ -194,7 +195,7 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
 
     \section{Vertex Arrays, Index Buffers, ..}
 
-%% ===========================
+%% ===============================================================================================================================
 \chapter{Ausblick}
 
 \section{Raytracing Unterstützung}
@@ -218,7 +219,7 @@ Dabei wird ein komplexes Mesh in einzelne "Meshlets" zerlegt, welche wiederrum v
 
 \includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
 \label{ch:Content1:sec:Section1}
-%% ===========================
+%% ========================================================================================================================================
 
 
 %% content.tex
