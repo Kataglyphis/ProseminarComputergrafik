@@ -24,9 +24,9 @@ Wollen wir mit einer Anwendung~\ref{sec:Anwendung} eine Szene von Objekten, z.B.
 so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
 Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
 assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". Die geschieht meist in der Anwendung bevor die Geometrie
-zur Geometry Stage schickt. \par
-Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten,
-wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen und vereinfachen die darauffolgende Projektion.
+zur Geometry Stage~\ref{sec:Geometry Stage} schickt. \par
+Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten, wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen
+und vereinfachen die darauffolgende Projektion.
 Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem im Einheitswürfel. \par
 Nun können wir die Teekanne derart platzieren, das Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping~\ref{subsec:Clipping} ist nun
 das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
@@ -59,11 +59,12 @@ einen Siegeszug und wackelt am Thron der bisherigen sehr effizienten Rasterisier
     \label{sec:Anwendung}
     Zu rendernde Objekte werden zunächst von der Anwendung zur Grafikkarte geschickt. Dabei liegen die Daten über ein
     Objekt beispielhaft im OBJ-Dateiformat vor. Die Informationen über einen Vertex, das sind die Position,
-    Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders, wichtig.
-    Desweiteren werden Kamera- und Lichtposition für weitere Berechnungen in der Geometrystage übergeben.
-    Des Weiteren sind Flächeninformationen, die für das Primitive-Assembly von Bedeutung sind, und ein Material definiert.
+    Normale und Texturkoordinate sind für Berechnungen der nächsten Stufe, des Vertex Shaders~\ref{subsec:Vertex Shader}, wichtig.
+    Desweiteren werden Kamera- und Lichtposition in die Geometriestufe~\ref{sec:Geometry Stage} übergeben.
     In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
-    Positionen verändern, 
+    Positionen verändern. Allgemein werden hier Benutzereingaben gesammelt und verarbeitet.
+    Als programmierbare Stufe dieser Pipeline kann der Anwender konkrete Verbesserungen in diese Stufe einbringen um z.B. mit einem BVH
+    die Anzahl der Primitive für die Geometriestufe zu verrringern.
     
     \begin{figure}[H]
         \centering
