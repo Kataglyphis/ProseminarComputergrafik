@@ -230,9 +230,14 @@ Wir können diese neuen Shader wie Compute Shader~\ref{sec:Compute Shader} progr
     \end{table}
 \end{center}
 
-Hierbei führt ein verschossener Strahl eine Datenstruktur mit sich, die eine variable Menge an Informationen
+Hierbei führt ein verschossener Strahl eine Datenstruktur("\textit{payload}") mit sich, die eine variable Menge an Informationen
 speichern kann. Als wichtigste zu nennen ist die Distanz bei einem Hit.\par
-Aktuelle Bemühungen gehen nun daran Raytracing und Rasterisierung zu kombinieren. Andersson and Barr$\acute{e}$-Brisebois 
+Aktuelle Bemühungen gehen nun daran Raytracing und Rasterisierung zu kombinieren. Barr$\acute{e}$-Brisebois \cite{Barré-Brisebois2019} stellte
+mit dem Spiel \textit{PICA PICA} eine solche Rendering-Pipeline vor, welche mithilfe von Path Tracing arbeitet. Dabei wird der G-Buffer
+(Texturen die Position, Normalen, Belichtung eines Frames speichern) noch über Rasterisierung berechnet. Direkten Schatten kann man 
+rastern oder raytracen. Diese Option verspricht eine Anpassungsfähigkeit der Pipeline nach Leistungsfähigkeit. Ähnlich können nun
+Reflektionen, Global Illumination, Ambient Occlusion und Transmission geraytraced oder auf Compute Shader ausgeführt werden.(Wieder je nach 
+Hardwareleistung). Einzig direkte Beleuchtung sowie Post-Processing Effekte laufen nur über Compute-Shader.
 
 \section{Task-/Mesh Shaders}
 \label{sec:Meshshader}
