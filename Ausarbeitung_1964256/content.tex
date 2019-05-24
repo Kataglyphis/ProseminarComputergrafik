@@ -87,11 +87,21 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Vertex Shader}
             \end{figure}
 
-        Hier arbeiten wir komplett in Objektkoordinaten.
+        "Gouraud shading" Beleuchtung per Pixel.
 
         \subsection{Primitive Assembly}
         \label{subsec:Primitive Assembly}
+        Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
+        Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
 
+        \begin{figure}[H]
+            \centering
+            \def\svgwidth{\columnwidth}
+            \import{Bilder/}{PrimitiveAssembly.pdf_tex}
+            \label{PrimitiveAssembly}
+            \caption{Buffer Objekte}
+        \end{figure}
+        
         \subsection{Tessellation}
         \label{subsec:Tessellation}
 
@@ -241,8 +251,16 @@ Hardwareleistung). Einzig direkte Beleuchtung sowie Post-Processing Effekte lauf
 
 \section{Task-/Mesh Shaders}
 \label{sec:Meshshader}
-Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr
-flexibleren wiedererkennen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
+Der aktuelle Trend bei der Modellerstellung geht über zu immer komplexeren Modellen. Dabei stößt die traditionelle Pipeline mit der 
+enormen Anzahl von Dreiecken an ihre Grenzen. Die damalige Einführung des Tessellation~\ref{subsec:Tessellation}- und des Geometryshaders~\ref{Geometry Shader}
+(vorallen aber Tessellation!) war aus selbigen Grund und brachte eine erwünschte Weitung des Flaschenhalses und bessere Arbeitsaufteilung
+innerhalb der Pipeline. Das obige besprochene Primitive Assembly~\ref{subsec:Primitive Assembly} erweist sich als \textit{Fixed Function} innerhalb
+der Pipeline als zu star und unflexibel. Für starre Szenen wird hohe Bandbreite veranschlagt, da wir in unserem Index Buffer jedesmal nachschauen müssen.
+Der neu vorgestellte Mesh Shader\cite{taskshader} nimmt nun das detailreiche Modell
+entgegen und zerlegt dieses in einzeln \textit{Meshlets}. In diesen eizelnen \textit{Meshlets} wird nun die Optimierung angewandt.
+
+Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr Flexibleren wiedererkennen.
+So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
 Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist 
 die Devise.
 Anstatt einzelne Dreiecke einzeln zu berechnen wie in der bisherigen Pipeline können wir mehrere gleichzeitig
@@ -250,9 +268,13 @@ bearbeiten in sogenannten parallelen Thread-Gruppen. Hier wird also nichts ander
 genommen und auf die Grafikpipeline angewandt. Vorallem bei komplexen Szenen mit vielen Millionen Dreicken 
 verspricht man sich eine Entlastung der CPU. Durch diesen Aufbau können wir bereits im Vorfeld viele Dreiecke vom Rendern 
 ausschließen. \par
-Dabei wird ein komplexes Mesh in einzelne "Meshlets" zerlegt, welche wiederrum von Mesh Shadern behandelt werden.
 
-\includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
+    \caption{Neue Form des Task-/Meshshaders\cite{taskshader}}
+\end{figure}
+
 %% ========================================================================================================================================
 
 
