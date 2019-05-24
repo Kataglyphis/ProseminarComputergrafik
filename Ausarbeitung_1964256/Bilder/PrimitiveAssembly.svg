@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="532mm"
+   height="166mm"
+   viewBox="0 0 532 166"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="PrimitiveAssembly.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path875"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="1112.4087"
+     inkscape:cy="462.39085"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-131)">
+    <rect
+       style="opacity:1;fill:#00f9ff;fill-opacity:1;stroke:#ff0000;stroke-width:0.72781628;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect823"
+       width="195.02092"
+       height="112.63966"
+       x="313.81732"
+       y="163.4704" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot825"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+         id="flowRegion827"><rect
+           id="rect829"
+           width="733.37085"
+           height="98.994942"
+           x="1173.7971"
+           y="1003.3217" /></flowRegion><flowPara
+         id="flowPara831"></flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="367.2283"
+       y="152.67444"
+       id="text835"><tspan
+         sodipodi:role="line"
+         id="tspan833"
+         x="367.2283"
+         y="152.67444"
+         style="stroke-width:0.26458332">Vertex Array Objekt</tspan></text>
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.06500006;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect845"
+       width="145.39462"
+       height="39.021351"
+       x="345.31223"
+       y="226.97537" />
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.06500006;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect845-5"
+       width="145.39462"
+       height="39.021351"
+       x="344.24316"
+       y="175.12508" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="386.47177"
+       y="251.56416"
+       id="text864"><tspan
+         sodipodi:role="line"
+         id="tspan862"
+         x="386.47177"
+         y="251.56416"
+         style="stroke-width:0.26458332">Index Buffer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="384.33356"
+       y="199.71388"
+       id="text868"><tspan
+         sodipodi:role="line"
+         id="tspan866"
+         x="384.33356"
+         y="199.71388"
+         style="stroke-width:0.26458332">Array Buffer</tspan></text>
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1.86500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 213.28109,219.49183 87.6644,-0.53454"
+       id="path870"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.86500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect1316"
+       width="196.17583"
+       height="57.195675"
+       x="13.898015"
+       y="189.55765" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="56.126598"
+       y="221.62999"
+       id="text1326"><tspan
+         sodipodi:role="line"
+         id="tspan1324"
+         x="56.126598"
+         y="221.62999"
+         style="stroke-width:0.26458332">Original Index Buffer</tspan></text>
+  </g>
+</svg>
