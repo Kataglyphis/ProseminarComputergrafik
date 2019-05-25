@@ -258,18 +258,19 @@ innerhalb der Pipeline. Das obige besprochene Primitive Assembly~\ref{subsec:Pri
 der Pipeline als zu star und unflexibel. Für starre Szenen wird hohe Bandbreite veranschlagt, da wir unseren Index Buffer jedesmal berechnen müssen.
 Anstatt wie beim Primitive Assembly~\ref{subsec:Primitive Assembly} von der Hardware das Vertex Array Objekt aufs neue Berechnen zu lassen, teilt 
 man nun die Geometrie selbst in \textit{Meshlets} auf und speichert diese in einen Buffer(\textit{Meshlet Desc Buffer}), wobei jedes \textit{Meshlet} 
-für sich auf einen VBO zeigt. Diese Aufteilung gibt uns ein besseres Wiederverwenden der Eckpunkte und daher wird Bandbreite gespart!
+für sich auf einen VBO zeigt (Man hält den Buffer \textit{On-Chip}; ähnlich Compute Shader Model~\ref{sec:Compute Shader}). 
+Diese Aufteilung gibt uns ein besseres Wiederverwenden der Eckpunkte und daher wird Bandbreite gespart!
 Die Mesh Shader kommen nach dem Compute Shader Model~\ref{sec:Compute Shader} und lassen eindeutig den Trend von fixen Vorgängen innerhalb der Pipeline 
 zu mehr Flexibleren wiedererkennen. Durch diese freie Programmiermöglichkeit ergeben sich vielfältige Möglichkeiten, so z.B. für \textit{Mesh compression} 
-da sich die Buffer selber beschreiben lassen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
-Anstatt einzelne Dreiecke einzeln zu berechnen wie in der bisherigen Pipeline können wir mehrere gleichzeitig
-bearbeiten in sogenannten parallelen Thread-Gruppen. \par
+da sich die Buffer selber beschreiben lassen. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
     \caption{Neue Form des Task-/Meshshaders\cite{taskshader}}
 \end{figure}
+
+
 
 %% ========================================================================================================================================
 
