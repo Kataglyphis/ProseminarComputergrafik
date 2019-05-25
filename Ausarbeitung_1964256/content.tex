@@ -115,8 +115,10 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Tessellation Shader}
             \end{figure}
 
-            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung. Tessellation Control Shader. Fixed Function Tessellator.
-            Tessellation Evaluation Shader
+            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter unterteilt. Der Tessellation Control
+            Shader ist voll programmierbar und damit ist die Anzahl der entstehenden Primitive direkt beeinflussbar. Dabei lassen sich zwei jeweils benachbarte
+            patches kontrolliert unterteilen. Der Fixed Function Tessellator nimmt die patches entgegen und unterteilt Sie auf die Art und Weise wie im Control Shader vorgegeben.
+            Mit dem Tessellation Evaluation Shader kann man jeden Vertex der vom Unterteiler kommenden patches nachbearbeiten.
 
         \subsection{Geometry Shader}
         \label{subsec:Geometry Shader}
@@ -128,6 +130,10 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \label{Geometry Shader}
                 \caption{Funktionsweise Geometry Shader}
             \end{figure}
+
+            Ist wiederrum eine optionale frei-programmierbare Einheit die auf den zusammengestzten Primitiven arbeitet. Eine Vervielfachung ist theoretisch möglich,
+            sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
+            mehrer rendertargets zu rendern oder wir machen transform Feedback: 
 
         \subsection{Clipping}
         \label{subsec:Clipping}
