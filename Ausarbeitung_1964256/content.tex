@@ -252,22 +252,18 @@ Hardwareleistung). Einzig direkte Beleuchtung sowie Post-Processing Effekte lauf
 \section{Task-/Mesh Shaders}
 \label{sec:Meshshader}
 Der aktuelle Trend bei der Modellerstellung geht über zu immer komplexeren Modellen. Dabei stößt die traditionelle Pipeline mit der 
-enormen Anzahl von Dreiecken an ihre Grenzen. Die damalige Einführung des Tessellation~\ref{subsec:Tessellation}- und des Geometryshaders~\ref{Geometry Shader}
+enormen Anzahl von Dreiecken an ihre Grenzen. Die damalige Einführung des Tessellation~\ref{subsec:Tessellation}- und des Geometryshaders~\ref{subsec:Geometry Shader}
 (vorallen aber Tessellation!) war aus selbigen Grund und brachte eine erwünschte Weitung des Flaschenhalses und bessere Arbeitsaufteilung
 innerhalb der Pipeline. Das obige besprochene Primitive Assembly~\ref{subsec:Primitive Assembly} erweist sich als \textit{Fixed Function} innerhalb
-der Pipeline als zu star und unflexibel. Für starre Szenen wird hohe Bandbreite veranschlagt, da wir in unserem Index Buffer jedesmal nachschauen müssen.
+der Pipeline als zu star und unflexibel. Für starre Szenen wird hohe Bandbreite veranschlagt, da wir unseren Index Buffer jedesmal berechnen müssen.
 Anstatt wie beim Primitive Assembly~\ref{subsec:Primitive Assembly} von der Hardware das Vertex Array Objekt aufs neue Berechnen zu lassen, teilt 
-man nun die Geometrie selbst in \textit{Meshlets} auf und speichert diese in einen Buffer, wobei jedes \textit{Meshlet} für sich auf einen VBO zeigt.
-Dadurch lassen sich die Eckpunkte effizienter wiederverwenden!
-
-Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr Flexibleren wiedererkennen.
-So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
-Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist die Devise.
+man nun die Geometrie selbst in \textit{Meshlets} auf und speichert diese in einen Buffer(\textit{Meshlet Desc Buffer}), wobei jedes \textit{Meshlet} 
+für sich auf einen VBO zeigt. Diese Aufteilung gibt uns ein besseres Wiederverwenden der Eckpunkte und daher wird Bandbreite gespart!
+Die Mesh Shader kommen nach dem Compute Shader Model~\ref{sec:Compute Shader} und lassen eindeutig den Trend von fixen Vorgängen innerhalb der Pipeline 
+zu mehr Flexibleren wiedererkennen. Durch diese freie Programmiermöglichkeit ergeben sich vielfältige Möglichkeiten, so z.B. für \textit{Mesh compression} 
+da sich die Buffer selber beschreiben lassen. So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
 Anstatt einzelne Dreiecke einzeln zu berechnen wie in der bisherigen Pipeline können wir mehrere gleichzeitig
-bearbeiten in sogenannten parallelen Thread-Gruppen. Hier wird also nichts anderes als das Modell von Compute Shader
-genommen und auf die Grafikpipeline angewandt. Vorallem bei komplexen Szenen mit vielen Millionen Dreicken 
-verspricht man sich eine Entlastung der CPU. Durch diesen Aufbau können wir bereits im Vorfeld viele Dreiecke vom Rendern 
-ausschließen. \par
+bearbeiten in sogenannten parallelen Thread-Gruppen. \par
 
 \begin{figure}[H]
     \centering
