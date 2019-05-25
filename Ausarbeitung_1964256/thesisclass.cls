@@ -184,7 +184,7 @@
 \newlength{\chapparlen}
 \newsavebox{\chapno}
 \renewcommand{\@makechapterhead}[1]{
-  \vspace*{0.2\textheight}
+  %%\vspace*{0.2\textheight}
   \vskip 15\p@
   {\parindent \z@ \raggedright \normalfont
     \ifnum \c@secnumdepth >\m@ne
