@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{1890.70866142bp}%
+    \setlength{\unitlength}{1938.8976378bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.17991004)%
+  \begin{picture}(1,0.10818713)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Tessellation.pdf}}%
-    \put(0.03060077,0.15413723){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18247125\unitlength}\raggedright Primitive zusammengesetzt aus Vertex Shader Output\end{minipage}}}%
-    \put(0.22213889,0.08046868){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Control Shader}\end{tabular}}}}%
-    \put(0.77861954,0.08273542){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Evaluation Shader}\end{tabular}}}}%
-    \put(0.52701332,0.08273542){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Unterteilung}\end{tabular}}}}%
+    \put(0.04531293,0.0862051){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17793615\unitlength}\raggedright Primitive \end{minipage}}}%
+    \put(0.18346209,0.05304928){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Control Shader}\end{tabular}}}}%
+    \put(0.75374188,0.05194409){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Evaluation Shader}\end{tabular}}}}%
+    \put(0.49512674,0.05194409){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Unterteilung}\end{tabular}}}}%
   \end{picture}%
 \endgroup%

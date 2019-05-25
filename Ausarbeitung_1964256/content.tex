@@ -86,8 +86,10 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \label{Vertex Shader}
                 \caption{Funktionsweise Vertex Shader}
             \end{figure}
-
-        "Gouraud shading" Beleuchtung per Pixel.
+        Als freiprogrammierbare Stufe der Geometry Stage werden hier die ankommenden Vertices mit ihren Attributen (jedoch keine Erzeugung oder
+        Löschung!!) und mit Hilfe von übergebenen Daten der Anwendung (Lichtposition, Transformationsmatrix) bearbeitet. Somit können Teile der Leuchtungsberechnung
+        ("Gouraud shading") hier angewandt werden. 
+        
 
         \subsection{Primitive Assembly}
         \label{subsec:Primitive Assembly}
@@ -113,7 +115,8 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Tessellation Shader}
             \end{figure}
 
-        Hinzufügen neuer Vertices.
+            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung. Tessellation Control Shader. Fixed Function Tessellator.
+            Tessellation Evaluation Shader
 
         \subsection{Geometry Shader}
         \label{subsec:Geometry Shader}
