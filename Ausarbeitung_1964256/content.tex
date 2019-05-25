@@ -256,13 +256,13 @@ enormen Anzahl von Dreiecken an ihre Grenzen. Die damalige Einführung des Tesse
 (vorallen aber Tessellation!) war aus selbigen Grund und brachte eine erwünschte Weitung des Flaschenhalses und bessere Arbeitsaufteilung
 innerhalb der Pipeline. Das obige besprochene Primitive Assembly~\ref{subsec:Primitive Assembly} erweist sich als \textit{Fixed Function} innerhalb
 der Pipeline als zu star und unflexibel. Für starre Szenen wird hohe Bandbreite veranschlagt, da wir in unserem Index Buffer jedesmal nachschauen müssen.
-Der neu vorgestellte Mesh Shader\cite{taskshader} nimmt nun das detailreiche Modell
-entgegen und zerlegt dieses in einzeln \textit{Meshlets}. In diesen eizelnen \textit{Meshlets} wird nun die Optimierung angewandt.
+Anstatt wie beim Primitive Assembly~\ref{subsec:Primitive Assembly} von der Hardware das Vertex Array Objekt aufs neue Berechnen zu lassen, teilt 
+man nun die Geometrie selbst in \textit{Meshlets} auf und speichert diese in einen Buffer, wobei jedes \textit{Meshlet} für sich auf einen VBO zeigt.
+Dadurch lassen sich die Eckpunkte effizienter wiederverwenden!
 
 Allgemein lässt sich an dieser neuen Technik der Trend von fixen Vorgängen innerhalb der Pipeline zu mehr Flexibleren wiedererkennen.
 So kann der Task Shader mit der Control Shader Einheit der bisherigen Tessellation verglichen werden. 
-Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist 
-die Devise.
+Jedoch arbeiten wir hier mit mehreren Threads und mit frei wählbaren In- und Output! Mehr Flexibilität ist die Devise.
 Anstatt einzelne Dreiecke einzeln zu berechnen wie in der bisherigen Pipeline können wir mehrere gleichzeitig
 bearbeiten in sogenannten parallelen Thread-Gruppen. Hier wird also nichts anderes als das Modell von Compute Shader
 genommen und auf die Grafikpipeline angewandt. Vorallem bei komplexen Szenen mit vielen Millionen Dreicken 
