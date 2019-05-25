@@ -53,12 +53,13 @@
   \begin{picture}(1,0.18691589)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.13665375,0.09132878){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Triangle \\Setup\end{tabular}}}}%
-    \put(0.32121976,0.08736339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Triangle \\Traversal\end{tabular}}}}%
-    \put(0.55697587,0.08635411){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Pixel \\Shading\end{tabular}}}}%
-    \put(0.75765197,0.08202137){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Merging\end{tabular}}}}%
     \put(0.6965422,0.18127226){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.01998275\unitlength}\raggedright \end{minipage}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{Rasterisierung.pdf}}%
-    \put(0.77003524,0.1253976){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.04445553\unitlength}\raggedright \end{minipage}}}%
+    
+    \put(2.91036942,0.16401866){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.1680209\unitlength}\raggedright \end{minipage}}}%
+ 
+    \put(0.32397956,0.08477969){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Triangle\\Traversal\end{tabular}}}}%
+    \put(0.1362531,0.08578899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Triangle\\Setup\end{tabular}}}}%
+    \put(0.55813305,0.09184469){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Pixel\\Shading\end{tabular}}}}%
+    \put(0.76907312,0.08074256){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Merging\end{tabular}}}}%
   \end{picture}%
 \endgroup%

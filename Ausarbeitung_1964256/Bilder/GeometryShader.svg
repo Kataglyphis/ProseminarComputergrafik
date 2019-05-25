@@ -57,7 +57,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="477.74167"
+     inkscape:cx="772.88569"
      inkscape:cy="335.62296"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -84,24 +84,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-222)">
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot10"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="matrix(0.26458333,0,0,0.26458333,41.577381,216.4375)"><flowRegion
-         id="flowRegion12"><rect
-           id="rect14"
-           width="371.42865"
-           height="48.57143"
-           x="454.28571"
-           y="145.91673" /></flowRegion><flowPara
-         id="flowPara16">Geometry Shader </flowPara></flowRoot>    <rect
-       style="opacity:0.5;fill:#00ff00;fill-opacity:0.87064677;stroke:#ff0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+    <rect
+       style="opacity:0.5;fill:#00ff00;fill-opacity:0.87064676;stroke:#ff0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect18"
        width="129.26785"
        height="61.988094"
-       x="143.63094"
-       y="228.20833" />
+       x="151.19046"
+       y="228.5863" />
     <path
        style="fill:none;stroke:#fc0000;stroke-width:0.3273963;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1136)"
        d="M 5.1889749,259.97979 137.17596,260.71336"
@@ -112,5 +101,38 @@
        d="m 285.21443,259.98617 135.81571,0.727"
        id="path832"
        inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="167.06548"
+       y="262.98215"
+       id="text849"><tspan
+         sodipodi:role="line"
+         id="tspan847"
+         x="167.06548"
+         y="262.98215"
+         style="stroke-width:0.26458332">Geometry Shader</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="28.726189"
+       y="255.04465"
+       id="text853"><tspan
+         sodipodi:role="line"
+         id="tspan851"
+         x="28.726189"
+         y="255.04465"
+         style="stroke-width:0.26458332">a Primitive</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="321.27975"
+       y="256.17859"
+       id="text857"><tspan
+         sodipodi:role="line"
+         id="tspan855"
+         x="321.27975"
+         y="256.17859"
+         style="stroke-width:0.26458332">b Primitive</tspan></text>
   </g>
 </svg>
