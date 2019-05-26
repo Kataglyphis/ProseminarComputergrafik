@@ -299,9 +299,12 @@ da sich die Buffer selber beschreiben lassen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.\textwidth]{Bilder/meshlets_pipeline.png}
-    \caption{Neue Form des Task-/Meshshaders\cite{taskshader}}
+    \caption{Vergleich bisherige Vertex,Tessellation,Geometry Pipeline <--> \textit{stream procesor artig} Mesh Shader Pipeline}
 \end{figure}
 
+Dabei arbeitet der Task Shader ähnlich der Tessellation Control Einheit~\ref{subsec:Tessellation} und verteilt zunächst das Mesh in \textit{workgroups}.
+Der Mesh Shader nimmt die arbeitet entgegen und arbeitet ähnlich dem Compute Shader~\ref{sec:Compute Shader} auf einer Threadgruppe(hier langt jedoch ein
+eindimesnsionales Array). Es gibt hier jedoch nicht nur einen gemeinsamen Speicher, sondern auch einen Output, welcher jedoch frei-programmierbar ist.
 
 
 %% ========================================================================================================================================
