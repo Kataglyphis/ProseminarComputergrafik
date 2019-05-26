@@ -63,9 +63,10 @@
     \put(1.09420987,0.8591808){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.39867225\unitlength}\raggedright \end{minipage}}}%
     \put(0.96057065,0.83153967){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.02698412\unitlength}\raggedright \end{minipage}}}%
     \put(0.89936843,0.98109547){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.28302788\unitlength}\centering \end{minipage}}}%
-    \put(0.01241703,0.22001238){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.38243174\unitlength}\raggedright Vertex in\\ Objektkoordinaten\end{minipage}}}%
-    \put(0.66668203,0.19265436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.26980598\unitlength}\raggedright Clip Space \\ Outputvertex\end{minipage}}}%
+    \put(0.01241703,0.22001238){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.45988879\unitlength}\raggedright Vertex in\\ Objektkoordinaten\end{minipage}}}%
+    \put(0.66668203,0.19265436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.42726869\unitlength}\raggedright Clip Space \\ Outputvertex\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{VertexShader.pdf}}%
     \put(0.39239252,0.14129522){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Vertex Shader}\end{tabular}}}}%
+    \put(0.00340471,0.03234475){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+Attribute\end{tabular}}}}%
   \end{picture}%
 \endgroup%

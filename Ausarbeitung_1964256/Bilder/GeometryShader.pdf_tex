@@ -53,7 +53,9 @@
   \begin{picture}(1,0.17730496)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.38244399,0.09918526){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.23232584\unitlength}\raggedright Geometry Shader \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{GeometryShader.pdf}}%
+    \put(0.39495384,0.08042046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Geometry Shader\end{tabular}}}}%
+    \put(0.06791061,0.09918523){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}a Primitive\end{tabular}}}}%
+    \put(0.75952661,0.09650452){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}b Primitive\end{tabular}}}}%
   \end{picture}%
 \endgroup%

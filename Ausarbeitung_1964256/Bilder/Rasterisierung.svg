@@ -101,7 +101,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="1145.2441"
+     inkscape:cx="1149.5298"
      inkscape:cy="135.35443"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -128,93 +128,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-157)">
-    <rect
-       style="opacity:1;fill:#00f9ff;fill-opacity:1;stroke:#ffff00;stroke-width:0.22328363;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="rect815"
-       width="90.29422"
-       height="59.350025"
-       x="79.039574"
-       y="202.91302" />
-    <rect
-       style="opacity:1;fill:#00afff;fill-opacity:1;stroke:#ffff00;stroke-width:0.23323888;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="rect815-7"
-       width="98.525368"
-       height="59.350029"
-       x="217.91409"
-       y="204.37907" />
-    <rect
-       style="opacity:1;fill:#007eff;fill-opacity:1;stroke:#ffff00;stroke-width:0.21475416;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="rect815-6"
-       width="83.512154"
-       height="59.360924"
-       x="397.88394"
-       y="204.59506" />
-    <rect
-       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:#ffff00;stroke-width:0.17986642;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="rect815-1"
-       width="58.570599"
-       height="59.372814"
-       x="559.36951"
-       y="202.32124" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="102.35366"
-       y="228.59474"
-       id="text852"><tspan
-         sodipodi:role="line"
-         id="tspan850"
-         x="102.35366"
-         y="228.59474"
-         style="stroke-width:0.26458332">Triangle </tspan><tspan
-         sodipodi:role="line"
-         x="102.35366"
-         y="241.82391"
-         style="stroke-width:0.26458332"
-         id="tspan1338">Setup</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="240.5936"
-       y="231.56482"
-       id="text856"><tspan
-         sodipodi:role="line"
-         id="tspan854"
-         x="240.5936"
-         y="231.56482"
-         style="stroke-width:0.26458332">Triangle </tspan><tspan
-         sodipodi:role="line"
-         x="240.5936"
-         y="244.79399"
-         style="stroke-width:0.26458332"
-         id="tspan1340">Traversal</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="417.17493"
-       y="232.32077"
-       id="text860"><tspan
-         sodipodi:role="line"
-         id="tspan858"
-         x="417.17493"
-         y="232.32077"
-         style="stroke-width:0.26458332">Pixel </tspan><tspan
-         sodipodi:role="line"
-         x="417.17493"
-         y="245.54994"
-         style="stroke-width:0.26458332"
-         id="tspan1342">Shading</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="567.48132"
-       y="235.56599"
-       id="text864"><tspan
-         sodipodi:role="line"
-         id="tspan862"
-         x="567.48132"
-         y="235.56599"
-         style="stroke-width:0.26458332">Merging</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot866"
@@ -226,7 +139,7 @@
            height="105.05586"
            x="1971.8177"
            y="15.976357" /></flowRegion><flowPara
-         id="flowPara872"></flowPara></flowRoot>    <path
+         id="flowPara872" /></flowRoot>    <path
        style="fill:none;stroke:#ff0000;stroke-width:1.36500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 24.946428,233.49999 H 71.815474"
        id="path874"
@@ -241,9 +154,9 @@
            height="52.126682"
            x="2179.8667"
            y="174.15002" /></flowRegion><flowPara
-         id="flowPara1350"></flowPara></flowRoot>    <path
-       style="fill:none;stroke:#ff0000;stroke-width:1.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker1362)"
-       d="M 639.53572,232.74405 706.05951,233.5"
+         id="flowPara1350" /></flowRoot>    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1.46500003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1362)"
+       d="M 647.09524,232.74405 713.61903,233.5"
        id="path1352"
        inkscape:connector-curvature="0" />
     <path
@@ -252,8 +165,8 @@
        id="path1388"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1.065;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker1574)"
-       d="m 324.30357,236.52381 h 67.27976"
+       style="fill:none;stroke:#ff0000;stroke-width:1.06500006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1574)"
+       d="m 321.27976,235.76786 h 67.27976"
        id="path1390"
        inkscape:connector-curvature="0" />
     <path
@@ -261,5 +174,92 @@
        d="M 177.64881,232.74405 211.66666,233.5"
        id="path1392"
        inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.86500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect901"
+       width="92.226196"
+       height="68.035713"
+       x="79.375"
+       y="202.50594" />
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.86500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect901-1"
+       width="92.226196"
+       height="68.035713"
+       x="221.49403"
+       y="200.99406" />
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.86500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect901-5"
+       width="92.226196"
+       height="68.035713"
+       x="395.3631"
+       y="200.99405" />
+    <rect
+       style="opacity:1;fill:#00f913;fill-opacity:1;stroke:#ff0000;stroke-width:1.86500001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect901-8"
+       width="92.226196"
+       height="68.035713"
+       x="550.33331"
+       y="200.99406" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="242.66069"
+       y="233.50002"
+       id="text934"><tspan
+         sodipodi:role="line"
+         id="tspan932"
+         x="242.66069"
+         y="233.50002"
+         style="stroke-width:0.26458332">Triangle</tspan><tspan
+         sodipodi:role="line"
+         x="242.66069"
+         y="246.72919"
+         style="stroke-width:0.26458332"
+         id="tspan936">Traversal</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="102.05357"
+       y="232.74405"
+       id="text940"><tspan
+         sodipodi:role="line"
+         id="tspan938"
+         x="102.05357"
+         y="232.74405"
+         style="stroke-width:0.26458332">Triangle</tspan><tspan
+         sodipodi:role="line"
+         x="102.05357"
+         y="245.97322"
+         style="stroke-width:0.26458332"
+         id="tspan942">Setup</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="418.04166"
+       y="228.20833"
+       id="text946"><tspan
+         sodipodi:role="line"
+         id="tspan944"
+         x="418.04166"
+         y="228.20833"
+         style="stroke-width:0.26458332">Pixel</tspan><tspan
+         sodipodi:role="line"
+         x="418.04166"
+         y="241.4375"
+         style="stroke-width:0.26458332"
+         id="tspan948">Shading</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="576.03577"
+       y="236.52382"
+       id="text952"><tspan
+         sodipodi:role="line"
+         id="tspan950"
+         x="576.03577"
+         y="236.52382"
+         style="stroke-width:0.26458332">Merging</tspan></text>
   </g>
 </svg>
