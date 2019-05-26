@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{1445.66929134bp}%
+    \setlength{\unitlength}{1148.09318349bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,17 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.45294118)%
+  \begin{picture}(1,0.55646216)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{ComputeShader.pdf}}%
-    \put(0.47177615,0.05829492){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Compute Shader\end{tabular}}}}%
+    \put(0.40760203,0.05963947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Compute\\Shader\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ComputeShader.pdf}}%
-    \put(0.4472699,0.28633572){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Framebuffer\end{tabular}}}}%
+    \put(0.4876054,0.45236881){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Frame\\buffer\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{ComputeShader.pdf}}%
-    \put(0.78923118,0.40771703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Thread Groups\end{tabular}}}}%
+    \put(0.7888618,0.49171013){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Thread \\Groups\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{ComputeShader.pdf}}%
-    \put(0.04810194,0.28105154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Grafikpipeline\end{tabular}}}}%
+    \put(0.0785189,0.47343037){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Grafik-\\pipeline\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{ComputeShader.pdf}}%
   \end{picture}%
 \endgroup%
