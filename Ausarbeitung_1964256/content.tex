@@ -138,12 +138,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
         \subsection{Clipping}
         \label{subsec:Clipping}
-        Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden(englisch = "clipping").
-        Algorithmus von Sutherland-Hodgman.
-        Wir gehen vom Clip-Space zum Window-Space
+        Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden.
+        Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Außerdem gehen wir vom Clip-Space zum Window-Space.
 
         \subsection{Viewport Transform}
         \label{subsec:Viewport Transform}
+        
+        Der auf die sichtbare Szenengeometrie reduzierte Einheitswürfel wird im diesen Schritt auf die Fenstergröße skaliert und zur Rasterisierung weitergegeben.
 
     \section{Rasterisierung}
     \label{sec:Rasterisierung}
@@ -162,14 +163,20 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
     \section{Per Fragment Operations}
     \label{sec:Per Fragment Operations}
-
+        Auf den durch Rasterisierung entstandenen Fragmenten können noch einige Operationen vorgenommen werden.
         \subsection{Multisample Fragment Ops}
     
         \subsection{Stencil Test}
 
+        Damit können wir schlussendlich entscheiden, ob ein Fragment gezeichnet werden soll oder nicht durch den Vergleich mit einem Referenzwert und 
+        Stencil Buffer.(im Framebuffer).
+
         \subsection{Occlusion Query}
     
         \subsection{Blending}
+
+        Wir mischen Farbwerte die bereits in den Framebuffer geschrieben wurden mit den Farbwerten, welche in den erzeugten Fragmenten vorliegen. Die Art
+        in der die beiden Farben gemischt werden bestimmt eine Funktion z.B Multiplikativ, Additiv...
 
         \subsection{Logical Operations}
 
@@ -182,17 +189,33 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     \section{Compute Shader}
     \label{sec:Compute Shader}
 
+    Losgelöst von der Grafikpipeline steht der Compute Shader. Als freiprogrammierbare Einheit lässt sie sich nicht nur für graphische Berechnungen in der Pipeline, 
+    sondern auch für stark parallelisierbare Probleme im Allgemeinen einsetzen. Im Folgenden wird auf die DirextX12-API~\cite[]{Direct3D12} eingegangen. 
+    Der Compute Shader arbeitet auf einer Threadgruppe($\leq$ 1024). In einem dreidimensionalen Array organisiert, teilen sich die Threads einer Gruppe Speicher,
+    über den Sie kommunizieren und im Gesamten Fortschritt machen können, d.h. alle Threads laufen nebenläufig. 
+    Mit der zusätzlichen Eigenschaft auf Buffer Objekte (Daten auf der GPU) zugreifen zu können, haben die Compute Shader beispielsweise im 
+    Post-Processing~\ref{sec:Per Fragment Operations} Bedeutung. Als Threadgruppe greifen sie jeweils auf einen bestimmten Bereich des Framebuffers zu und können 
+    die nötigen Nachbarschaftsinformationen austauschen.
+
     \begin{figure}[H]
         \centering
-        \def\svgwidth{\columnwidth}
-        \import{Bilder/}{ComputeShader.pdf_tex}
-        \label{Compute Shader}
-        \caption{Funktionsweise Compute Shader}
+        \begin{minipage}[t]{0.45\linewidth}
+            \def\svgwidth{\columnwidth}
+            \import{Bilder/}{ComputeShader.pdf_tex}
+            \label{Compute Shader}
+            \caption{Funktionsweise Compute Shader}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Bilder/GeometryBlur.png}
+            \caption{Postprocessing Blur mit Compute Shader~\cite{computeBlur}}
+        \end{minipage}
     \end{figure}
 
-    Mit der rasant steigenden Leistung heutiger Grafikhardware stieg auch der Wunsch beim Anwender nach mehr Rechenleistung.
-    Parallesisierbare Arbeit wird in Threadgroups eingeteilt. Threads innerhalb einer Gruppe laufen gleichzeitig, wohingegen
-    die Threadgruppen untereinander dies nicht müssen.
+    Die erste Abbildung zeigt nochmal deutlich, dass der Compute Shader für jedwedige Art der Berechnung eingesetzt werden kann, bei dem \textit{stream processors} 
+    zu tragen kommen. Eine Beobachtung war die effiziente Verlegung der Mesh Verarbeitung auf den Compute Shader. Dies führte zu der Einführung von 
+    Mesh Shadern~\ref{sec:Meshshader}, die stark an dem Aufbau von Compute Shadern orientiert sind.
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
 
