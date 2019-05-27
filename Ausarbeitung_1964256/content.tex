@@ -167,10 +167,17 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Dreieck anhand der zuvor berechneten/interpolierten per Dreieck Informationen. Als freiprogrammierbare Shadereinheit können im \textit{Fragment Shader}
         vom Programmierer weitere Berechnungen vorgenommen werden. Dazu zählt eine pro Pixel Beleuchtungsberechnung. Will man Texturen verwenden, so passiert das 
         nun hier.
-        Das abschließende \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für jeden Pixel im color buffer. Da der buffer bereits von dem 
-        vorherigen Durchlauf Farbwerte beinhaltet ist es nun daran eine Kombination aus aktuellen Inhalt, sowie einkommende Farbe zu finden, welche wiederrum 
-        im color buffer abgespeichert wird. Obwohl dieses Zusammenfügen nicht komplett freiprogrammierbar ist, hat der Programmierer dennoch etliche
-        Konfigurationsmöglichekeiten die er vornehmen kann.
+        Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
+        jeden Pixel im color buffer. Zur Bestimmung der aktuellen Farbe wird nun auch das Problem der 
+        Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben gibt
+        es hier Zugang zum Depth/Z-Buffer. Dieser Z-Buffer speichert anfangs überall den Wert inf. Beim Durchlauf der Geometrie wird nun jeweils für jeden Pixel,
+        der die Geometrie bedeckt der color und depth buffer wie folgt aktualisiert: Ist der verglichene Tiefenwert des Fragmentes des Objekts kleiner als der Wert
+        im Tiefenbuffer für den betroffenen Pixel, so schreibt er diesen Tiefenwert in den Z-Buffer und auch der color buffer mit der Fragmentfarbe aktualisiert.
+        Anderseits passiert nichts und das nächste Primitiv wird betrachtet (Szene ohne semi-transparente Objekte!). Haben wir semitransparente Objekte, so 
+        müssen wir zuerst die Szene wie beschrieben ohne diese Primitive zeichnen, alle semi-transparenten Primitive nach ihrer Tiefe ordnen und in dieser Reihenfolge 
+        zu dem zuvor gerenderten Bild hinzufuegen.
+        Da der buffer bereits von dem vorherigen Durchlauf Farbwerte beinhaltet ist es nun daran eine Kombination aus aktuellen Inhalt, sowie einkommende Farbe zu 
+        finden, welche wiederrum im color buffer abgespeichert wird.
 
     \section{Per Fragment Operations}
     \label{sec:Per Fragment Operations}
