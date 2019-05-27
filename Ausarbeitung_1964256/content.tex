@@ -140,6 +140,8 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         \label{subsec:Projektionstransformation}    
         Die konkrete Projektion kommt erst beim Weglassen der z-Komponente. Als Vorbereitung transformieren wir unsere Eckpunkte und damit unsere Primitive in einen 
         Einheitswürfel((-1,-1,-1),(1,1,1) als Eckpunkte). Konkrete Implementierungen beziehen sich auf DirectX.
+        Nehmen wir unser Sichtfeld als eine Box war, so ergibt sich eine Orthographische Transformation.
+        
         \begin{center}
 
             \begin{figure}[H]
@@ -157,8 +159,14 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Orthographische Projektion}
         \end{figure}
 
+        Bei der orthographischen Projektion haben wir eine achsenorientierte, die Szenengeometrie umschließende Box (AABB). Aufgespannt durch Punkt
+        (l,b,n) und (r,t,f).
+
         \end{center}
         
+        Nehmen wir unser Sichtfeld als eine beschnittene Pyramide wahr, welche durch eine near und far plane durchzogen wird, so haben wir eine 
+        perseptivische Projektion.
+
         \begin{center}
 
             \begin{figure}[H]
@@ -176,7 +184,9 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             \end{figure}
 
         \end{center}
-        
+        Near plane wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der far plane.
+        Beachte bei der perseptivischen Projektion, dass der Z-Buffer bei gößeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
+        mit zwei sehr nahliegenden Ebenen erst bei größerer Entfernung Z-Fighting auftreten.
        
         \subsection{Clipping}
         \label{subsec:Clipping}
