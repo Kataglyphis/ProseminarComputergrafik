@@ -116,20 +116,23 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
             \begin{figure}[H]
                 \centering
-                \def\svgwidth{\columnwidth}
-                \import{Bilder/}{Tessellation.pdf_tex}
+                \includegraphics[width=\linewidth]{Bilder/Tessellation.pdf}
                 \label{Tessellation Shader}
                 \caption{Funktionsweise Tessellation Shader}
             \end{figure}
 
-            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der Tessellation Control
-            Shader ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Dabei lassen sich zwei jeweils benachbarte
-            Patches kontrolliert unterteilen. Der Fixed Function Tessellator nimmt die Patches entgegen und unterteilt Sie auf die Art und Weise wie im Control Shader vorgegeben.
-            Mit dem Tessellation Evaluation Shader kann man jeden Vertex der vom Unterteiler kommenden Patches nachbearbeiten.
-            
+            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der \textit{Hull Shader}
+            ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Außerdem lassen sich Kontrollpunkte hinzufügen/entfernen. 
+            Dabei lassen sich zwei jeweils benachbarte Patches kontrolliert unterteilen. Der \textit{Tessellator} nimmt die Patches entgegen und unterteilt Sie auf die 
+            Art und Weise wie vom \textit{Hull Shader} vorgegeben. Mit dem \textit{Domain Shader} kann man jeden Vertex der vom Unterteiler kommenden Patches nachbearbeiten.
+            Diese Einheit bietet den Vorteil Arbeitslast von der langsamen CPU zur schnelleren GPU zu leiten, indem man niedriger aufgelöste Meshes benutzt und diese dann 
+            auf der GPU im Tessallator höher auflöst.(oder auch Meshes, welche sind schnell deformieren/bewegen). Diese Eigenschaft der Unterteilung ermöglicht auch Verfahren wie 
+            Level of Detail oder Anpassungsfähigkeiten an die Leistungsfähigkeit der GPU (viele Dreiecke bei hoher Leistungskapazität).
             
         \subsection{Geometry Shader}
         \label{subsec:Geometry Shader}
+
+            Mit dem Geometry Shader lässt sich jedes Primitiv in ein beliebiges anderes Primitiv verwandeln.
 
             \begin{figure}[H]
                 \centering
