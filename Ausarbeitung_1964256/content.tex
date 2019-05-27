@@ -136,6 +136,48 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             mehrer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
             Diese können in weiteren Durchgängen wieder benutzt werden.
 
+        \subsection{Projektionstransformation}
+        \label{subsec:Projektionstransformation}    
+        Die konkrete Projektion kommt erst beim Weglassen der z-Komponente. Als Vorbereitung transformieren wir unsere Eckpunkte und damit unsere Primitive in einen 
+        Einheitswürfel((-1,-1,-1),(1,1,1) als Eckpunkte). Konkrete Implementierungen beziehen sich auf DirectX.
+        \begin{center}
+
+            \begin{figure}[H]
+           
+                \[
+                    M=
+                \left[ {\begin{array}{cccc}
+                    2/(r-l) & 0       & 0       & -(r+l)/(r-l) \\
+                    0       & 2/(t-b) & 0       & -(t+b)/(t-b) \\
+                    0       & 0       & 1/(f-n) & -n/(f-n)     \\
+                    0       & 0       & 0       & 1            \\
+                \end{array} } \right]
+                \]
+                \label{Orthographische Projektion}
+                \caption{Orthographische Projektion}
+        \end{figure}
+
+        \end{center}
+        
+        \begin{center}
+
+            \begin{figure}[H]
+                \[
+                    M=
+                \left[ {\begin{array}{cccc}
+                    2n/(r-l) & 0        & -(r+l)/(r-l) & 0 \\
+                    0        & 2n/(t-b) & -(t+b)/(t-b) & 0 \\
+                    0        & 0        & f/(f-n)      & -fn/(f-n) \\
+                    0        & 0        & 1            & 0 \\
+                \end{array} } \right]
+                \]
+                \label{Perspektivische Projektion}
+                \caption{Perspektivische Projektion}
+            \end{figure}
+
+        \end{center}
+        
+       
         \subsection{Clipping}
         \label{subsec:Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden.
@@ -169,13 +211,14 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         nun hier.
         Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
         jeden Pixel im color buffer. Zur Bestimmung der aktuellen Farbe wird nun auch das Problem der 
-        Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben gibt
+        Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben, gibt
         es hier Zugang zum Depth/Z-Buffer. Dieser Z-Buffer speichert anfangs überall den Wert inf. Beim Durchlauf der Geometrie wird nun jeweils für jeden Pixel,
         der die Geometrie bedeckt der color und depth buffer wie folgt aktualisiert: Ist der verglichene Tiefenwert des Fragmentes des Objekts kleiner als der Wert
         im Tiefenbuffer für den betroffenen Pixel, so schreibt er diesen Tiefenwert in den Z-Buffer und auch der color buffer mit der Fragmentfarbe aktualisiert.
         Anderseits passiert nichts und das nächste Primitiv wird betrachtet (Szene ohne semi-transparente Objekte!). Haben wir semitransparente Objekte, so 
         müssen wir zuerst die Szene wie beschrieben ohne diese Primitive zeichnen, alle semi-transparenten Primitive nach ihrer Tiefe ordnen und in dieser Reihenfolge 
-        zu dem zuvor gerenderten Bild hinzufuegen.
+        zu dem zuvor gerenderten Bild hinzufuegen. Damit haben wir auch unsere Projektion vollzogen, welche wir zuvor vorbereitet 
+        haben~\ref{subsec:Projektionstransformation}.
         Da der buffer bereits von dem vorherigen Durchlauf Farbwerte beinhaltet ist es nun daran eine Kombination aus aktuellen Inhalt, sowie einkommende Farbe zu 
         finden, welche wiederrum im color buffer abgespeichert wird.
 
@@ -197,9 +240,6 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         in der die beiden Farben gemischt werden bestimmt eine Funktion z.B Multiplikativ, Additiv...
 
         \subsection{Logical Operations}
-
-    \section{Framebuffer und Buffer Objekte}
-    \label{sec:Framebuffer}
 
     \section{GPU Memory}
     \label{sec:GPU Memory}
