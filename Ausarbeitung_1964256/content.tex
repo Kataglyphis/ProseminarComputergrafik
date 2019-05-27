@@ -76,6 +76,21 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
     \section{Geometrie Stufe}
     \label{sec:Geometry Stage}
+        
+        \subsection{Primitive Assembly}
+        \label{subsec:Primitive Assembly}
+        Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
+        Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
+        So sind wir damit beispielsweiße in der Lage in nur einem Draw Call ein
+        Objekt, mit möglicherweise leicht variierenden Attributen, mehrmals zu zeichnen(Instancing)
+
+        \begin{figure}[H]
+            \centering
+            \def\svgwidth{\columnwidth}
+            \import{Bilder/}{PrimitiveAssembly.pdf_tex}
+            \label{PrimitiveAssembly}
+            \caption{Buffer Objekte}
+        \end{figure}
 
         \subsection{Vertex Shader}
         \label{subsec:Vertex Shader}
@@ -86,76 +101,15 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \label{Vertex Shader}
                 \caption{Funktionsweise Vertex Shader}
             \end{figure}
-        Als freiprogrammierbare Stufe der Geometry Stage werden hier die ankommenden Vertices mit ihren Attributen (jedoch keine Erzeugung oder
-        Löschung!!) und mit Hilfe von Daten (Lichtposition, Transformationsmatrix) bearbeitet.
-        Typische Aufgabe dieser Stufe ist die Modell-View-Transformation des einkommenden Eckpunktes. 
-        Somit können Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden.
+        Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt/verändert oder ignoriert als freiprogrammierbare Stufe 
+        der Geometry Stage nur die ankommenden Vertices einzeln mit ihren Attributen (jedoch keine Erzeugung oder Löschung!!) mit Hilfe von Daten (Lichtposition, 
+        Transformationsmatrix). Dabei kann kein Eckpunkt auf die Informationen eines Anderen zugreifen. Da erlaubt auch die massive parallele Ausführung auf vielen Punkten
+        gleichzeitig. Mit einem Eckpunkt kommt seine Normale, Position, Farbe, möglicherweise Texturkoordinate. Ein minimalistischer Vertex Shader gibt seine Position aus.
+        Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit krativen 
+        Ansätzen lassen sich z.B. prozedurale Bewegungen nachhahmen\cite{engel2002direct3d}. Es können auch Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
+        Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden. 
         
         
-        \subsection{Projektionstransformation}
-        \label{subsec:Projektionstransformation}    
-        Die konkrete Projektion kommt erst beim Weglassen der z-Komponente. Als Vorbereitung transformieren wir unsere Eckpunkte und damit unsere Primitive in einen 
-        Einheitswürfel((-1,-1,-1),(1,1,1) als Eckpunkte). Konkrete Implementierungen beziehen sich auf DirectX.
-        Nehmen wir unser Sichtfeld als eine Box war, so ergibt sich eine Orthographische Transformation.
-        
-        \begin{center}
-
-            \begin{figure}[H]
-           
-                \[
-                    M=
-                \left[ {\begin{array}{cccc}
-                    2/(r-l) & 0       & 0       & -(r+l)/(r-l) \\
-                    0       & 2/(t-b) & 0       & -(t+b)/(t-b) \\
-                    0       & 0       & 1/(f-n) & -n/(f-n)     \\
-                    0       & 0       & 0       & 1            \\
-                \end{array} } \right]
-                \]
-                \label{Orthographische Projektion}
-                \caption{Orthographische Projektion}
-        \end{figure}
-
-        Bei der orthographischen Projektion haben wir eine achsenorientierte, die Szenengeometrie umschließende Box (AABB). Aufgespannt durch Punkt
-        (l,b,n) und (r,t,f).
-
-        \end{center}
-        
-        Nehmen wir unser Sichtfeld als eine beschnittene Pyramide wahr, welche durch eine near und far plane durchzogen wird, so haben wir eine 
-        perseptivische Projektion.
-
-        \begin{center}
-
-            \begin{figure}[H]
-                \[
-                    M=
-                \left[ {\begin{array}{cccc}
-                    2n/(r-l) & 0        & -(r+l)/(r-l) & 0 \\
-                    0        & 2n/(t-b) & -(t+b)/(t-b) & 0 \\
-                    0        & 0        & f/(f-n)      & -fn/(f-n) \\
-                    0        & 0        & 1            & 0 \\
-                \end{array} } \right]
-                \]
-                \label{Perspektivische Projektion}
-                \caption{Perspektivische Projektion}
-            \end{figure}
-
-        \end{center}
-        Near plane wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der far plane.
-        Beachte bei der perseptivischen Projektion, dass der Z-Buffer bei gößeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
-        mit zwei sehr nahliegenden Ebenen erst bei größerer Entfernung Z-Fighting auftreten.
-
-        \subsection{Primitive Assembly}
-        \label{subsec:Primitive Assembly}
-        Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
-        Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
-
-        \begin{figure}[H]
-            \centering
-            \def\svgwidth{\columnwidth}
-            \import{Bilder/}{PrimitiveAssembly.pdf_tex}
-            \label{PrimitiveAssembly}
-            \caption{Buffer Objekte}
-        \end{figure}
         
         \subsection{Tessellation}
         \label{subsec:Tessellation}
@@ -168,11 +122,12 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Tessellation Shader}
             \end{figure}
 
-            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter unterteilt. Der Tessellation Control
-            Shader ist voll programmierbar und damit ist die Anzahl der entstehenden Primitive direkt beeinflussbar. Dabei lassen sich zwei jeweils benachbarte
-            patches kontrolliert unterteilen. Der Fixed Function Tessellator nimmt die patches entgegen und unterteilt Sie auf die Art und Weise wie im Control Shader vorgegeben.
-            Mit dem Tessellation Evaluation Shader kann man jeden Vertex der vom Unterteiler kommenden patches nachbearbeiten.
-
+            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der Tessellation Control
+            Shader ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Dabei lassen sich zwei jeweils benachbarte
+            Patches kontrolliert unterteilen. Der Fixed Function Tessellator nimmt die Patches entgegen und unterteilt Sie auf die Art und Weise wie im Control Shader vorgegeben.
+            Mit dem Tessellation Evaluation Shader kann man jeden Vertex der vom Unterteiler kommenden Patches nachbearbeiten.
+            
+            
         \subsection{Geometry Shader}
         \label{subsec:Geometry Shader}
 
@@ -188,7 +143,59 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
             mehrer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
             Diese können in weiteren Durchgängen wieder benutzt werden.
-       
+            
+            \subsection{Projektionstransformation}
+            \label{subsec:Projektionstransformation}    
+            Die konkrete Projektion kommt erst beim Weglassen der z-Komponente. Als Vorbereitung transformieren wir unsere Eckpunkte und damit unsere Primitive in einen 
+            Einheitswürfel((-1,-1,-1),(1,1,1) als Eckpunkte). Konkrete Implementierungen beziehen sich auf DirectX.
+            Nehmen wir unser Sichtfeld als eine Box war, so ergibt sich eine Orthographische Transformation.
+            
+            \begin{center}
+    
+                \begin{figure}[H]
+               
+                    \[
+                        M=
+                    \left[ {\begin{array}{cccc}
+                        2/(r-l) & 0       & 0       & -(r+l)/(r-l) \\
+                        0       & 2/(t-b) & 0       & -(t+b)/(t-b) \\
+                        0       & 0       & 1/(f-n) & -n/(f-n)     \\
+                        0       & 0       & 0       & 1            \\
+                    \end{array} } \right]
+                    \]
+                    \label{Orthographische Projektion}
+                    \caption{Orthographische Projektion}
+            \end{figure}
+    
+            Bei der orthographischen Projektion haben wir eine achsenorientierte, die Szenengeometrie umschließende Box (AABB). Aufgespannt durch Punkt
+            (l,b,n) und (r,t,f).
+    
+            \end{center}
+            
+            Nehmen wir unser Sichtfeld als eine beschnittene Pyramide wahr, welche durch eine near und far plane durchzogen wird, so haben wir eine 
+            perseptivische Projektion.
+    
+            \begin{center}
+    
+                \begin{figure}[H]
+                    \[
+                        M=
+                    \left[ {\begin{array}{cccc}
+                        2n/(r-l) & 0        & -(r+l)/(r-l) & 0 \\
+                        0        & 2n/(t-b) & -(t+b)/(t-b) & 0 \\
+                        0        & 0        & f/(f-n)      & -fn/(f-n) \\
+                        0        & 0        & 1            & 0 \\
+                    \end{array} } \right]
+                    \]
+                    \label{Perspektivische Projektion}
+                    \caption{Perspektivische Projektion}
+                \end{figure}
+    
+            \end{center}
+            Near plane wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der far plane.
+            Beachte bei der perseptivischen Projektion, dass der Z-Buffer bei gößeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
+            mit zwei sehr nahliegenden Ebenen erst bei größerer Entfernung Z-Fighting auftreten.
+         
         \subsection{Clipping}
         \label{subsec:Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden.
