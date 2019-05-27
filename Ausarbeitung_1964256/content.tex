@@ -87,55 +87,11 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Vertex Shader}
             \end{figure}
         Als freiprogrammierbare Stufe der Geometry Stage werden hier die ankommenden Vertices mit ihren Attributen (jedoch keine Erzeugung oder
-        Löschung!!) und mit Hilfe von übergebenen Daten der Anwendung (Lichtposition, Transformationsmatrix) bearbeitet. Somit können Teile der Leuchtungsberechnung
-        ("Gouraud shading") hier angewandt werden. 
+        Löschung!!) und mit Hilfe von Daten (Lichtposition, Transformationsmatrix) bearbeitet.
+        Typische Aufgabe dieser Stufe ist die Modell-View-Transformation des einkommenden Eckpunktes. 
+        Somit können Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden.
         
-
-        \subsection{Primitive Assembly}
-        \label{subsec:Primitive Assembly}
-        Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
-        Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
-
-        \begin{figure}[H]
-            \centering
-            \def\svgwidth{\columnwidth}
-            \import{Bilder/}{PrimitiveAssembly.pdf_tex}
-            \label{PrimitiveAssembly}
-            \caption{Buffer Objekte}
-        \end{figure}
         
-        \subsection{Tessellation}
-        \label{subsec:Tessellation}
-
-            \begin{figure}[H]
-                \centering
-                \def\svgwidth{\columnwidth}
-                \import{Bilder/}{Tessellation.pdf_tex}
-                \label{Tessellation Shader}
-                \caption{Funktionsweise Tessellation Shader}
-            \end{figure}
-
-            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter unterteilt. Der Tessellation Control
-            Shader ist voll programmierbar und damit ist die Anzahl der entstehenden Primitive direkt beeinflussbar. Dabei lassen sich zwei jeweils benachbarte
-            patches kontrolliert unterteilen. Der Fixed Function Tessellator nimmt die patches entgegen und unterteilt Sie auf die Art und Weise wie im Control Shader vorgegeben.
-            Mit dem Tessellation Evaluation Shader kann man jeden Vertex der vom Unterteiler kommenden patches nachbearbeiten.
-
-        \subsection{Geometry Shader}
-        \label{subsec:Geometry Shader}
-
-            \begin{figure}[H]
-                \centering
-                \def\svgwidth{\columnwidth}
-                \import{Bilder/}{GeometryShader.pdf_tex}
-                \label{Geometry Shader}
-                \caption{Funktionsweise Geometry Shader}
-            \end{figure}
-
-            Ist wiederrum eine optionale frei-programmierbare Einheit die auf den zusammengestzten Primitiven arbeitet. Eine Vervielfachung ist theoretisch möglich,
-            sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
-            mehrer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
-            Diese können in weiteren Durchgängen wieder benutzt werden.
-
         \subsection{Projektionstransformation}
         \label{subsec:Projektionstransformation}    
         Die konkrete Projektion kommt erst beim Weglassen der z-Komponente. Als Vorbereitung transformieren wir unsere Eckpunkte und damit unsere Primitive in einen 
@@ -187,6 +143,51 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Near plane wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der far plane.
         Beachte bei der perseptivischen Projektion, dass der Z-Buffer bei gößeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
         mit zwei sehr nahliegenden Ebenen erst bei größerer Entfernung Z-Fighting auftreten.
+
+        \subsection{Primitive Assembly}
+        \label{subsec:Primitive Assembly}
+        Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
+        Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
+
+        \begin{figure}[H]
+            \centering
+            \def\svgwidth{\columnwidth}
+            \import{Bilder/}{PrimitiveAssembly.pdf_tex}
+            \label{PrimitiveAssembly}
+            \caption{Buffer Objekte}
+        \end{figure}
+        
+        \subsection{Tessellation}
+        \label{subsec:Tessellation}
+
+            \begin{figure}[H]
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{Tessellation.pdf_tex}
+                \label{Tessellation Shader}
+                \caption{Funktionsweise Tessellation Shader}
+            \end{figure}
+
+            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter unterteilt. Der Tessellation Control
+            Shader ist voll programmierbar und damit ist die Anzahl der entstehenden Primitive direkt beeinflussbar. Dabei lassen sich zwei jeweils benachbarte
+            patches kontrolliert unterteilen. Der Fixed Function Tessellator nimmt die patches entgegen und unterteilt Sie auf die Art und Weise wie im Control Shader vorgegeben.
+            Mit dem Tessellation Evaluation Shader kann man jeden Vertex der vom Unterteiler kommenden patches nachbearbeiten.
+
+        \subsection{Geometry Shader}
+        \label{subsec:Geometry Shader}
+
+            \begin{figure}[H]
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{GeometryShader.pdf_tex}
+                \label{Geometry Shader}
+                \caption{Funktionsweise Geometry Shader}
+            \end{figure}
+
+            Ist wiederrum eine optionale frei-programmierbare Einheit die auf den zusammengestzten Primitiven arbeitet. Eine Vervielfachung ist theoretisch möglich,
+            sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
+            mehrer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
+            Diese können in weiteren Durchgängen wieder benutzt werden.
        
         \subsection{Clipping}
         \label{subsec:Clipping}
@@ -251,8 +252,8 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
         \subsection{Logical Operations}
 
-    \section{GPU Memory}
-    \label{sec:GPU Memory}
+    \section{Koordinatensysteme}
+    \label{sec:Koordinatensysteme}
 
     \section{Compute Shader}
     \label{sec:Compute Shader}
@@ -285,6 +286,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     Mesh Shadern~\ref{sec:Meshshader}, die stark an dem Aufbau von Compute Shadern orientiert sind.
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
+
+    Über die vielen Jahre, in denen sich die Grafikpipeline entwickelt hat, kann man eine lange Entwicklungsphase von einer konfigurierbaren
+    zu einer immer mehr und mehr freiprogrammierbaren Pipeline ausmachen.
+    Hardwareunterschiede früher bei Shadern <--> gleiche bauart, flexible aufteilung je nach anwendungsgebiet(unified shaders);
+    früher keine geometry shader; diese wurden eingeführt um Last von der CPU auf die GPU auszulagern; FPC wachsen viel schneller mit GPU
+    als bei CPU; haben sich sogar weiterhin als zu unflexibel erwiesen; sehr aktuelle Entwicklungen zeigen weiterentwicklung~\ref{sec:Meshshader};
+    weil lacken bei einem Thread abarbeitung!!! geometry shader konzept!!!
 
     \section{Freie Programmierung oder reines Konfigurieren}
         
