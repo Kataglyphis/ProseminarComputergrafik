@@ -303,12 +303,15 @@ da sich die Buffer selber beschreiben lassen.
 \end{figure}
 
 Dabei arbeitet der Task Shader ähnlich der Tessellation Control Einheit~\ref{subsec:Tessellation} und verteilt zunächst das Mesh in \textit{workgroups}.
-Der Mesh Shader nimmt die arbeitet entgegen und arbeitet ähnlich dem Compute Shader~\ref{sec:Compute Shader} auf einer Threadgruppe(hier langt jedoch ein
-eindimesnsionales Array). Es gibt hier jedoch nicht nur einen gemeinsamen Speicher, sondern auch einen Output, welcher jedoch frei-programmierbar ist.
-
+Jedoch ist anzumerken, dass der Task Shader mit einem kooperativen Threadmodell arbeitet und dessen In-/Output komplett frei programmierbar ist.
+Man ist nicht mehr auf ein ankommendes Primitiv und eine ausgehende Tessellation Entscheidung beschränkt. Damit lassen sich \gls{Level of Detail} Entscheidungen
+treffen, also wie fein unterteile ich mein einkommendes Primitiv. Oder man entscheidet sogar eine Gruppe gar nicht zu zeichnen (Culling) und schickt 
+keine weitere Arbeit weiter.
+Der Mesh Shader nimmt lediglich die \textit{workgroup id} entgegen und arbeitet ähnlich dem Compute Shader~\ref{sec:Compute Shader} auf einer Threadgruppe
+(hier langt jedoch ein eindimensionales Array). Es gibt hier jedoch nicht nur einen gemeinsamen Speicher, sondern auch einen Output, welcher frei-programmierbar ist. 
+Zum Geometry Shader, der keine Threadgruppe besitzt, ist dies ein großer Schritt.
 
 %% ========================================================================================================================================
-
 
 %% content.tex
 %%

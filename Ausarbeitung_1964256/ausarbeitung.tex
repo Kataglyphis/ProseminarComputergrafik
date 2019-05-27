@@ -1,4 +1,7 @@
 \documentclass{thesisclass}
+%% doing a glossary to explain difficult things %%
+\usepackage{glossaries}
+\makeglossaries
 % Based on thesisclass.cls of Timo Rohrberg, 2009
 % ----------------------------------------------------------------
 % Thesis - Main document
@@ -84,10 +87,11 @@
 %% ------------------------
 % Only files listed here will be included!
 % Userful command for partially translating the document (for bug-fixing e.g.)
-\includeonly{%
-titlepage,
-content
-}
+%\includeonly{%
+%titlepage,
+%content,
+%glossary
+%}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All uses packages are listed here %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,8 +100,9 @@ content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% for including .svg files from my Bilder ordner %%
 \usepackage[svgpath=./Bilder/]{svg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\input{glossary.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Here, main documents begins %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -126,8 +131,6 @@ content
 \pagenumbering{arabic}
 \include{content}
 
-
-
 %% --------------------
 %% |   Bibliography   |
 %% --------------------
@@ -142,7 +145,6 @@ content
 												  
 % Use IEEEtran for numeric references
 %\bibliographystyle{IEEEtranSA})
-
 \bibliography{ausarbeitung}
 \Erklaerung
 \end{document}
