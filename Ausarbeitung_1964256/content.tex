@@ -148,18 +148,29 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
     \section{Rasterisierung}
     \label{sec:Rasterisierung}
+    \label{sec:Fragment Shader}
+            
+        Zu Beginn dieser Stufe haben wir nun die Eckpunkte der bereits verarbeiteten, transformierten, projizierten Geometrie mit möglichen
+        Beleuchtungsinformationen aus den vorherigen Stufen vorliegen. Zu den Window Coordinates wurde auch der Tiefenwert gespeichert. Mit der Rasterisierung
+        wird nun die Farbe jedes einzelnen Pixels bestimmt. Es ist also die Aufgabe dieser Pipelinestufe herauszufinden welche Geometrie welchen Pixel zu welchen
+        Anteil bedeckt und wie die Shading Informationen zur Farbgebung des Pixels beitragen.
+
         \begin{figure}[H]
-            \centering
-            \def\svgwidth{\columnwidth}
-            \import{Bilder/}{Rasterisierung2.pdf_tex}
+            \includegraphics[width=\linewidth]{Bilder/Rasterisierung.pdf}
             \label{Rasterisierung}
-            \caption{Ablauf Rasterisierung}
+            \caption{Ablauf der Rasterisierung}
         \end{figure}
 
-    In der vorherigen Geometriestufe wurde einem klar, dass wir ein Objekt nach dem Anderen betrachten (Object-ordered Rendering) 
-    
-    \section{Fragment Shader}
-    \label{sec:Fragment Shader}
+        Zuallererst befindet sich die Geometrie im \textit{Triangle Setup}. Unbeeinflussbar vom Programmierer werden hier Daten berechnet, welche zur Pixeleinfärbung
+        benötigt werden. So werden viele zuvor per Vertex berechnete Werte interpoliert(Beleuchtung, Tiefe). Beim darauffolgenden \textit{Triangle Traversal} werden
+        die wichtigen Fragmente erzeugt. Dieser Schritt bestimmt diejenigen Pixel, welche innerhalb des Dreiecks liegen und erzeugt darauf hin die Fragmente für dieses
+        Dreieck anhand der zuvor berechneten/interpolierten per Dreieck Informationen. Als freiprogrammierbare Shadereinheit können im \textit{Fragment Shader}
+        vom Programmierer weitere Berechnungen vorgenommen werden. Dazu zählt eine pro Pixel Beleuchtungsberechnung. Will man Texturen verwenden, so passiert das 
+        nun hier.
+        Das abschließende \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für jeden Pixel im color buffer. Da der buffer bereits von dem 
+        vorherigen Durchlauf Farbwerte beinhaltet ist es nun daran eine Kombination aus aktuellen Inhalt, sowie einkommende Farbe zu finden, welche wiederrum 
+        im color buffer abgespeichert wird. Obwohl dieses Zusammenfügen nicht komplett freiprogrammierbar ist, hat der Programmierer dennoch etliche
+        Konfigurationsmöglichekeiten die er vornehmen kann.
 
     \section{Per Fragment Operations}
     \label{sec:Per Fragment Operations}
