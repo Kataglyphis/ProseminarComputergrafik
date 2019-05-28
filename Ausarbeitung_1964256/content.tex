@@ -103,12 +103,12 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Ablauf Vertex Shader}
             \end{figure}
 
-            Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt/verändert oder ignoriert als freiprogrammierbare Stufe 
+            Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt bzw. verändert oder ignoriert als freiprogrammierbare Stufe 
             der Geometry Stage nur die ankommenden Vertices einzeln mit ihren Attributen (jedoch keine Erzeugung oder Löschung!!) mit Hilfe von Daten (Lichtposition, 
             Transformationsmatrix). Dabei kann kein Eckpunkt auf die Informationen eines Anderen zugreifen. Da erlaubt auch die massive parallele Ausführung auf vielen Punkten
             gleichzeitig. Mit einem Eckpunkt kommt seine Normale, Position, Farbe, möglicherweise Texturkoordinate. Ein minimalistischer Vertex Shader gibt seine Position aus.
             Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit kreativen 
-            Ansätzen lassen sich z.B. prozedurale Bewegungen nachhahmen\cite{engel2002direct3d}. Es können auch Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
+            Ansätzen lassen sich z.B. prozedurale Bewegungen nachahmen\cite{engel2002direct3d}. Es können auch Teile der Beleuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
             Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden. 
             
         \subsection{Tessellation}
@@ -137,7 +137,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         \label{subsec:Geometry Shader}
 
             Mit dem Geometry Shader lässt sich jedes Primitiv in ein beliebiges anderes Primitiv verwandeln. Dabei ist seine gedachte Funktion das Verändern der 
-            einkommenden Daten(Position, Farbe,..) sowie das Kopieren. Das \textit{instancing} kann auch hier auf einem beliebigen Objekt mehrfach angewandgt
+            einkommenden Daten(Position, Farbe,..) sowie das Kopieren. Das \textit{instancing} kann auch hier auf einem beliebigen Objekt mehrfach angewandt
             werden.
 
             \begin{figure}[H]
@@ -150,7 +150,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
             Ist wiederrum eine optionale frei-programmierbare Einheit die auf den zusammengesetzten Primitiven arbeitet. Eine Vervielfachung ist theoretisch möglich,
             sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
-            mehrerer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
+            mehrerer Rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
             Diese können in weiteren Durchgängen wieder benutzt werden.
             In der Praxis hat sich der \textit{Geometry Shader} als zu starr, ineffektiv erwiesen. Die Weiterentwicklung Mesh Shader \ref{sec:Meshshader}, 
             welche die Leistung der GPU nun besser nutzen soll, wird in einem späteren Kapitel eingegangen.
@@ -209,7 +209,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
          
         \subsection{Clipping}
         \label{subsec:Clipping}
-        Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden.
+        Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen, kommt nun das Abschneiden.
         Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Objekte komplett außerhalb unseres Sichtfensters(abgeschnittene Pyramide bei perspektivischer
         Projektion) können komplett verworfen werden. Bei Objekten mit Anteilen außerhalb des Fensters liegt es nun daran neue Kontrollpunkte zu setzen umso den Anteil
         Außerhalb für die Bildsynthese zu verwerfen. Bei perspektivisch korrekter Interpolation ist hier die richtige Reihenfolge zu beachten: Projektionstransformation,
@@ -331,14 +331,14 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     haben sich als zu unflexibel in der Handhabung erwiesen. Eine limitierte Anzahl an Zuständen ohne freie Entwicklung eigener Konzepte wird den modernen Ansprüchen 
     nicht mehr gerecht. So waren in früheren Versionen von OpenGL keine Beleuchtung pro Pixel(Phong Shading) möglich. Mehr Flexibilität auf Hardwareseite ermöglicht 
     bessere Anpassungsfähigkeit an verschiedenen zu rendernde Szenenzuständen. Mit dem \textit{unified shader} Ansatz gibt es keine Hardwareunterschiede zwischen 
-    Vertex- und Fragment Shader mehr. Flexibles Vergrößern/Verkleinern der Shaderpools ermöglicht ein Reaktion auf Geomtrie(viele Eckpunkte) lastige Szenen. 
-    Neue frei-programmierbare Shadereinheiten waren auch Teil der Anwort auf den Wunsch nach mehr Freiheit und Flexibilität. So wurden der Tessellation und Geometry 
+    Vertex- und Fragment Shader mehr. Flexibles Vergrößern/Verkleinern der Shaderpools ermöglicht ein Reaktion auf Geometrie(viele Eckpunkte) lastige Szenen. 
+    Neue frei-programmierbare Shadereinheiten waren auch Teil der Antwort auf den Wunsch nach mehr Freiheit und Flexibilität. So wurden der Tessellation und Geometry 
     Shader (OpenGL 4.0, DirectX10) vorgestellt. Diese Einheiten waren aber auch eine Weitung des 
     Flaschenhalses, der zwischen CPU und GPU entstand. Nachdem Grafikhardware in ihrer Leistungsfähigkeit deutlich schneller steigt als die der CPU bedeuten diese
     Einheiten eine Auslagerung von Arbeit auf die GPU. Ein Blick auf neueste Grafikhardware~\cite{geforcegtx2080ti} zeigt ~14TFLOPS single precision, schnelleren
     GPU-Speicher (>600 GB/s) zu der gängigen Hauptspeicheranbindung (31 GB/s bei PCIe 4.0)\cite{pci4}. Deswegen wird der frühere Immediate Mode vermieden um die Anzahl
-    an Draw Calls zu reduzieren. Dafür kamen Vertex Array Obejekte, welche außerdem mit Index Chaching optimiert werden können.\cite{cheng2004vertex}
-    Sehr aktuelle Entwicklungen~\ref{sec:Meshshader} zeigen eine erneute Steigerung der freien Konfiguerierbarkeit.
+    an Draw Calls zu reduzieren. Dafür kamen Vertex Array Objekte, welche außerdem mit Index Chaching optimiert werden können.\cite{cheng2004vertex}
+    Sehr aktuelle Entwicklungen~\ref{sec:Meshshader} zeigen eine erneute Steigerung der freien Konfigurierbarkeit.
     Außerdem einen Einzug des Compute Shader~\ref{sec:Compute Shader} Modells in die Grafik-Pipeline. Ressourcen werden besser genutzt als beim Geometry Shader
     ~\ref{subsec:Geometry Shader}. Mehr dazu beim Ausblick~\ref{ch:Ausblick}. Eine weitere Neuerung zu der traditionellen Pipeline sind die Buffer Objekte.
 
@@ -363,7 +363,7 @@ Wir können diese neuen Shader wie Compute Shader~\ref{sec:Compute Shader} progr
         Any Hit       &  Kann ausgeführt werden wenn wir einen Schnitt mit unserem Strahl gefunden haben. Soll bei transparenten Objekten dazu führen,
                         früher abbrechen zu können.\\ \hline
         Callable      &  Kann von einem anderen Shader aufgerufen werden.\\ \hline
-        Closest Hit   &   Wird ausgeführt wenn ein Standardstrahl von einem Ray Generation Shader verschossen wurde, und ein "nähster Schnittpunkt"
+        Closest Hit   &   Wird ausgeführt wenn ein Standardstrahl von einem Ray Generation Shader verschossen wurde, und ein "nähester Schnittpunkt"
                         gefunden wurde. Hier kann der Programmierer die Methode \textit{shade()} implementieren. Dabei sollte auf Schatten getestet, 
                         weitere Reflektions- und Transmission miteinberechnet werden\\ \hline
         Intersection  &   Wird aufgerufen, falls wir eine Bounding Box unser Beschleunigungsstruktur treffen.\\ \hline
@@ -388,7 +388,7 @@ Hardwareleistung). Einzig direkte Beleuchtung sowie Post-Processing Effekte lauf
 \section{Task-/Mesh Shaders}
 \label{sec:Meshshader}
 Der aktuelle Trend bei der Modellerstellung geht über zu immer komplexeren Modellen. Dabei stößt die traditionelle Pipeline mit der 
-enormen Anzahl von Dreiecken an ihre Grenzen. Die damalige Einführung des Tessellation~\ref{subsec:Tessellation}- und des Geometryshaders~\ref{subsec:Geometry Shader}
+enormen Anzahl von Dreiecken an ihre Grenzen. Die damalige Einführung des Tessellation~\ref{subsec:Tessellation}- und des Geometry shaders~\ref{subsec:Geometry Shader}
 (vorallen aber Tessellation!) war aus selbigen Grund und brachte eine erwünschte Weitung des Flaschenhalses und bessere Arbeitsaufteilung
 innerhalb der Pipeline. Das obige besprochene Primitive Assembly~\ref{subsec:Primitive Assembly} erweist sich als \textit{Fixed Function} innerhalb
 der Pipeline als zu star und unflexibel. Für starre Szenen wird hohe Bandbreite veranschlagt, da wir unseren Index Buffer jedesmal berechnen müssen.
