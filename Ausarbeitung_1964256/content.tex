@@ -247,7 +247,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         \end{figure}
 
         Die Ausgabe vom Vertex Shader, perspektivisch korrekt interpoliert über die Dreiecke, wird mit der Position des Pixels Input des Pixel Shaders.
-
+        Eine minimalistische Implementierung des Pixel Shaders gibt die Fragmentfarbe zurück. Im darauffolgenden Schritt wird mit dem Z-Buffer auf Sichtbarkeit
+        geprüft. In diesem Schritt zuvor können wir die Tiefen- und Alphwerte ändern. Man kann ganze Fragmente verwerfen(\textit{discard}). Dies kann man für 
+        unterschiedliche Zwecke verwenden, u.a. kann man ganze Teile der Szenengeometrie ausschneiden. Die Ausgabe kann in mehrere verschiedene \textit{render targets}
+        geschrieben werden. Eine wichtige Vorraussetzung für \textit{deffered shading}. Diese Form von Beleuchtungsberechnung erlaubt uns viele Lichtquellen gleichzeitig
+        in der Szene zu benutzen ohne die signifikanten Leistungseinbußen wie beim \textit{forwarding} zu haben. In einem ersten Schritt speichert man Informationen
+        über das Material/Position vom Objekt in verschiedene \textit{render targets}. In einem zweiten Durchlauf kann man nun die Beleuchtung und einige andere 
+        Effekte sehr effektiv berechnen.  
         Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
         jeden Pixel im color buffer. Zur Bestimmung der aktuellen Farbe wird nun auch das Problem der 
         Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben, gibt
@@ -322,26 +328,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     als bei CPU; haben sich sogar weiterhin als zu unflexibel erwiesen; sehr aktuelle Entwicklungen zeigen weiterentwicklung~\ref{sec:Meshshader};
     weil lacken bei einem Thread abarbeitung!!! geometry shader konzept!!!
 
-    \section{Freie Programmierung oder reines Konfigurieren}
-        
-        \begin{figure}[H]
-            \centering
-            \begin{minipage}[t]{0.45\linewidth}
-                \centering
-                \def\svgwidth{\columnwidth}
-                \import{Bilder/}{AltesOpenGL.pdf_tex}
-                \label{Altes OpenGL}
-                \caption{OpneGL $\leq$ 2.0}
-            \end{minipage}
-            \hfill
-            \begin{minipage}[t]{0.45\linewidth}
-                \centering
-                \def\svgwidth{\columnwidth}
-                \import{Bilder/}{ModernesOpenGL.pdf_tex}
-                \label{Modernes OpenGL}
-                \caption{Modernes OpenGL}
-            \end{minipage}
-        \end{figure}
+    
 
 %% ===============================================================================================================================
 \chapter{Ausblick}
