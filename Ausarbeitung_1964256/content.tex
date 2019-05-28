@@ -321,16 +321,21 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
 
-    Über die vielen Jahre, in denen sich die Grafikpipeline entwickelt hat, kann man eine lange Entwicklungsphase von einer konfigurierbaren
-    zu einer immer mehr und mehr freiprogrammierbaren Pipeline ausmachen.
-    Hardwareunterschiede früher bei Shadern <--> gleiche bauart, flexible aufteilung je nach anwendungsgebiet(unified shaders);
-    früher keine geometry shader; diese wurden eingeführt um Last von der CPU auf die GPU auszulagern; FPC wachsen viel schneller mit GPU
-    als bei CPU; haben sich sogar weiterhin als zu unflexibel erwiesen; sehr aktuelle Entwicklungen zeigen weiterentwicklung~\ref{sec:Meshshader};
-    weil lacken bei einem Thread abarbeitung!!! geometry shader konzept!!!
-
-    
+    Schaut man sich die heutigen modernen Rendering-Pipelines(OpenGL 4.6, DirectX12) an, so kann man viele frei-konfigurierbare Stufen erkennen, die dem Entwickler 
+    viele Freiheiten in der Entwicklung geben. Frühere Konzepte wie z.B die OpenGL-States, welche die reine Auswahl von vorgegebene Zuständen gaben,
+    haben sich als zu unflexibel in der Handhabung erwiesen. Eine limitierte Anzahl an Zuständen ohne freie Entwicklung eigener Konzepte wird den modernen Ansprüchen 
+    nicht mehr gerecht. So waren in früher Versionen keine Beleuchtung pro Pixel(Phong Shading) möglich. Mehr Flexibilität auf Hardwareseite ermöglicht bessere 
+    Anpassungsfähigkeit an verschiedenen zu rendernde Szenenzuständen. Mit dem \textit{unified shader} Ansatz gibt es keine Hardwareunterschiede zwischen 
+    Vertex- und Fragment Shader mehr. Flexibles Vergrößern/Verkleinern der Shaderpools ermöglicht ein Reaktion auf Geomtrie(viele Eckpunkte) lastige Szenen. 
+    Neue frei-programmierbare Shadereinheiten waren auch Teil der Anwort auf den Wunsch nach mehr Freiheit und Flexibilität. So wurden der Tessellation und Geometry 
+    Shader (OpenGL 4.0, DirectX10) vorgestellt. Diese Einheiten waren aber auch eine Weitung des 
+    Flaschenhalses, der zwischen CPU und GPU entstand. Nachdem Grafikhardware in ihrer Leistungsfähigkeit deutlich schneller steigt als die der CPU bedeuten diese
+    Einheiten eine Auslagerung von Arbeit auf die GPU. Sehr aktuelle Entwicklungen~\ref{sec:Meshshader} zeigen eine erneute Steigerung der freien Konfiguerierbarkeit.
+    Außerdem einen Einzug des Compute Shader~\ref{sec:Compute Shader} Modells in die Grafik-Pipeline. Ressourcen werden besser genutzt als beim Geometry Shader
+    ~\ref{subsec:Geometry Shader}.
 
 %% ===============================================================================================================================
+
 \chapter{Ausblick}
 
 \section{Raytracing Unterstützung}
