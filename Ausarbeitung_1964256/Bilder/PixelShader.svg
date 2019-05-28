@@ -15,7 +15,7 @@
    version="1.1"
    id="svg1043"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="VertexShader.svg">
+   sodipodi:docname="PixelShader.svg">
   <defs
      id="defs1037">
     <marker
@@ -58,7 +58,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="875.96758"
+     inkscape:cx="977.99202"
      inkscape:cy="490.54247"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -103,7 +103,7 @@
          id="tspan1590"
          x="213.62517"
          y="226.11533"
-         style="stroke-width:0.86141902">Vertex</tspan><tspan
+         style="stroke-width:0.86141902">Pixel</tspan><tspan
          sodipodi:role="line"
          x="213.62517"
          y="269.18628"
@@ -124,12 +124,22 @@
          id="tspan1958"
          x="16.036173"
          y="195.97212"
-         style="stroke-width:0.26458332">Eckpunkt in Modelkoordinaten</tspan><tspan
+         style="stroke-width:0.26458332">Fragment mit perspektivisch</tspan><tspan
          sodipodi:role="line"
          x="16.036173"
          y="209.20129"
          style="stroke-width:0.26458332"
-         id="tspan1962">und Attribute</tspan></text>
+         id="tspan2623">korrekt interpolierten </tspan><tspan
+         sodipodi:role="line"
+         x="16.036173"
+         y="222.43045"
+         style="stroke-width:0.26458332"
+         id="tspan2625">Attributen</tspan><tspan
+         sodipodi:role="line"
+         x="16.036173"
+         y="235.65962"
+         style="stroke-width:0.26458332"
+         id="tspan1962" /></text>
     <path
        style="fill:none;stroke:#fe0000;stroke-width:1.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1974)"
        d="M 390.2135,227.50992 562.86963,225.9063"
@@ -144,7 +154,7 @@
          sodipodi:role="line"
          id="tspan2024"
          x="408.92236"
-         y="214.68098"
-         style="stroke-width:0.26458332">Eckpunkt in Clip Space</tspan></text>
+         y="224.04475"
+         style="stroke-width:0.26458332" /></text>
   </g>
 </svg>

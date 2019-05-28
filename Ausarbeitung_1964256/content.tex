@@ -96,12 +96,11 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         \subsection{Vertex Shader}
         \label{subsec:Vertex Shader}
             
-        \begin{figure}[H]
+            \begin{figure}[H]
                 \centering
-                \def\svgwidth{\columnwidth}
-                \import{Bilder/}{VertexShader.pdf_tex}
+                \includegraphics[width=\linewidth]{Bilder/VertexShader.pdf}
                 \label{Vertex Shader}
-                \caption{Funktionsweise Vertex Shader}
+                \caption{Ablauf Vertex Shader}
             \end{figure}
 
             Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt/verändert oder ignoriert als freiprogrammierbare Stufe 
@@ -228,6 +227,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Anteil bedeckt und wie die Shading Informationen zur Farbgebung des Pixels beitragen.
 
         \begin{figure}[H]
+            \centering
             \includegraphics[width=\linewidth]{Bilder/Rasterisierung.pdf}
             \label{Rasterisierung}
             \caption{Ablauf der Rasterisierung}
@@ -239,6 +239,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Dreieck anhand der zuvor berechneten/interpolierten per Dreieck Informationen. Als freiprogrammierbare Shadereinheit können im \textit{Pixel Shader}
         vom Programmierer weitere Berechnungen vorgenommen werden. Dazu zählt eine pro Pixel Beleuchtungsberechnung. Will man Texturen verwenden, so passiert das 
         nun hier.
+
+        \begin{figure}[H]
+            \includegraphics[width=0.8\linewidth]{Bilder/PixelShader.pdf}
+            \label{Pixel Shader}
+            \caption{Pixel Shader}
+        \end{figure}
+
         Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
         jeden Pixel im color buffer. Zur Bestimmung der aktuellen Farbe wird nun auch das Problem der 
         Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben, gibt
