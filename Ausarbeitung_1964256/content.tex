@@ -246,6 +246,8 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             \caption{Pixel Shader}
         \end{figure}
 
+        Die Ausgabe vom Vertex Shader, perspektivisch korrekt interpoliert über die Dreiecke, wird mit der Position des Pixels Input des Pixel Shaders.
+
         Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
         jeden Pixel im color buffer. Zur Bestimmung der aktuellen Farbe wird nun auch das Problem der 
         Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben, gibt
@@ -340,8 +342,6 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Modernes OpenGL}
             \end{minipage}
         \end{figure}
-
-    \section{Vertex Arrays, Index Buffers, ..}
 
 %% ===============================================================================================================================
 \chapter{Ausblick}
