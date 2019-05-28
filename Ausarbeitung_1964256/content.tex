@@ -13,7 +13,7 @@ Dabei soll nicht nur konkret auf die Arbeitsweise der einzelnen Stufe eingegange
 Exemplarische Fragestellungen die behandelt werden sind Folgende: Können in dieser Art der Abarbeitung Flaschenhälse entstehen und 
 wie werden Sie umgangen bzw. bekämpft. Welchen Einfluss hat der Programmierer auf die Pipeline bzw. welche Schritte kann er selber
 implementieren und welche Schritte werden rein von der Hardware übernommen und können nicht von ihm modifiziert werden. 
-Diese Arbeit macht den Aufbau einer modernen Rendering-Pipeline verständlich und vermittelt den Begriff Rasterisierung
+Diese Arbeit macht den Aufbau einer modernen Rendering-Pipeline verständlich und vermittelt den Begriff Rasterisierung.
 Zusätzlich wird es bei dieser Abhandlung, dank des stetigen technologischen Fortschritts, ein Ausblick auf zukünftige Entwicklungen
 und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen wird.
 %% ================================================================================================================================================================
@@ -23,20 +23,20 @@ und Neuerungen gegeben, die zukünftig moderne Rendering-Pipelines beherrschen w
 Wollen wir mit einer Anwendung~\ref{sec:Anwendung} eine Szene von Objekten, z.B. eine Teekanne in einem Stadion, auf einem Computer darstellen, 
 so liegt das Objekt zuerst in Form von vielen Eckpunkten(Dreiecken, Linien) in der Anwendung vor. Dabei befinden wir uns im "Model Space".
 Wollen wir die Teekanne innerhalb unserer Welt (das Stadion) bewegen, wenden wir auf jede Koordinate des Modells(gemeint sind alle mit dem Modell
-assoziierten Eckpunkte, Normalen) den "Model Transform" an und gehen somit in den "World Space". Die geschieht meist in der Anwendung bevor die Geometrie
+assoziierten Eckpunkte, Normalen) den Model Transform an und gehen somit in den World Space. Dies geschieht meist in der Anwendung bevor die Geometrie
 zur Geometriestufe~\ref{sec:Geometry Stage} geschickt wird. \par
 Als Anwender können wir nun zu Beginn der Geometriestufe mit einem eigenen Vertex Shader die Beleuchtungsberechnung etc. der Eckpunkte bestimmen. Dabei
 helfen die von der Anwendung mitgegebenen Attribute. Auch in welchen Koordinatensystem dies geschieht bleibt dem Programmierer überlassen. In der anschließenden 
 Stufe werden diese Eckpunkte zu Primitiven zusammengesetzt und können weiter unterteilt werden~\ref{subsec:Tessellation}.Die Primitive werden von dem Tessellation- 
-zum Geometry Shader durchgereicht, welcher diese vervielfachen, entfernen oder beliebig verändern kann..\par
-Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten, wenden wir einen "View Transform" an. Damit können wir in den "View Space" gelangen
+zum Geometry Shader durchgereicht, welcher diese vervielfachen, entfernen oder beliebig verändern kann.\par
+Um eine (orthographische oder auch perspektivische) Projektion vorzubereiten, wenden wir einen View Transform an. Damit können wir in den View Space gelangen
 und vereinfachen die darauffolgende Projektion. Egal welche Art von Projektion wir angewendet haben, unsere Szene mit der Teekanne im Stadion liegt nun in einem 
 Einheitswürfel. \par
 Nun kann die Teekanne derart platziert sein, dass Teile außerhalb unseres Sichtfeldes(frustum) liegen. Aufgabe des Clipping~\ref{subsec:Clipping} ist nun
-das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
+das Frustum Culling, also das Abschneiden des nicht sichtbaren Bereichs, um weitere Berechnungen innerhalb darauffolgender Stufen zu beschleunigen.
 Der Entwickler hat keinen Einfluss auf das Clipping~\ref{subsec:Clipping} (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
 ist der Cohen-Sutherland-Algorithmus.\par
-Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Viewport Transform~\ref{subsec:Viewport Transform}.
+Nach dem Beschneiden liegen nur noch die sichtbaren Primitive vor und gelangen zum Viewport Transform.
 Die x-und y-Komponente unserer Eckpunktpositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig 
 anzumerken, dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung~\ref{sec:Rasterisierung} speichern.\par
 Nun sind wir an dem Punkt angelangt, an dem wir unsere transformierten, projizierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
@@ -57,7 +57,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
     Positionen verändern. Allgemein werden hier Benutzereingaben gesammelt und verarbeitet.
     Als programmierbare Stufe dieser Pipeline kann der Anwender konkrete Verbesserungen in diese Stufe einbringen um z.B. mit einem BVH
-    die Anzahl der Primitive für die Geometriestufe zu verringern.
+    die Anzahl der Primitive für die Geometriestufe zu verringern.(Für Raytracing besonders interessant ~\ref{sec:Real-Time Raytracing}).
     
     \begin{figure}[H]
         \centering
@@ -83,7 +83,8 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
             Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
             So sind wir damit beispielsweiße in der Lage in nur einem Draw Call ein Objekt, mit möglicherweise leicht variierenden Attributen, mehrmals zu 
-            zeichnen(Instancing)
+            zeichnen(Instancing). Die Struktur des Vertex Array Objekt ist eine Optimierung zu den älteren Index Buffern(siehe~\ref{ch:TraditionellvsModern}).
+            Viele Primitive teilen sich Eckpunkte. Durch eine Indexierung spart man sich Speicherplatz.
 
             \begin{figure}[H]
                 \centering
@@ -103,13 +104,14 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Ablauf Vertex Shader}
             \end{figure}
 
-            Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt bzw. verändert oder ignoriert als freiprogrammierbare Stufe 
+            Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling~\ref{subsec:Primitive Assembly}. Der Shader behandelt bzw. verändert oder ignoriert als freiprogrammierbare Stufe 
             der Geometry Stage nur die ankommenden Vertices einzeln mit ihren Attributen (jedoch keine Erzeugung oder Löschung!!) mit Hilfe von Daten (Lichtposition, 
             Transformationsmatrix). Dabei kann kein Eckpunkt auf die Informationen eines Anderen zugreifen. Da erlaubt auch die massive parallele Ausführung auf vielen Punkten
             gleichzeitig. Mit einem Eckpunkt kommt seine Normale, Position, Farbe, möglicherweise Texturkoordinate. Ein minimalistischer Vertex Shader gibt seine Position aus.
             Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit kreativen 
             Ansätzen lassen sich z.B. prozedurale Bewegungen nachahmen\cite{engel2002direct3d}. Es können auch Teile der Beleuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
-            Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden. 
+            Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden und damit als Input für 
+            den Pixel Shader dienen.\ref{sec:Pixel Shader}
             
         \subsection{Tessellation}
         \label{subsec:Tessellation}
@@ -121,10 +123,10 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Tessellation Shader}
             \end{figure}
 
-            Ist eine optionale teil-programmierbare Stufe zur Geometrievervielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der \textit{Hull Shader}
+            Ist eine optionale teil-programmierbare Stufe zur Geometrievervielfachung, d.h. ein eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der \textit{Hull Shader}
             ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Dafür reicht er den Tessellation Faktor zum 
             \textit{Fixed Function Tessellator}. Außerdem lassen sich Kontrollpunkte hinzufügen/entfernen. 
-            Dabei lassen sich zwei jeweils benachbarte Patches kontrolliert unterteilen durch geteilte Kontrollpunkte. Dadurch ist sichergestellt, dass keine Artefakte
+            Dabei lassen sich zwei jeweils benachbarte Patches kontrolliert unterteilen durch geteilte Kontrollpunkte. Dadurch ist sichergestellt, dass keine Verschattungsrtefakte
             entstehen, wodurch der Übergang der Patches verschattet werden. Der \textit{Tessellator} nimmt die Patches entgegen und unterteilt Sie auf die 
             Art und Weise wie vom \textit{Hull Shader} vorgegeben. Mit dem \textit{Domain Shader} kann man jeden Vertex der vom Unterteiler kommenden Patches nachbearbeiten.
             Bevor dieser nun die Patches zur nächsten Stufe, dem Geometry Shader (optional) oder dem Fragment Shader schickt, berechnet er die Primitivattribute, 
@@ -152,13 +154,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
             mehrerer Rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
             Diese können in weiteren Durchgängen wieder benutzt werden.
-            In der Praxis hat sich der \textit{Geometry Shader} als zu starr, ineffektiv erwiesen. Die Weiterentwicklung Mesh Shader \ref{sec:Meshshader}, 
+            In der Praxis hat sich der \textit{Geometry Shader} als zu starr, ineffektiv erwiesen~\cite{taskshader}. Die Weiterentwicklung Mesh Shader \ref{sec:Meshshader}, 
             welche die Leistung der GPU nun besser nutzen soll, wird in einem späteren Kapitel eingegangen.
             
             \subsection{Projektionstransformation}
             \label{subsec:Projektionstransformation}    
             Die konkrete Projektion kommt erst beim Weglassen der z-Komponente. Als Vorbereitung transformieren wir unsere Eckpunkte und damit unsere Primitive in einen 
-            Einheitswürfel((-1,-1,-1),(1,1,1) als Eckpunkte). Konkrete Implementierungen beziehen sich auf DirectX.
+            Einheitswürfel   ((-1,-1,-1),(1,1,1) als Eckpunkte). Konkrete Implementierungen beziehen sich auf DirectX.
             Nehmen wir unser Sichtfeld als eine Box war, so ergibt sich eine Orthographische Transformation.
             
             \begin{center}
@@ -177,13 +179,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                     \label{Orthographische Projektion}
                     \caption{Orthographische Projektion}
             \end{figure}
+        \end{center}
+
+            Bei der orthographischen Projektion haben wir eine achsenorientierte, umschließende Box (AABB). Aufgespannt durch Punkt
+            (l,b,n) und (r,t,f)(Diese Box umschließt die Szenengeometrie).
     
-            Bei der orthographischen Projektion haben wir eine achsenorientierte, die Szenengeometrie umschließende Box (AABB). Aufgespannt durch Punkt
-            (l,b,n) und (r,t,f).
-    
-            \end{center}
             
-            Nehmen wir unser Sichtfeld als eine beschnittene Pyramide wahr, welche durch eine near und far plane durchzogen wird, so haben wir eine 
+            Nehmen wir unser Sichtfeld als eine beschnittene Pyramide wahr, welche durch eine \textit{near} und \textit{far plane} durchzogen wird, so haben wir eine 
             perspektivische Projektion.
     
             \begin{center}
@@ -203,17 +205,17 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \end{figure}
     
             \end{center}
-            Near plane wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der far plane.
+            \textit{Near plane} wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der \textit{far plane}.
             Beachte bei der perspektivischen Projektion, dass der Z-Buffer bei größeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
             mit zwei sehr nahliegenden Ebenen erst bei größerer Entfernung Z-Fighting auftreten.
          
         \subsection{Clipping}
         \label{subsec:Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen, kommt nun das Abschneiden.
-        Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Objekte komplett außerhalb unseres Sichtfensters(abgeschnittene Pyramide bei perspektivischer
+        Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Objekte komplett außerhalb unseres Sichtfensters (abgeschnittene Pyramide bei perspektivischer
         Projektion) können komplett verworfen werden. Bei Objekten mit Anteilen außerhalb des Fensters liegt es nun daran neue Kontrollpunkte zu setzen umso den Anteil
-        Außerhalb für die Bildsynthese zu verwerfen. Bei perspektivisch korrekter Interpolation ist hier die richtige Reihenfolge zu beachten: Projektionstransformation,
-        Clipping, View-Port-Transform\ref{subsec:Viewport Transform}! Nach dem Clipping befinden wir uns im Window Space.
+        außerhalb für die Bildsynthese zu verwerfen. Bei perspektivisch korrekter Interpolation ist hier die richtige Reihenfolge zu beachten: Projektionstransformation,
+        Clipping, View-Port-Transform! Nach dem Clipping befinden wir uns im Window Space.
 
     \section{Rasterisierung}
     \label{sec:Rasterisierung}
@@ -235,7 +237,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         benötigt werden. So werden viele zuvor per Vertex berechnete Werte interpoliert(Beleuchtung, Tiefe). Beim darauffolgenden \textit{Triangle Traversal} werden
         die wichtigen Fragmente erzeugt. Dieser Schritt bestimmt diejenigen Pixel, welche innerhalb des Dreiecks liegen und erzeugt darauf hin die Fragmente für dieses
         Dreieck anhand der zuvor berechneten/interpolierten per Dreieck Informationen. Als freiprogrammierbare Shadereinheit können im \textit{Pixel Shader}
-        vom Programmierer weitere Berechnungen vorgenommen werden. Dazu zählt eine pro Pixel Beleuchtungsberechnung. Will man Texturen verwenden, so passiert das 
+        vom Programmierer weitere Berechnungen vorgenommen werden. Dazu zählt eine pro Pixel Beleuchtungsberechnung(Phong Shading). Will man Texturen verwenden, so passiert das 
         nun hier.
 
         \begin{figure}[H]
@@ -254,16 +256,14 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Effekte sehr effektiv berechnen.  
         Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
         jeden Pixel im color buffer. Zur Bestimmung der aktuellen Farbe wird nun auch das Problem der 
-        Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform~\ref{subsec:Viewport Transform} gespeichert haben, gibt
+        Sichtbarkeit von Objekten angegangen. Zu den Z-Werten, welche wir als Tiefe beim Viewport Transform gespeichert haben, gibt
         es hier Zugang zum Depth/Z-Buffer. Dieser Z-Buffer speichert anfangs überall den Wert inf. Beim Durchlauf der Geometrie wird nun jeweils für jeden Pixel,
-        der die Geometrie bedeckt der color und depth buffer wie folgt aktualisiert: Ist der verglichene Tiefenwert des Fragmentes des Objekts kleiner als der Wert
+        der die Geometrie bedeckt der color und depth buffer wie folgt aktualisiert: Ist der verglichene Tiefenwert des vom Objekt erzeugten Fragment kleiner als der Wert
         im Tiefenbuffer für den betroffenen Pixel, so schreibt er diesen Tiefenwert in den Z-Buffer und auch der color buffer mit der Fragmentfarbe aktualisiert.
-        Anderseits passiert nichts und das nächste Primitiv wird betrachtet (Szene ohne semi-transparente Objekte!). Haben wir semitransparente Objekte, so 
+        Falls nicht passiert nichts und das nächste Primitiv bzw. Fragment wird betrachtet (Szene ohne semi-transparente Objekte!). Haben wir semitransparente Objekte, so 
         müssen wir zuerst die Szene wie beschrieben ohne diese Primitive zeichnen, alle semi-transparenten Primitive nach ihrer Tiefe ordnen und in dieser Reihenfolge 
-        zu dem zuvor gerenderten Bild hinzufuegen. Damit haben wir auch unsere Projektion vollzogen, welche wir zuvor vorbereitet 
-        haben~\ref{subsec:Projektionstransformation}.
-        Da der buffer bereits von dem vorherigen Durchlauf Farbwerte beinhaltet ist es nun daran eine Kombination aus aktuellen Inhalt, sowie einkommende Farbe zu 
-        finden, welche wiederrum im color buffer abgespeichert wird.
+        zu dem zuvor gerenderten Bild hinzufügen. Damit haben wir auch unsere Projektion vollzogen, welche wir zuvor vorbereitet 
+        haben~\ref{subsec:Projektionstransformation}(Weglassen der z-Komponente).
 
     \section{Per Fragment Operations}
     \label{sec:Per Fragment Operations}
@@ -275,7 +275,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         
         \subsection{Stencil/Scissor Test}
 
-        Mit Stencil Test können wir schlussendlich entscheiden, ob ein Fragment gezeichnet werden soll oder nicht durch den Vergleich mit einem Referenzwert und 
+        Mit dem Stencil Test können wir schlussendlich entscheiden, ob ein Fragment gezeichnet werden soll oder nicht durch den Vergleich mit einem Referenzwert und 
         Stencil Buffer. Der Scissor Test dient dazu, Teile außerhalb eines Rechtecks zu entfernen. Dies kann dazu genutzt werden, nur Teile einen innerhalb eines
         Fenster zu aktualisieren.
     
@@ -331,6 +331,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     Mesh Shadern~\ref{sec:Meshshader}, die stark an dem Aufbau von Compute Shadern orientiert sind.
 
 \chapter{Unterschied moderne und klassische Rendering-Pipeline}
+    \label{ch:TraditionellvsModern}
 
     Schaut man sich die heutigen modernen Rendering-Pipelines(OpenGL 4.6, DirectX12) an, so kann man viele frei-konfigurierbare Stufen erkennen, die dem Entwickler 
     viele Freiheiten in der Entwicklung geben. Frühere Konzepte wie z.B die OpenGL-States, welche die reine Auswahl von vorgegebene Zuständen vorgaben,
