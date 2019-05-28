@@ -213,14 +213,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Objekte komplett außerhalb unseres Sichtfensters(abgeschnittene Pyramide bei perspektivischer
         Projektion) können komplett verworfen werden. Bei Objekten mit Anteilen außerhalb des Fensters liegt es nun daran neue Kontrollpunkte zu setzen umso den Anteil
         Außerhalb für die Bildsynthese zu verwerfen. Bei perspektivisch korrekter Interpolation ist hier die richtige Reihenfolge zu beachten: Projektionstransformation,
-        Clipping, View-Port-Transform\ref{subsec:Viewport Transform}!
-        
-        Außerdem gehen wir vom Clip-Space zum Window-Space.
-
-        \subsection{Viewport Transform}
-        \label{subsec:Viewport Transform}
-        
-        Der auf die sichtbare Szenengeometrie reduzierte Einheitswürfel wird im diesen Schritt auf die Fenstergröße skaliert und zur Rasterisierung weitergegeben.
+        Clipping, View-Port-Transform\ref{subsec:Viewport Transform}! Nach dem Clipping befinden wir uns im Window Space.
 
     \section{Rasterisierung}
     \label{sec:Rasterisierung}
@@ -274,25 +267,38 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
     \section{Per Fragment Operations}
     \label{sec:Per Fragment Operations}
-        Auf den durch Rasterisierung entstandenen Fragmenten können noch einige Operationen vorgenommen werden.
-        \subsection{Multisample Fragment Ops}
-    
-        \subsection{Stencil Test}
 
-        Damit können wir schlussendlich entscheiden, ob ein Fragment gezeichnet werden soll oder nicht durch den Vergleich mit einem Referenzwert und 
-        Stencil Buffer.(im Framebuffer).
+        Auf den durch Rasterisierung entstandenen Fragmenten können noch einige Operationen vorgenommen werden. Denn bevor die Fragmente in den Framebuffer geschrieben
+        werden, können wir durch konfigurieren Operationen und Test darauf anwenden. Es kann innerhalb dieser Arbeit nicht in angebrachter Tiefe auf dieses Thema
+        eingegangen werden. Aktuelle Rendering-Pipelines machen massiven Gebrauch davon. Deswegen sei an dieser Stelle auf weiterführende Literatur 
+        verwiesen~\cite{akenine2018real} und beispielhaft zwei wichtige Vertreter vorgestellt.
+        
+        \subsection{Stencil/Scissor Test}
 
-        \subsection{Occlusion Query}
+        Mit Stencil Test können wir schlussendlich entscheiden, ob ein Fragment gezeichnet werden soll oder nicht durch den Vergleich mit einem Referenzwert und 
+        Stencil Buffer. Der Scissor Test dient dazu, Teile außerhalb eines Rechtecks zu entfernen. Dies kann dazu genutzt werden, nur Teile einen innerhalb eines
+        Fenster zu aktualisieren.
     
         \subsection{Blending}
 
         Wir mischen Farbwerte die bereits in den Framebuffer geschrieben wurden mit den Farbwerten, welche in den erzeugten Fragmenten vorliegen. Die Art
-        in der die beiden Farben gemischt werden bestimmt eine Funktion z.B Multiplikativ, Additiv...
-
-        \subsection{Logical Operations}
+        in der die beiden Farben gemischt werden bestimmt eine Funktion z.B Multiplikativ, Additiv..Diese Operation gewinnt vorallem bei semi-transparenten Objekten 
+        an Bedeutung. Für den einfachsten Fall beim Alpha-Blending~\cite{alphablending} gilt: $OutputColor = \alpha*IncomingColor + (1 - \alpha)*OutcomingColor$
 
     \section{Koordinatensysteme}
     \label{sec:Koordinatensysteme}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Koordinatensysteme.pdf}
+        \label{Koordinatensysteme}
+        \caption{Koordinatensysteme und ihre Transformationen}
+    \end{figure}
+    Die obige Abbildung~\ref{Koordinatensysteme} zeigt uns nocheinmal im Schnelldurchlauf die Kordinatensysteme/-transformationen, welche in der Rendering-Pipeline 
+    durchgangen werden. Im Vertex Shader~\ref{subsec:Vertex Shader} wechselt man für Berechnungen etc. vom Modelspace in den Worldspace bevor man die endgültige
+    Vertexposition,-normale, Texturkoordinate mit einer ModelViewProjektion-Transformation direkt in Clipkoordinaten transformiert um diese dem 
+    Pixel Shader~\ref{sec:Pixel Shader} als Input zu liefern. Dabei ist die Reihenfolge von Projektionstransformation, Clipping und anschließender Teilung durch
+    w (Dehomogenisierung) besonders wichtig für korrekte perspektivische Interpolation! 
 
     \section{Compute Shader}
     \label{sec:Compute Shader}
