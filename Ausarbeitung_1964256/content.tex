@@ -137,7 +137,9 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         \subsection{Geometry Shader}
         \label{subsec:Geometry Shader}
 
-            Mit dem Geometry Shader lässt sich jedes Primitiv in ein beliebiges anderes Primitiv verwandeln.
+            Mit dem Geometry Shader lässt sich jedes Primitiv in ein beliebiges anderes Primitiv verwandeln. Dabei ist seine gedachte Funktion das Verändern der 
+            einkommenden Daten(Position, Farbe,..) sowie das Kopieren. Das \textit{instancing} kann auch hier auf einem beliebigen Objekt mehrfach angewandgt
+            werden.
 
             \begin{figure}[H]
                 \centering
@@ -151,6 +153,8 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
             mehrer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
             Diese können in weiteren Durchgängen wieder benutzt werden.
+            In der Praxis hat sich der \textit{Geometry Shader} als zu starr, ineffektiv erwiesen. Die Weiterentwicklung Mesh Shader \ref{sec:Meshshader}, 
+            welche die Leistung der GPU nun besser nutzen soll, wird in einem späteren Kapitel eingegangen.
             
             \subsection{Projektionstransformation}
             \label{subsec:Projektionstransformation}    
@@ -216,7 +220,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
 
     \section{Rasterisierung}
     \label{sec:Rasterisierung}
-    \label{sec:Fragment Shader}
+    \label{sec:Pixel Shader}
             
         Zu Beginn dieser Stufe haben wir nun die Eckpunkte der bereits verarbeiteten, transformierten, projizierten Geometrie mit möglichen
         Beleuchtungsinformationen aus den vorherigen Stufen vorliegen. Zu den Window Coordinates wurde auch der Tiefenwert gespeichert. Mit der Rasterisierung
@@ -232,7 +236,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         Zuallererst befindet sich die Geometrie im \textit{Triangle Setup}. Unbeeinflussbar vom Programmierer werden hier Daten berechnet, welche zur Pixeleinfärbung
         benötigt werden. So werden viele zuvor per Vertex berechnete Werte interpoliert(Beleuchtung, Tiefe). Beim darauffolgenden \textit{Triangle Traversal} werden
         die wichtigen Fragmente erzeugt. Dieser Schritt bestimmt diejenigen Pixel, welche innerhalb des Dreiecks liegen und erzeugt darauf hin die Fragmente für dieses
-        Dreieck anhand der zuvor berechneten/interpolierten per Dreieck Informationen. Als freiprogrammierbare Shadereinheit können im \textit{Fragment Shader}
+        Dreieck anhand der zuvor berechneten/interpolierten per Dreieck Informationen. Als freiprogrammierbare Shadereinheit können im \textit{Pixel Shader}
         vom Programmierer weitere Berechnungen vorgenommen werden. Dazu zählt eine pro Pixel Beleuchtungsberechnung. Will man Texturen verwenden, so passiert das 
         nun hier.
         Das abschließende nicht komplett freiprogrammierbare, aber hoch konfigurierbare \textit{Merging} hat eine besondere Aufgabe beim Abspeichern der Farbe für
