@@ -79,38 +79,39 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
         
         \subsection{Primitive Assembly}
         \label{subsec:Primitive Assembly}
-        Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
-        Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
-        So sind wir damit beispielsweiße in der Lage in nur einem Draw Call ein
-        Objekt, mit möglicherweise leicht variierenden Attributen, mehrmals zu zeichnen(Instancing)
 
-        \begin{figure}[H]
-            \centering
-            \def\svgwidth{\columnwidth}
-            \import{Bilder/}{PrimitiveAssembly.pdf_tex}
-            \label{PrimitiveAssembly}
-            \caption{Buffer Objekte}
-        \end{figure}
+            Aufgabe ist das Zusammensetzen der Eckpunkte, welche in einem Strom aus dem Vertex Shader kommen. Auf diesen Primitiven(\textit{Patches}, also
+            Punkte, Linien, Drei- oder Vierecke) arbeiten die darauffolgenden Tessellation und Geometry Shader.
+            So sind wir damit beispielsweiße in der Lage in nur einem Draw Call ein Objekt, mit möglicherweise leicht variierenden Attributen, mehrmals zu 
+            zeichnen(Instancing)
+
+            \begin{figure}[H]
+                \centering
+                \def\svgwidth{\columnwidth}
+                \import{Bilder/}{PrimitiveAssembly.pdf_tex}
+                \label{PrimitiveAssembly}
+                \caption{Buffer Objekte}
+            \end{figure}
 
         \subsection{Vertex Shader}
         \label{subsec:Vertex Shader}
-            \begin{figure}[H]
+            
+        \begin{figure}[H]
                 \centering
                 \def\svgwidth{\columnwidth}
                 \import{Bilder/}{VertexShader.pdf_tex}
                 \label{Vertex Shader}
                 \caption{Funktionsweise Vertex Shader}
             \end{figure}
-        Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt/verändert oder ignoriert als freiprogrammierbare Stufe 
-        der Geometry Stage nur die ankommenden Vertices einzeln mit ihren Attributen (jedoch keine Erzeugung oder Löschung!!) mit Hilfe von Daten (Lichtposition, 
-        Transformationsmatrix). Dabei kann kein Eckpunkt auf die Informationen eines Anderen zugreifen. Da erlaubt auch die massive parallele Ausführung auf vielen Punkten
-        gleichzeitig. Mit einem Eckpunkt kommt seine Normale, Position, Farbe, möglicherweise Texturkoordinate. Ein minimalistischer Vertex Shader gibt seine Position aus.
-        Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit krativen 
-        Ansätzen lassen sich z.B. prozedurale Bewegungen nachhahmen\cite{engel2002direct3d}. Es können auch Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
-        Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden. 
-        
-        
-        
+
+            Interessant zeigt sich, was direkt vor dem Aufruf des Vertex Shaders passiert: input/primitive assembling. Der Shader behandelt/verändert oder ignoriert als freiprogrammierbare Stufe 
+            der Geometry Stage nur die ankommenden Vertices einzeln mit ihren Attributen (jedoch keine Erzeugung oder Löschung!!) mit Hilfe von Daten (Lichtposition, 
+            Transformationsmatrix). Dabei kann kein Eckpunkt auf die Informationen eines Anderen zugreifen. Da erlaubt auch die massive parallele Ausführung auf vielen Punkten
+            gleichzeitig. Mit einem Eckpunkt kommt seine Normale, Position, Farbe, möglicherweise Texturkoordinate. Ein minimalistischer Vertex Shader gibt seine Position aus.
+            Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit krativen 
+            Ansätzen lassen sich z.B. prozedurale Bewegungen nachhahmen\cite{engel2002direct3d}. Es können auch Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
+            Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden. 
+            
         \subsection{Tessellation}
         \label{subsec:Tessellation}
 
@@ -122,9 +123,13 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             \end{figure}
 
             Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der \textit{Hull Shader}
-            ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Außerdem lassen sich Kontrollpunkte hinzufügen/entfernen. 
-            Dabei lassen sich zwei jeweils benachbarte Patches kontrolliert unterteilen. Der \textit{Tessellator} nimmt die Patches entgegen und unterteilt Sie auf die 
+            ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Dafür reicht er den Tessellation Faktor zum 
+            \textit{Fixed Function Tessellator}. Außerdem lassen sich Kontrollpunkte hinzufügen/entfernen. 
+            Dabei lassen sich zwei jeweils benachbarte Patches kontrolliert unterteilen durch geteilte Kontrollpunkte. Dadurch ist sichergestellt, dass keine Artefakte
+            entstehen, wodurch der Übergang der Patches verschattet werden. Der \textit{Tessellator} nimmt die Patches entgegen und unterteilt Sie auf die 
             Art und Weise wie vom \textit{Hull Shader} vorgegeben. Mit dem \textit{Domain Shader} kann man jeden Vertex der vom Unterteiler kommenden Patches nachbearbeiten.
+            Bevor dieser nun die Patches zur nächsten Stufe, dem Geometry Shader (optional) oder dem Fragment Shader schickt, berechnet er die Primitivattribute, 
+            Normale, Farbe, Texturkoordinate.
             Diese Einheit bietet den Vorteil Arbeitslast von der langsamen CPU zur schnelleren GPU zu leiten, indem man niedriger aufgelöste Meshes benutzt und diese dann 
             auf der GPU im Tessallator höher auflöst.(oder auch Meshes, welche sind schnell deformieren/bewegen). Diese Eigenschaft der Unterteilung ermöglicht auch Verfahren wie 
             Level of Detail oder Anpassungsfähigkeiten an die Leistungsfähigkeit der GPU (viele Dreiecke bei hoher Leistungskapazität).
