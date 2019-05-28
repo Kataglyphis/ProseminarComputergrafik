@@ -37,11 +37,11 @@ das "Frustum Culling", also das Abschneiden des nicht sichtbaren Bereichs, um we
 Der Entwickler hat keinen Einfluss auf das Clipping~\ref{subsec:Clipping} (Abschneiden nicht relevanter Szenengeometrie). Ein Algorithmus der dieses Problem löst,
 ist der Cohen-Sutherland-Algorithmus.\par
 Nach dem Beschneiden liegen nur noch die "sichtbaren" Primitive vor und gelangen in die nächste Pipelinestufe, dem Viewport Transform~\ref{subsec:Viewport Transform}.
-Die x-und y-Komponente unserer Eckpunktositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig 
+Die x-und y-Komponente unserer Eckpunktpositionen werden auf die Bildschirmgröße skaliert und bilden die schlussendliche Position des Vertex. Dabei ist es wichtig 
 anzumerken, dass wir die z-Komponente für weitere Berechnungen in der Rasterisierung~\ref{sec:Rasterisierung} speichern.\par
 Nun sind wir an dem Punkt angelangt, an dem wir unsere transformierten, projizierten, sichtbaren Eckpunkte mit ihren Shadinginformationen vorliegen haben
 (Außerdem auch Tiefenwert!). Ziel der Rasterisierung ist es nun jeden einzelnen Bildschirmpixel mit diesen Informationen einzufärben. Vor dem endgültigen Darstellen 
-der Bildschirmpixel lassen sich auf den zuvor erzeuten Fragmenten eine Vielzahl von Operationen~\ref{sec:Per Fragment Operations} ausführen.So haben 
+der Bildschirmpixel lassen sich auf den zuvor erzeugten Fragmenten eine Vielzahl von Operationen~\ref{sec:Per Fragment Operations} ausführen.So haben 
 wir nun das finale Bild produziert.\par
 Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheiten bilden eine Ergänzung der bisherigen Rasterisierung~\ref{sec:Real-Time Raytracing}.
 %% ========================================================================================================================================================
@@ -57,7 +57,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     In der Anwendung können Informationen über ein Objekt geupdatet werden, z.B. bei Kollisionen von Objekten bei denen sich 
     Positionen verändern. Allgemein werden hier Benutzereingaben gesammelt und verarbeitet.
     Als programmierbare Stufe dieser Pipeline kann der Anwender konkrete Verbesserungen in diese Stufe einbringen um z.B. mit einem BVH
-    die Anzahl der Primitive für die Geometriestufe zu verrringern.
+    die Anzahl der Primitive für die Geometriestufe zu verringern.
     
     \begin{figure}[H]
         \centering
@@ -107,7 +107,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             der Geometry Stage nur die ankommenden Vertices einzeln mit ihren Attributen (jedoch keine Erzeugung oder Löschung!!) mit Hilfe von Daten (Lichtposition, 
             Transformationsmatrix). Dabei kann kein Eckpunkt auf die Informationen eines Anderen zugreifen. Da erlaubt auch die massive parallele Ausführung auf vielen Punkten
             gleichzeitig. Mit einem Eckpunkt kommt seine Normale, Position, Farbe, möglicherweise Texturkoordinate. Ein minimalistischer Vertex Shader gibt seine Position aus.
-            Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit krativen 
+            Dabei wechseln wir vom Modelkoordinaten zu homogenen Clipkoordinaten. Dabei kann ein Vertex Shader mehr als nur die neu berechnete Position zurückgeben. Mit kreativen 
             Ansätzen lassen sich z.B. prozedurale Bewegungen nachhahmen\cite{engel2002direct3d}. Es können auch Teile der Leuchtungsberechnung ("Gouraud shading") hier angewandt werden. 
             Das Ergebnis kann zum Tessellation oder Geometry Shader geschickt werden, abgespeichert oder direkt rasterisiert werden. 
             
@@ -121,7 +121,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Tessellation Shader}
             \end{figure}
 
-            Ist eine optionale teil-programmierbare Stufe zur Geometrieverfielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der \textit{Hull Shader}
+            Ist eine optionale teil-programmierbare Stufe zur Geometrievervielfachung, d.h. eingehendes Primitiv wird weiter in viele Dreiecke unterteilt. Der \textit{Hull Shader}
             ist voll programmierbar und damit ist die Anzahl der entstehenden Dreiecke direkt beeinflussbar. Dafür reicht er den Tessellation Faktor zum 
             \textit{Fixed Function Tessellator}. Außerdem lassen sich Kontrollpunkte hinzufügen/entfernen. 
             Dabei lassen sich zwei jeweils benachbarte Patches kontrolliert unterteilen durch geteilte Kontrollpunkte. Dadurch ist sichergestellt, dass keine Artefakte
@@ -148,9 +148,9 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
                 \caption{Funktionsweise Geometry Shader}
             \end{figure}
 
-            Ist wiederrum eine optionale frei-programmierbare Einheit die auf den zusammengestzten Primitiven arbeitet. Eine Vervielfachung ist theoretisch möglich,
+            Ist wiederrum eine optionale frei-programmierbare Einheit die auf den zusammengesetzten Primitiven arbeitet. Eine Vervielfachung ist theoretisch möglich,
             sollte aber als Aufgabe im Tessellation Shader erbracht werden. Vielmehr können wir diesen Shader einsetzen, um eine Geometrie gleichzeitig auf 
-            mehrer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
+            mehrerer rendertargets zu rendern oder wir machen transform Feedback: Buffer Objects dienen zur Speicherung von Informationen von eingehenden Primitiven.
             Diese können in weiteren Durchgängen wieder benutzt werden.
             In der Praxis hat sich der \textit{Geometry Shader} als zu starr, ineffektiv erwiesen. Die Weiterentwicklung Mesh Shader \ref{sec:Meshshader}, 
             welche die Leistung der GPU nun besser nutzen soll, wird in einem späteren Kapitel eingegangen.
@@ -184,7 +184,7 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
             \end{center}
             
             Nehmen wir unser Sichtfeld als eine beschnittene Pyramide wahr, welche durch eine near und far plane durchzogen wird, so haben wir eine 
-            perseptivische Projektion.
+            perspektivische Projektion.
     
             \begin{center}
     
@@ -204,13 +204,18 @@ Besonders interessant sind die neuen Shader für Ray Tracing. Die neuen Einheite
     
             \end{center}
             Near plane wird durch beide Punkte (l,b,n) und (r,t,n) aufgespannt und f ist die z-Koordinate der far plane.
-            Beachte bei der perseptivischen Projektion, dass der Z-Buffer bei gößeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
+            Beachte bei der perspektivischen Projektion, dass der Z-Buffer bei größeren Distanzen ungenauer wird(kein lineares Verhalten!). So kann bei einer Szene
             mit zwei sehr nahliegenden Ebenen erst bei größerer Entfernung Z-Fighting auftreten.
          
         \subsection{Clipping}
         \label{subsec:Clipping}
         Um Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, für die Bildsynthese zu verwerfen kommt nun das Abschneiden.
-        Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Außerdem gehen wir vom Clip-Space zum Window-Space.
+        Ein Algorithmus der dies leistet ist von Sutherland-Hodgman. Objekte komplett außerhalb unseres Sichtfensters(abgeschnittene Pyramide bei perspektivischer
+        Projektion) können komplett verworfen werden. Bei Objekten mit Anteilen außerhalb des Fensters liegt es nun daran neue Kontrollpunkte zu setzen umso den Anteil
+        Außerhalb für die Bildsynthese zu verwerfen. Bei perspektivisch korrekter Interpolation ist hier die richtige Reihenfolge zu beachten: Projektionstransformation,
+        Clipping, View-Port-Transform\ref{subsec:Viewport Transform}!
+        
+        Außerdem gehen wir vom Clip-Space zum Window-Space.
 
         \subsection{Viewport Transform}
         \label{subsec:Viewport Transform}
