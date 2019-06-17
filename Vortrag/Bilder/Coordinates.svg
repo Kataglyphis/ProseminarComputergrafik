@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Coordinates.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="273.88497"
+     inkscape:cy="758.02773"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.5;fill:#ff0000;fill-opacity:0.36470588;stroke:#fc0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect823"
+       width="105.83333"
+       height="17.386906"
+       x="45.357143"
+       y="48.669643" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="50.270836"
+       y="60.386902"
+       id="text827"><tspan
+         sodipodi:role="line"
+         id="tspan825"
+         x="50.270836"
+         y="60.386902"
+         style="stroke-width:0.26458332">Objektkoordinaten</tspan></text>
+    <rect
+       style="opacity:0.5;fill:#ff0000;fill-opacity:0.36470588;stroke:#fc0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect829"
+       width="104.32143"
+       height="17.764881"
+       x="45.735119"
+       y="92.514877" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="55.184525"
+       y="105.74405"
+       id="text833"><tspan
+         sodipodi:role="line"
+         id="tspan831"
+         x="55.184525"
+         y="105.74405"
+         style="stroke-width:0.26458332">Weltkoordinaten</tspan></text>
+    <rect
+       style="opacity:0.5;fill:#ff0000;fill-opacity:0.36470588;stroke:#fc0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect835"
+       width="103.1875"
+       height="19.276785"
+       x="45.735119"
+       y="127.28869" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="44.979164"
+       y="140.13988"
+       id="text839"><tspan
+         sodipodi:role="line"
+         id="tspan837"
+         x="44.979164"
+         y="140.13988"
+         style="stroke-width:0.26458332">Kamerakoordinaten</tspan></text>
+    <rect
+       style="opacity:0.5;fill:#ff0000;fill-opacity:0.36470588;stroke:#fc0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect841"
+       width="102.43154"
+       height="23.8125"
+       x="45.735115"
+       y="161.30653" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="54.42857"
+       y="174.91368"
+       id="text845"><tspan
+         sodipodi:role="line"
+         id="tspan843"
+         x="54.42857"
+         y="174.91368"
+         style="stroke-width:0.26458332">Clip Koordinaten</tspan></text>
+    <rect
+       style="opacity:0.5;fill:#ff0000;fill-opacity:0.36470588;stroke:#fc0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect847"
+       width="107.34524"
+       height="19.276785"
+       x="45.735119"
+       y="202.12798" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="85.800598"
+       y="214.97917"
+       id="text851"><tspan
+         sodipodi:role="line"
+         id="tspan849"
+         x="85.800598"
+         y="214.97917"
+         style="stroke-width:0.26458332">NDC</tspan></text>
+    <rect
+       style="opacity:0.5;fill:#ff0000;fill-opacity:0.36470588;stroke:#fc0000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect853"
+       width="108.1012"
+       height="22.678572"
+       x="47.247025"
+       y="233.12202" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="79.375"
+       y="248.61905"
+       id="text857"><tspan
+         sodipodi:role="line"
+         id="tspan855"
+         x="79.375"
+         y="248.61905"
+         style="stroke-width:0.26458332">Window</tspan></text>
+  </g>
+</svg>

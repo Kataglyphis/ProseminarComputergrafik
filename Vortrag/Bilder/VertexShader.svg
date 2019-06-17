@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="577mm"
+   height="141mm"
+   viewBox="0 0 577 141"
+   version="1.1"
+   id="svg1043"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="VertexShader.svg">
+  <defs
+     id="defs1037">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1974"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#fe0000;fill-opacity:1;fill-rule:evenodd;stroke:#fe0000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1972"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path1601"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="875.96758"
+     inkscape:cy="490.54247"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata1040">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-156)">
+    <rect
+       style="opacity:1;fill:#fa0000;fill-opacity:0.36470588;stroke:#ff0000;stroke-width:1.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect1588"
+       width="204.19391"
+       height="106.37327"
+       x="182.27782"
+       y="174.59056" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:34.45676041px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.86141902"
+       x="213.62517"
+       y="226.11533"
+       id="text1592"
+       transform="scale(1.0431111,0.95867065)"><tspan
+         sodipodi:role="line"
+         id="tspan1590"
+         x="213.62517"
+         y="226.11533"
+         style="stroke-width:0.86141902">Vertex</tspan><tspan
+         sodipodi:role="line"
+         x="213.62517"
+         y="269.18628"
+         style="stroke-width:0.86141902"
+         id="tspan1594">Shader</tspan></text>
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1.16499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 8.5526247,226.97538 H 177.46696"
+       id="path1596"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="16.036173"
+       y="195.97212"
+       id="text1960"><tspan
+         sodipodi:role="line"
+         id="tspan1958"
+         x="16.036173"
+         y="195.97212"
+         style="stroke-width:0.26458332">Eckpunkt in Modelkoordinaten</tspan><tspan
+         sodipodi:role="line"
+         x="16.036173"
+         y="209.20129"
+         style="stroke-width:0.26458332"
+         id="tspan1962">und Attribute</tspan></text>
+    <path
+       style="fill:none;stroke:#fe0000;stroke-width:1.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1974)"
+       d="M 390.2135,227.50992 562.86963,225.9063"
+       id="path1964"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="408.92236"
+       y="214.68098"
+       id="text2026"><tspan
+         sodipodi:role="line"
+         id="tspan2024"
+         x="408.92236"
+         y="214.68098"
+         style="stroke-width:0.26458332">Eckpunkt in Clip Space</tspan></text>
+  </g>
+</svg>
