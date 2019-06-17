@@ -29,13 +29,14 @@
 \usepackage[TS1,T1]{fontenc}
 \usepackage{array}
 \usepackage{lipsum}
+\usepackage{hyperref} 
 
 \usenavigationsymbols
 %\usenavigationsymbols[sfHhdb]
 %\usenavigationsymbols[sfhHb]
 
 \title[Aufbau einer modernen Rendering-Pipeline]{Aufbau einer modernen Rendering-Pipeline}
-\subtitle{Von der Anwendung bis zum Bildschirm}
+\subtitle{Von der Anwendung zum Bildschirm}
 
 \author{Jonas Heinle}
 
@@ -61,14 +62,29 @@
 
 \begin{frame}
   \frametitle{Vertex Shader}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/VertexShader.pdf}
+  \end{centering}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Tessellation}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/Tessellation.pdf}
+  \end{centering}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Geometry Shader}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/GeometryShader.pdf}
+  \end{centering}
+
 \end{frame}
 
 \begin{frame}
@@ -82,6 +98,11 @@
 \section{Rasterisierung}
 \begin{frame}
   \frametitle{Rasterisierung}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/Rasterisierung.pdf}
+  \end{centering}
+
 \end{frame}
 
 \section{Per Frag Ops}
@@ -92,31 +113,50 @@
 \section{Compute Shader}
 \begin{frame}
   \frametitle{Compute Shader}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/ComputeShader.pdf}
+  \end{centering}
+
 \end{frame}
 
 \section{Ausblick}
 \begin{frame}
   \frametitle{Raytracing Unterstützung}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/VertexShader.pdf}
+  \end{centering}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Task/-Mesh Shaders}
+
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/geforce-rtx-turing-architecture-mesh-shading-pipeline.png}
+  \end{centering}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Links}
     \heading{Bilder}
     \begin{itemize}
-      \item https://arstechnica.com/gaming/2018/03/star-wars-demo-shows-off-just-how-great-real-time-raytracing-can-look/
+      \item \href{https://arstechnica.com/gaming/2018/03/star-wars-demo-shows-off-just-how-great-real-time-raytracing-can-look/}{Titelbild}
     \end{itemize}
     \bigskip
 
     \heading{Videos}
+  
     \begin{enumerate}
-      \item https://www.youtube.com/watch?v=LXo0WdlELJk - SEED's Project \textit{PICA PICA}
+      \item \href{https://www.youtube.com/watch?v=LXo0WdlELJk}{SEED's Project \textit{PICA PICA}}  
+      \item \href{https://www.youtube.com/watch?v=CRfZYJ_sk5E}{Nvidias Asteroids Mesh Shaders Demo}
     \end{enumerate}
+    
     \vfill
     \mbox{}
+
 
 \end{frame}
 
