@@ -24,7 +24,6 @@
 
 %\KITfoot{\parbox[t]{90mm}{\today:\qquad Dies ist eine sehr lange selbstdefinierte Fu\ss{}zeile -- Dies ist eine sehr lange selbstdefinierte Fu\ss{}zeile -- Dies ist eine sehr lange selbstdefinierte Fu\ss{}zeile}}
 
-
 \usepackage[utf8]{inputenc}
 \usepackage[TS1,T1]{fontenc}
 \usepackage{array}
@@ -50,19 +49,67 @@
   \maketitle
 \end{frame}
 
+\section{Motivation}
+\begin{frame}
+  \frametitle{Motivation}
+
+  \begin{centering}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/cyberpunk_2077.png}
+  \end{centering}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivation}
+  
+  \begin{figure}[ht]
+    \begin{minipage}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/Kette.jpg}
+    \end{minipage}
+    \hspace{0.5cm}
+    \begin{minipage}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/Pipeline.jpeg}
+    \end{minipage}
+  \end{figure}
+  
+\end{frame}
+
 \section{Anwendung}
 \begin{frame}
   \frametitle{Anwendung}
+
+  \vspace{1cm}
+  \begin{figure}[ht]
+    \begin{minipage}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/ObjectData.png}
+    \end{minipage}
+    \hspace{0.5cm}
+    \begin{minipage}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/MaterialDefs.PNG}
+    \end{minipage}
+\end{figure}
+
 \end{frame}
 
 \section{Geometry Stage}
 \begin{frame}
   \frametitle{Primitive Assembly}
+
+  \vspace{1cm}
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/PrimitiveAssembly.pdf}
+  \end{centering}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Vertex Shader}
 
+  \vspace{2cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/VertexShader.pdf}
   \end{centering}
@@ -72,6 +119,7 @@
 \begin{frame}
   \frametitle{Tessellation}
 
+  \vspace{2cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/Tessellation.pdf}
   \end{centering}
@@ -81,6 +129,7 @@
 \begin{frame}
   \frametitle{Geometry Shader}
 
+  \vspace{2cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/GeometryShader.pdf}
   \end{centering}
@@ -98,7 +147,7 @@
 \section{Rasterisierung}
 \begin{frame}
   \frametitle{Rasterisierung}
-
+  \vspace{2cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/Rasterisierung.pdf}
   \end{centering}
@@ -110,12 +159,22 @@
   \frametitle{Per Fragment Operations}
 \end{frame}
 
+\section{Koordinatensysteme}
+\begin{frame}
+  \frametitle{Koordinatensysteme}
+  \vspace{2cm}
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/Koordinatensysteme.pdf}
+  \end{centering}
+
+\end{frame}
+
 \section{Compute Shader}
 \begin{frame}
   \frametitle{Compute Shader}
 
   \begin{centering}
-    \includegraphics[width=\textwidth]{Bilder/ComputeShader.pdf}
+    \hspace*{1cm}\includegraphics[width=0.8\textwidth]{Bilder/ComputeShader.pdf}
   \end{centering}
 
 \end{frame}
@@ -125,8 +184,9 @@
   \frametitle{Raytracing Unterstützung}
 
   \begin{centering}
-    \includegraphics[width=\textwidth]{Bilder/VertexShader.pdf}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/PICAPICA.jpg}
   \end{centering}
+  \ref{pic:picapica}
 
 \end{frame}
 
@@ -134,9 +194,41 @@
   \frametitle{Task/-Mesh Shaders}
 
   \begin{centering}
-    \includegraphics[width=\textwidth]{Bilder/geforce-rtx-turing-architecture-mesh-shading-pipeline.png}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/NvidiaAsteroid.jpg}
   \end{centering}
+  \ref{pic:asteroids}
+\end{frame}
 
+\begin{frame}
+  \frametitle{Task/-Mesh Shaders}
+
+  \begin{centering}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/meshlets_pipeline.png}
+  \end{centering}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fragen?}
+  
+  \begin{centering}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/Ende.jpg}
+  \end{centering}
+  \ref{pic:witcher}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interesse geweckt ...?}
+  \heading{Weiterführende Literatur}
+  
+  \begin{enumerate}
+    \item \href{http://www.brechpunkt.de/q2vkpt/}{Quake2 Real-Time Raytracing Project Q2VKPT}
+    \item \href{https://developer.nvidia.com/rtx/raytracing}{NVIDIA RTX Ray Tracing}
+    \item \href{https://www.nvidia.com/en-us/geforce/news/graphics-reinvented-new-technologies-in-rtx-graphics-cards/}{RTX}
+    \item \href{https://www.pbrt.org/}{Physically Based Rendering}
+    \item \href{https://www.heise.de/newsticker/meldung/Nvidias-Asteroids-Demo-zeigt-Mesh-und-Task-Shader-in-Aktion-4258243.html}{Heise about NVIDIA Asteroid Demo}
+    \item \href{http://www.realtimerendering.com/}{Link to very much information!}
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -144,6 +236,12 @@
     \heading{Bilder}
     \begin{itemize}
       \item \href{https://arstechnica.com/gaming/2018/03/star-wars-demo-shows-off-just-how-great-real-time-raytracing-can-look/}{Titelbild}
+      \item \href{https://variety.com/2019/gaming/news/cd-projekt-red-cyberpunk-2077-transgender-image-1203242424/}{Cyberpunk 2077}
+      \item \href{https://www.karabiner-und-mehr.de/kamero-wallet-chain-schwere-kette-51cm-edelstahl-rostfrei-walletchain-kette-fuer-die-geldboerse-hosenkette.html}{Kette}
+      \item \href{https://medium.com/@timhberry/terraform-pipelines-in-jenkins-47267129ff06}{Pipeline}
+      \item \href{https://www.ea.com/seed/news/seed-project-picapica}{SEED's Project \textit{PICA PICA}} \label{pic:picapica}
+      \item \href{https://devblogs.nvidia.com/using-turing-mesh-shaders-nvidia-asteroids-demo/}{NVIDIA Asteroid Scene} \label{pic:asteroids}
+      \item \href{https://www.youtube.com/watch?v=NxKSMz6dcTA}{Witcher Endslide} \label{pic:witcher}
     \end{itemize}
     \bigskip
 
