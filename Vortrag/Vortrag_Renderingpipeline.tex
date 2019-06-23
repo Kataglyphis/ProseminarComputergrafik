@@ -29,6 +29,10 @@
 \usepackage{array}
 \usepackage{lipsum}
 \usepackage{hyperref} 
+\usepackage{listings}
+
+
+
 
 \usenavigationsymbols
 %\usenavigationsymbols[sfHhdb]
@@ -49,16 +53,6 @@
   \maketitle
 \end{frame}
 
-\section{Motivation}
-\begin{frame}
-  \frametitle{Motivation}
-
-  \begin{centering}
-    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/cyberpunk_2077.png}
-  \end{centering}
-  
-\end{frame}
-
 \begin{frame}
   \frametitle{Motivation}
   
@@ -76,6 +70,26 @@
   
 \end{frame}
 
+\section{Motivation}
+\begin{frame}
+  \frametitle{Motivation}
+
+  \begin{centering}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/cyberpunk_2077.png}
+  \end{centering}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivation}
+
+  \begin{centering}
+    \hspace*{4.5cm}\includegraphics[width=0.25\textwidth]{Bilder/RenderingPipelineVereinfacht.png}
+  \end{centering}
+  \ref{Vulkan Pipeline}
+
+\end{frame}
+
 \section{Anwendung}
 \begin{frame}
   \frametitle{Anwendung}
@@ -85,12 +99,15 @@
     \begin{minipage}[b]{0.45\linewidth}
         \centering
         \includegraphics[width=\textwidth]{Bilder/ObjectData.png}
+        \caption{Beispielhafte Objektdefinition}
     \end{minipage}
     \hspace{0.5cm}
     \begin{minipage}[b]{0.45\linewidth}
         \centering
         \includegraphics[width=\textwidth]{Bilder/MaterialDefs.PNG}
+        \caption{Beispielhafte Materialdefinition}
     \end{minipage}
+    
 \end{figure}
 
 \end{frame}
@@ -129,11 +146,27 @@
 \begin{frame}
   \frametitle{Geometry Shader}
 
-  \vspace{2cm}
+  \begin{center}
+    Primitive (Punkt, Linie, Dreieck) werden vervielfacht, entfernt oder umgewandelt
+  \end{center}
+  \vspace{1cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/GeometryShader.pdf}
   \end{centering}
 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Geometry Shader - Instanziierung}
+  \begin{centering}
+    \includegraphics[width=\textwidth]{Bilder/instancing-balloons.jpg}
+  \end{centering}
+  \ref{Geometry Instancing}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Geometry Shader und Shading}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/geometry_shading.c}
 \end{frame}
 
 \begin{frame}
@@ -180,11 +213,46 @@
 \end{frame}
 
 \section{Ausblick}
+
+\begin{frame}
+  \frametitle{Raytracing Unterstützung}
+
+  \begin{centering}
+    \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/RayTracingPrinzip.png}
+  \end{centering}
+  \ref{Ray Tracing Prinzip}
+
+\end{frame}
+
 \begin{frame}
   \frametitle{Raytracing Unterstützung}
 
   \begin{centering}
     \hspace*{0.5cm}\includegraphics[width=0.9\textwidth]{Bilder/PICAPICA.jpg}
+  \end{centering}
+  \ref{pic:picapica}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hybrides Rendering in \textit{PICA PICA}}
+
+  \begin{centering}
+    \begin{itemize}
+      \item Transparenz und Durchsichtigkeit \textcolor{green}{Ray-Tracing}
+      \pause
+      \item Global Illumination \textcolor{green}{Ray-Tracing} \textcolor{blue}{Compute}
+      \pause
+      \item G-Buffer Layout \textcolor{red}{Rasterisierung}
+      \pause
+      \item Direkte Schatten \textcolor{green}{Ray-Tracing} \textcolor{red}{Rasterisierung}
+      \pause
+      \item Reflexionen \textcolor{green}{Ray-Tracing} \textcolor{blue}{Compute}
+      \pause
+      \item Direkte Beleuchtung \textcolor{blue}{Compute}
+      \pause
+      \item Post-Processing \textcolor{blue}{Compute}
+    \end{itemize}
   \end{centering}
   \ref{pic:picapica}
 
@@ -228,6 +296,7 @@
     \item \href{https://www.pbrt.org/}{Physically Based Rendering}
     \item \href{https://www.heise.de/newsticker/meldung/Nvidias-Asteroids-Demo-zeigt-Mesh-und-Task-Shader-in-Aktion-4258243.html}{Heise about NVIDIA Asteroid Demo}
     \item \href{http://www.realtimerendering.com/}{Link to very much information!}
+    \item \href{http://vulkan-spec-chunked.ahcox.com/ch09.html}{Vulkan Rendering Pipeline}\label{Vulkan Pipeline}
   \end{enumerate}
 \end{frame}
 
@@ -242,6 +311,8 @@
       \item \href{https://www.ea.com/seed/news/seed-project-picapica}{SEED's Project \textit{PICA PICA}} \label{pic:picapica}
       \item \href{https://devblogs.nvidia.com/using-turing-mesh-shaders-nvidia-asteroids-demo/}{NVIDIA Asteroid Scene} \label{pic:asteroids}
       \item \href{https://www.youtube.com/watch?v=NxKSMz6dcTA}{Witcher Endslide} \label{pic:witcher}
+      \item \href{https://unity3d.college/2017/04/25/unity-gpu-instancing/}{Geometry Shader Instanziierung} \label{Geometry Instancing}
+      \item \href{http://www.realtimerendering.com/Real-Time_Rendering_4th-Real-Time_Ray_Tracing.pdf}{Ray Tracing Prinzip} \label{Ray Tracing Prinzip}
     \end{itemize}
     \bigskip
 
