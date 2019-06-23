@@ -92,6 +92,12 @@
 
 \section{Anwendung}
 \begin{frame}
+  \frametitle{Blenders Suzanne}
+  \centering
+  \includegraphics[width=\textwidth]{Bilder/Suzanne.png}
+\end{frame}
+
+\begin{frame}
   \frametitle{Anwendung}
 
   \vspace{1cm}
@@ -131,6 +137,12 @@
     \includegraphics[width=\textwidth]{Bilder/VertexShader.pdf}
   \end{centering}
 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vertex Shader}
+
+  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/vertex_shader.c}
 \end{frame}
 
 \begin{frame}
@@ -187,6 +199,12 @@
 
 \end{frame}
 
+\begin{frame}
+  \frametitle{Rasterisierung}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/fragment_shading.c}
+
+\end{frame}
+
 \section{Per Frag Ops}
 \begin{frame}
   \frametitle{Per Fragment Operations}
@@ -205,9 +223,10 @@
 \section{Compute Shader}
 \begin{frame}
   \frametitle{Compute Shader}
-  Von physikalischen Simulationen zur künstlichen Intelligenz und speziellen 
-  Rendering Verfahren
-  \vspace{1cm}
+  \begin{itemize}
+    \item physikalische Simulationen, KI, spezielle Renderingverfahren
+    \item SPMD
+  \end{itemize}
   \begin{centering}
     \hspace*{2cm}\includegraphics[width=0.7\textwidth]{Bilder/ComputeShader.pdf}
   \end{centering}
@@ -226,6 +245,7 @@
   \frametitle{Compute Shader}
   \begin{centering}
     \hspace*{2cm}\includegraphics[width=0.7\textwidth]{Bilder/ParticleSystem.jpg}
+    \ref{Partikel System}
   \end{centering}
 \end{frame}
 
@@ -309,6 +329,7 @@
   
 \end{frame}
 
+\section{Zum Nachschlagen}
 \begin{frame}
   \frametitle{Interesse geweckt ...?}
   \heading{Weiterführende Literatur}
@@ -337,19 +358,27 @@
       \item \href{https://www.youtube.com/watch?v=NxKSMz6dcTA}{Witcher Endslide} \label{pic:witcher}
       \item \href{https://unity3d.college/2017/04/25/unity-gpu-instancing/}{Geometry Shader Instanziierung} \label{Geometry Instancing}
       \item \href{http://www.realtimerendering.com/Real-Time_Rendering_4th-Real-Time_Ray_Tracing.pdf}{Ray Tracing Prinzip} \label{Ray Tracing Prinzip}
+      \item \href{https://www.geforce.co.uk/games-applications/pc-applications/fermi-hair-demo}{Haare mit Compute Shader}
+      \item \href{https://chetanjags.wordpress.com/2014/04/15/gaussian-filter-using-compute-shader/}{Blur}
     \end{itemize}
-    \bigskip
-
-    \heading{Videos}
-  
-    \begin{enumerate}
-      \item \href{https://www.youtube.com/watch?v=LXo0WdlELJk}{SEED's Project \textit{PICA PICA}}  
-      \item \href{https://www.youtube.com/watch?v=CRfZYJ_sk5E}{Nvidias Asteroids Mesh Shaders Demo}
-    \end{enumerate}
     
     \vfill
     \mbox{}
 
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Links}
+  
+  \heading{Videos}
+  
+    \begin{enumerate}
+      \item \href{https://www.youtube.com/watch?v=LXo0WdlELJk}{SEED's Project \textit{PICA PICA}}  
+      \item \href{https://www.youtube.com/watch?v=CRfZYJ_sk5E}{Nvidias Asteroids Mesh Shaders Demo}
+      \item \href{https://www.youtube.com/watch?v=40Mfvof4OS8}{Particle System} \label{Partikel System}
+      \item \href{https://www.youtube.com/watch?v=AdabPy6xQ8A}{Instancing Unreal Engine}
+    \end{enumerate}
 
 \end{frame}
 
