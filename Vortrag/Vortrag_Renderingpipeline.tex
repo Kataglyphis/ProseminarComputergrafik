@@ -134,7 +134,7 @@
 \section{Geometry Stage}
 \begin{frame}
   \frametitle{Primitive Assembly}
-
+  Zusammensetzung von Eckpunkten zu Primitiven (Linien,Drei-/Vierecke)
   \vspace{1cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/PrimitiveAssembly.pdf}
@@ -144,11 +144,13 @@
 
 \begin{frame}
   \frametitle{Vertex Shader}
-
-  \vspace{2cm}
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/VertexShader.pdf}
   \end{centering}
+  \begin{itemize}
+    \item jeder Eckpunkt wird für sich betrachtet
+    \item andere Berechnungen möglich \ref{vertexshader_prozeduraleBewegung}
+  \end{itemize}
 
 \end{frame}
 
@@ -371,6 +373,7 @@
     \item \href{http://www.realtimerendering.com/}{Link to very much information!}
     \item \href{http://vulkan-spec-chunked.ahcox.com/ch09.html}{Vulkan Rendering Pipeline}\label{Vulkan Pipeline}
     \item \href{https://developer.nvidia.com/discover/ray-tracing}{Ray Tracing}
+    \item \href{https://dl.acm.org/citation.cfm?id=515351}{Vertex Shader Prozedurale Bewegung}\label{vertexshader_prozeduraleBewegung}
   \end{enumerate}
 \end{frame}
 
