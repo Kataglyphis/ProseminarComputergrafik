@@ -2,9 +2,8 @@ uniform mat4 MVP , MV , Normale;
 uniform vec3 lightSourcePosition;
 in vec4 position;
 in vec3 normal;
-//Gourand Shading
-out vec4 color;
 //nur falls kein Gourand Shading
+out vec4 color;
 out vec3 L, N;
 void main ()
     gl_Position = MVP * position;
