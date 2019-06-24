@@ -24,6 +24,7 @@
 
 %\KITfoot{\parbox[t]{90mm}{\today:\qquad Dies ist eine sehr lange selbstdefinierte Fu\ss{}zeile -- Dies ist eine sehr lange selbstdefinierte Fu\ss{}zeile -- Dies ist eine sehr lange selbstdefinierte Fu\ss{}zeile}}
 
+\usepackage{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage[TS1,T1]{fontenc}
 \usepackage{array}
@@ -32,6 +33,8 @@
 \usepackage{listings}
 
 \input{Code/my_c_style.tex}
+
+\usepackage{glslListings}
 
 \usenavigationsymbols
 %\usenavigationsymbols[sfHhdb]
@@ -157,8 +160,7 @@
 
 \begin{frame}
   \frametitle{Vertex Shader}
-
-  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/vertex_shader.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=GLSL]{Code/vertex_shader.c}
 \end{frame}
 
 \begin{frame}
@@ -204,12 +206,12 @@
 
 \begin{frame}
   \frametitle{Geometry Shader und Shading}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/geometry_shading.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=GLSL]{Code/geometry_shading.c}
 \end{frame}
 
 \begin{frame}
   \frametitle{Geometry Shader und Shading}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/geometry_shading2.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=GLSL]{Code/geometry_shading2.c}
 \end{frame}
 
 \begin{frame}
@@ -278,7 +280,7 @@
 
 \begin{frame}
   \frametitle{Rasterisierung - Fragment Shader}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/fragment_shading.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=GLSL]{Code/fragment_shading.c}
 
 \end{frame}
 
@@ -315,7 +317,7 @@
 
 \begin{frame}
   \frametitle{Compute Shader}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/compute_shader.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=GLSL]{Code/compute_shader.c}
 \end{frame}
 
 \begin{frame}
