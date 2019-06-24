@@ -158,7 +158,7 @@
 \begin{frame}
   \frametitle{Vertex Shader}
 
-  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/vertex_shader.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/vertex_shader.c}
 \end{frame}
 
 \begin{frame}
@@ -204,20 +204,37 @@
 
 \begin{frame}
   \frametitle{Geometry Shader und Shading}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/geometry_shading.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/geometry_shading.c}
 \end{frame}
 
 \begin{frame}
   \frametitle{Geometry Shader und Shading}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/geometry_shading2.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/geometry_shading2.c}
 \end{frame}
 
 \begin{frame}
   \frametitle{Projektionstransformation}
+  \begin{itemize}
+    \item Vorbereitung der Projektion
+    \pause
+    \item Alle Punkte liegen innerhalb eines Einheitswürfels
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=\textwidth]{Bilder/view_frustrum.png}
+  \end{center}
+  \ref{pic:view_frustum}
 \end{frame}
 
 \begin{frame}
   \frametitle{Clipping}
+  \begin{itemize}
+    \item Objekte bzw. Objektausschnitte, welche außerhalb des Sichtfensters liegen, verwerfen
+    \item Algorithmus von Sutherland-Hodgman
+    \item Reihenfolge sehr wichtig: Projektionstransformation, Clipping, View-Port-Transform
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=\textwidth]{Bilder/clipping.pdf}
+  \end{center}
 \end{frame}
 
 \section{Rasterisierung}
@@ -227,18 +244,50 @@
   \begin{centering}
     \includegraphics[width=\textwidth]{Bilder/Rasterisierung.pdf}
   \end{centering}
-
+  \begin{itemize}
+    \item Aufgabe: Finde heraus welche Geometrie bedeckt welchen Pixel zu welchen Anteil?
+    \item (evlt.) Shading
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Rasterisierung}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/fragment_shading.c}
+  \begin{centering}
+    \includegraphics[width=0.9\textwidth]{Bilder/RasterisierungSchaubild.png}
+  \end{centering}
+  \ref{pic:RasterisierungSchaubild}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rasterisierung}
+  \heading{Triangle Setup}
+  \begin{itemize}
+    \item nicht beeinflussbar vom Programmierer
+    \pause
+    \item Vorberechnungen; Interpolation Von Vertexattributen(Tiefe, )
+    \pause
+  \end{itemize}
+  \heading{Triangle Traversal}
+  \begin{itemize}
+    \item alle Dreiecke werden durchgegangen
+    \pause
+    \item Fragmente werden erzeugt indem Pixel bestimmt werden die innerhalb des Dreiecks liegen
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rasterisierung - Fragment Shader}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/fragment_shading.c}
 
 \end{frame}
 
-\section{Per Frag Ops}
 \begin{frame}
-  \frametitle{Per Fragment Operations}
+  \frametitle{Merging}
+  \begin{itemize}
+    \item Abschließendes Speichern der Farbgebung eines jeden Pixels im \textit{color buffer}
+    \item Prüfung auf Sichtbarkeit mit Z-Buffer(Vorsicht bei Semi-Transparenz)
+  \end{itemize}
 \end{frame}
 
 \section{Koordinatensysteme}
@@ -266,7 +315,7 @@
 
 \begin{frame}
   \frametitle{Compute Shader}
-  \lstinputlisting[label = Shading im Geometry Shader, language=C]{Code/compute_shader.c}
+  \lstinputlisting[label = Shading im Geometry Shader, language=C, style=CStyle]{Code/compute_shader.c}
 \end{frame}
 
 \begin{frame}
@@ -412,6 +461,8 @@
     \begin{itemize}
       \item \href{https://subscription.packtpub.com/book/game_development/9781789342253/7/ch07lvl1sec74/tessellating-a-3d-surface}{Teapot} \label{pic:Teapot}
       \item \href{https://www.keithlantz.net/2013/04/kd-tree-construction-using-the-surface-area-heuristic-stack-based-traversal-and-the-hyperplane-separation-theorem/}{kd-Baum}\label{pic:kdtree}
+      \item \href{https://docplayer.org/41341773-Computer-graphik-i-polygon-scan-conversion-triangulation-filling-etc-g-zachmann-university-of-bremen-germany-cgvr-informatik-uni-bremen.html}{Rasterisierung Schaubild}\label{pic:RasterisierungSchaubild}
+      \item \href{http://www.songho.ca/opengl/gl_projectionmatrix.html}{View Frustum} \label{pic:view_frustum}
     \end{itemize}
 \end{frame}
 
